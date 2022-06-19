@@ -11,9 +11,8 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .footer .content .footer-content {
@@ -23,6 +22,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  width: 100%;
 }
 
 .footer .content .footer-content .section {
@@ -61,22 +61,26 @@
   color: #07b4b4;
 }
 
-.footer .footer-banners {
+.footer .content .footer-banners {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
   gap: 2rem;
   font-size: 2rem;
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
 
-.footer .footer-banners .banner {
+.footer .content .footer-banners .banner {
   padding: 3rem;
   width: 40%;
+  min-width: 160px;
 }
 
-.footer .footer-banners .footer-info {
+.footer .content .footer-banners .footer-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -90,28 +94,14 @@
   background-color: #333333;
   color: #ffffff;
   text-transform: uppercase;
+  text-align: center;
 }
 
-.footer .footer-banners .footer-info .title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.footer .content .footer-banners .footer-info h1:nth-child(1) {
   font-weight: bold;
 }
 
-.footer .footer-banners .footer-info .title-seconderry {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.footer .footer-banners .footer-social-network {
+.footer .content .footer-banners .footer-social-network {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -124,12 +114,40 @@
   background-color: #00c8c8;
 }
 
-.footer .footer-banners .footer-social-network i {
+.footer .content .footer-banners .footer-social-network i {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin: 5px;
   color: #ffffff;
+}
+
+.footer .footer-copyright-section {
+  background-color: #333333;
+  width: 100%;
+}
+
+.footer .footer-copyright-section .footer-content-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.footer .footer-copyright-section .footer-content-body a:nth-child(1) {
+  margin-right: auto;
+}
+
+.footer .footer-copyright-section .footer-content-body a {
+  display: block;
+  color: #999999;
+  margin: 17px;
+}
+
+.footer .footer-copyright-section .footer-content-body a:hover {
+  color: #07b4b4;
 }
 
 @media screen and (max-width: 450px) {

@@ -129,9 +129,13 @@ a {
 }
 // css resset
 
+$body-background-color: #ffffff;
+
 body {
   text-decoration: none;
   font-family: Montserrat;
+  min-width: fit-content;
+  background-color: $body-background-color;
 }
 
 .content {
@@ -140,7 +144,7 @@ body {
   margin: auto;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 1150px) {
   .content {
     width: 100%;
   }
