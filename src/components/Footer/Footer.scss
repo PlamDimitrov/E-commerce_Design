@@ -1,0 +1,129 @@
+$hover-color: #07b4b4;
+$title-color: #777274;
+$content-color: #969696;
+$background-color: #f8f8f8;
+$banner-text-color: #ffffff;
+$copyright-background-color: #333333;
+$copyright-text-color: #999999;
+
+.footer {
+    font-family: "Montserrat";
+    background-color: $background-color;
+    max-width: 100%;
+    font-size: 0.8rem;
+    .footer-body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .content {
+        .footer-content {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            .section {
+                margin-top: 4rem;
+                max-width: 210px;
+                margin-left: 5px;
+                margin-right: 5px;
+                .section-title {
+                    color: $title-color;
+                    margin-bottom: 1rem;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+
+                .section-content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: stretch;
+
+                    .section-component {
+                        color: $content-color;
+                        margin: 0.2rem;
+                    }
+
+                    .section-component:hover {
+                        color: $hover-color;
+                    }
+                }
+            }
+        }
+
+        .footer-banners {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            gap: 2rem;
+            font-size: 2rem;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            .banner {
+                padding: 3rem;
+                width: 40%;
+                min-width: 160px;
+            }
+
+            .footer-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background-color: $copyright-background-color;
+                color: $banner-text-color;
+                text-transform: uppercase;
+                text-align: center;
+                h1:nth-child(1) {
+                    font-weight: bold;
+                }
+            }
+
+            .footer-social-network {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                i {
+                    display: flex;
+                    margin: 5px;
+                    color: $banner-text-color;
+                }
+
+                background-color: #00c8c8;
+            }
+        }
+    }
+    .footer-copyright-section {
+        background-color: $copyright-background-color;
+        width: 100%;
+        .footer-content-body {
+            display: flex;
+            justify-content: flex-end;
+            a:nth-child(1) {
+                margin-right: auto;
+            }
+            a {
+                display: block;
+                color: $copyright-text-color;
+                margin: 17px;
+            }
+            a:hover {
+                color: #07b4b4;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .footer {
+        width: 100%;
+        .content {
+            .footer-content {
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            .footer-banners {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
