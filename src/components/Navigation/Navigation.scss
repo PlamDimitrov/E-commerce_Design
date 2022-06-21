@@ -72,6 +72,8 @@ $item-color: #777274;
             .dropdown-item {
               margin: 10px;
               color: $item-color;
+              text-transform: none;
+              font-weight: lighter;
               &:hover {
                 color: $hover-color;
               }

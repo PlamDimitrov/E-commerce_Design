@@ -110,6 +110,8 @@
 .navigation .menu .item:hover .dropdown .dropdown-categories .dropdown-item {
   margin: 10px;
   color: #777274;
+  text-transform: none;
+  font-weight: lighter;
 }
 
 .navigation .menu .item:hover .dropdown .dropdown-categories .dropdown-item:hover {
