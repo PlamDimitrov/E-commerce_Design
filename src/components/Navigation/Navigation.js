@@ -88,6 +88,10 @@ const Navigation = () => {
                 </div>
             </div>
         </div>
+        <div className="search">
+            <input value="Search" />
+            <i className="fa-solid fa-magnifying-glass"></i>
+        </div>
     </div>
 };
 
