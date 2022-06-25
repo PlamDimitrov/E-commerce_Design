@@ -1,17 +1,17 @@
 import './App.css';
 
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Navigation from './components/Navigation/Navigation';
-import Background from './components/Background/Background';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+
+import SignInOrRegister from './Pages/SignInOrRegister/SignInOrRegister';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Navigation />
-      <Background />
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<SignInOrRegister />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

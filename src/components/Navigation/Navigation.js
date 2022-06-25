@@ -9,87 +9,89 @@ const Navigation = () => {
                 <h1>Fassion</h1>
             </a>
         </div>
-        <div className="menu">
-            <div className="item">
-                <a href="./">Mans
-                    <i className="fa-solid fa-angle-down"></i>
-                </a>
-                <div className="dropdown">
-                    <div className="dropdown-categories">
-                        <h1 className="dropdown-title">Casuals</h1>
-                        <a href="./" className="dropdown-item">Jackets</a>
-                        <a href="./" className="dropdown-item">Hoodies & Sweatshirts</a>
-                        <a href="./" className="dropdown-item">Polo Shirts</a>
-                        <a href="./" className="dropdown-item">Sportswear</a>
-                        <a href="./" className="dropdown-item">Trousers & Chinos</a>
-                        <a href="./" className="dropdown-item">Sportswear</a>
-                        <a href="./" className="dropdown-item">T-Shirts</a>
+        <nav >
+            <ul className="menu">
+                <li className="item">
+                    <a href="./">Mans
+                        <i className="fa-solid fa-angle-down"></i>
+                    </a>
+                    <div className="dropdown">
+                        <div className="dropdown-categories">
+                            <h1 className="dropdown-title">Casuals</h1>
+                            <a href="./" className="dropdown-item">Jackets</a>
+                            <a href="./" className="dropdown-item">Hoodies & Sweatshirts</a>
+                            <a href="./" className="dropdown-item">Polo Shirts</a>
+                            <a href="./" className="dropdown-item">Sportswear</a>
+                            <a href="./" className="dropdown-item">Trousers & Chinos</a>
+                            <a href="./" className="dropdown-item">Sportswear</a>
+                            <a href="./" className="dropdown-item">T-Shirts</a>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div className="item">
-                <a href="./">Womens
-                    <i className="fa-solid fa-angle-down"></i>
-                </a>
-                <div className="dropdown">
-                    <div className="dropdown-categories">
-                        <h1 className="dropdown-title">Casuals</h1>
-                        <a href="./" className="dropdown-item">Jackets</a>
-                        <a href="./" className="dropdown-item">Hoodies & Sweatshirts</a>
-                        <a href="./" className="dropdown-item">Polo Shirts</a>
-                        <a href="./" className="dropdown-item">Sportswear</a>
-                        <a href="./" className="dropdown-item">Trousers & Chinos</a>
-                        <a href="./" className="dropdown-item">Sportswear</a>
-                        <a href="./" className="dropdown-item">T-Shirts</a>
+                </li>
+                <li className="item">
+                    <a href="./">Womens
+                        <i className="fa-solid fa-angle-down"></i>
+                    </a>
+                    <div className="dropdown">
+                        <div className="dropdown-categories">
+                            <h1 className="dropdown-title">Casuals</h1>
+                            <a href="./" className="dropdown-item">Jackets</a>
+                            <a href="./" className="dropdown-item">Hoodies & Sweatshirts</a>
+                            <a href="./" className="dropdown-item">Polo Shirts</a>
+                            <a href="./" className="dropdown-item">Sportswear</a>
+                            <a href="./" className="dropdown-item">Trousers & Chinos</a>
+                            <a href="./" className="dropdown-item">Sportswear</a>
+                            <a href="./" className="dropdown-item">T-Shirts</a>
+                        </div>
+                        <div className="dropdown-categories">
+                            <h1 className="dropdown-title">Casuals</h1>
+                            <a href="./" className="dropdown-item">Jackets</a>
+                            <a href="./" className="dropdown-item">Hoodies & Sweatshirts</a>
+                            <a href="./" className="dropdown-item">Polo Shirts</a>
+                            <a href="./" className="dropdown-item">Sportswear</a>
+                            <a href="./" className="dropdown-item">Trousers & Chinos</a>
+                            <a href="./" className="dropdown-item">Sportswear</a>
+                            <a href="./" className="dropdown-item">T-Shirts</a>
+                        </div>
                     </div>
-                    <div className="dropdown-categories">
-                        <h1 className="dropdown-title">Casuals</h1>
-                        <a href="./" className="dropdown-item">Jackets</a>
-                        <a href="./" className="dropdown-item">Hoodies & Sweatshirts</a>
-                        <a href="./" className="dropdown-item">Polo Shirts</a>
-                        <a href="./" className="dropdown-item">Sportswear</a>
-                        <a href="./" className="dropdown-item">Trousers & Chinos</a>
-                        <a href="./" className="dropdown-item">Sportswear</a>
-                        <a href="./" className="dropdown-item">T-Shirts</a>
+                </li>
+                <li className="item">
+                    <a href="./">The brand</a>
+                </li>
+                <li className="item">
+                    <a href="./">Locale store</a>
+                </li>
+                <li className="item">
+                    <a href="./">Look book
+                        <i className="fa-solid fa-angle-down"></i>
+                    </a>
+                    <div className="dropdown">
+                        <div className="dropdown-categories">
+                            <h1 className="dropdown-title">Casuals</h1>
+                            <a href="./" className="dropdown-item">Jackets</a>
+                            <a href="./" className="dropdown-item">Hoodies & Sweatshirts</a>
+                            <a href="./" className="dropdown-item">Polo Shirts</a>
+                            <a href="./" className="dropdown-item">Sportswear</a>
+                            <a href="./" className="dropdown-item">Trousers & Chinos</a>
+                            <a href="./" className="dropdown-item">Sportswear</a>
+                            <a href="./" className="dropdown-item">T-Shirts</a>
+                        </div>
+                        <div className="dropdown-categories">
+                            <h1 className="dropdown-title">Casuals</h1>
+                            <a href="./" className="dropdown-item">Jackets</a>
+                            <a href="./" className="dropdown-item">Hoodies & Sweatshirts</a>
+                            <a href="./" className="dropdown-item">Polo Shirts</a>
+                            <a href="./" className="dropdown-item">Sportswear</a>
+                            <a href="./" className="dropdown-item">Trousers & Chinos</a>
+                            <a href="./" className="dropdown-item">Sportswear</a>
+                            <a href="./" className="dropdown-item">T-Shirts</a>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div className="item">
-                <a href="./">The brand</a>
-            </div>
-            <div className="item">
-                <a href="./">Locale store</a>
-            </div>
-            <div className="item">
-                <a href="./">Look book
-                    <i className="fa-solid fa-angle-down"></i>
-                </a>
-                <div className="dropdown">
-                    <div className="dropdown-categories">
-                        <h1 className="dropdown-title">Casuals</h1>
-                        <a href="./" className="dropdown-item">Jackets</a>
-                        <a href="./" className="dropdown-item">Hoodies & Sweatshirts</a>
-                        <a href="./" className="dropdown-item">Polo Shirts</a>
-                        <a href="./" className="dropdown-item">Sportswear</a>
-                        <a href="./" className="dropdown-item">Trousers & Chinos</a>
-                        <a href="./" className="dropdown-item">Sportswear</a>
-                        <a href="./" className="dropdown-item">T-Shirts</a>
-                    </div>
-                    <div className="dropdown-categories">
-                        <h1 className="dropdown-title">Casuals</h1>
-                        <a href="./" className="dropdown-item">Jackets</a>
-                        <a href="./" className="dropdown-item">Hoodies & Sweatshirts</a>
-                        <a href="./" className="dropdown-item">Polo Shirts</a>
-                        <a href="./" className="dropdown-item">Sportswear</a>
-                        <a href="./" className="dropdown-item">Trousers & Chinos</a>
-                        <a href="./" className="dropdown-item">Sportswear</a>
-                        <a href="./" className="dropdown-item">T-Shirts</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                </li>
+            </ul>
+        </nav>
         <div className="search">
-            <input value="Search" />
+            <input defaultValue="Search" />
             <i className="fa-solid fa-magnifying-glass"></i>
         </div>
     </div>

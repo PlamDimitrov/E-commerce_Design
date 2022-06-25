@@ -53,7 +53,7 @@
   font-size: 1rem;
 }
 
-.navigation .menu {
+.navigation nav .menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -65,13 +65,13 @@
 }
 
 @media screen and (max-width: 1150px) {
-  .navigation .menu {
+  .navigation nav .menu {
     -ms-flex-pack: distribute;
         justify-content: space-around;
   }
 }
 
-.navigation .menu .item {
+.navigation nav .menu .item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -85,22 +85,22 @@
 }
 
 @media screen and (max-width: 1150px) {
-  .navigation .menu .item {
+  .navigation nav .menu .item {
     margin: 0.55rem;
   }
 }
 
-.navigation .menu .item a,
-.navigation .menu .item i {
+.navigation nav .menu .item a,
+.navigation nav .menu .item i {
   color: #222222;
 }
 
-.navigation .menu .item:hover > a,
-.navigation .menu .item:hover i {
+.navigation nav .menu .item:hover > a,
+.navigation nav .menu .item:hover i {
   color: #00c8c8;
 }
 
-.navigation .menu .item:hover .dropdown {
+.navigation nav .menu .item:hover .dropdown {
   z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -122,29 +122,29 @@
   border-radius: 5px;
 }
 
-.navigation .menu .item:hover .dropdown .dropdown-categories {
+.navigation nav .menu .item:hover .dropdown .dropdown-categories {
   margin: 1rem;
 }
 
-.navigation .menu .item:hover .dropdown .dropdown-categories .dropdown-title {
+.navigation nav .menu .item:hover .dropdown .dropdown-categories .dropdown-title {
   margin: 0.65rem;
   margin-bottom: 1.5rem;
   color: #222222;
   font-weight: bold;
 }
 
-.navigation .menu .item:hover .dropdown .dropdown-categories .dropdown-item {
+.navigation nav .menu .item:hover .dropdown .dropdown-categories .dropdown-item {
   margin: 0.625rem;
   color: #777274;
   text-transform: none;
   font-weight: lighter;
 }
 
-.navigation .menu .item:hover .dropdown .dropdown-categories .dropdown-item:hover {
+.navigation nav .menu .item:hover .dropdown .dropdown-categories .dropdown-item:hover {
   color: #00c8c8;
 }
 
-.navigation .menu .item:last-child .dropdown {
+.navigation nav .menu .item:last-child .dropdown {
   right: 2%;
 }
 

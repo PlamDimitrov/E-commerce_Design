@@ -1,0 +1,158 @@
+@charset "UTF-8";
+.register {
+  width: 40%;
+  max-width: 500px;
+  min-width: 350px;
+  text-transform: uppercase;
+  margin: 2rem;
+}
+
+.register form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.register form .title {
+  color: #575153;
+  font-size: 1.125rem;
+  margin: 1.563rem;
+  font-weight: bold;
+}
+
+.register form .input-container {
+  width: 94%;
+}
+
+.register form .input-container .email,
+.register form .input-container .password {
+  width: 100%;
+  margin: 0.85rem;
+  font-size: 1rem;
+  border: 1px solid #e7e7e7;
+  padding: 0.5rem;
+}
+
+.register form .input-container .email:focus,
+.register form .input-container .password:focus {
+  outline: none;
+}
+
+.register form .input-container .error {
+  background-color: #fcf6f7;
+  border: 1px solid #bb5465;
+}
+
+.register form .sign-up-offer-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.register form .sign-up-offer-container .sign-up-offer {
+  font-family: "Roboto";
+  font-size: 1rem;
+  color: #575153;
+  text-transform: none;
+  margin-left: 1rem;
+}
+
+.register form .sign-up-offer-container .enlarge {
+  width: 20px;
+  height: 20px;
+}
+
+.register form .action-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.register form .action-bar .sign-in_button {
+  cursor: pointer;
+  padding: 1.25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: #575153;
+  background: transparent;
+  border: 2px solid #575153;
+  margin: 0.85rem;
+}
+
+.register form .action-bar .sign-in_button:hover {
+  color: white;
+  background: #00c8c8;
+  border: 2px solid #00c8c8;
+}
+
+.register form .action-bar .privacy-policy {
+  text-transform: none;
+  max-width: 50%;
+  font-size: 1rem;
+}
+
+.register form .action-bar .privacy-policy .privacy-policy_link {
+  font-family: "Roboto";
+  font-size: 1rem;
+  color: #989898;
+}
+
+.register form .action-bar .privacy-policy .privacy-policy_link:hover {
+  color: #00c8c8;
+}
+
+.Forgot_your_Password_ {
+  color: #00c8c8;
+  line-height: 1.467;
+  text-align: right;
+  position: absolute;
+  left: 822.937px;
+  top: 911.881px;
+  z-index: 67;
+}
+
+.By_clicking_‘Create_Account___you__agree_to_our {
+  font-size: 15px;
+  font-family: "Roboto";
+  color: #8e8c8c;
+  line-height: 1.467;
+  text-align: right;
+  position: absolute;
+  left: 1387.937px;
+  top: 1031.881px;
+  z-index: 43;
+}

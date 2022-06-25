@@ -1,0 +1,27 @@
+.content-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 7rem;
+}
+
+.content-container .separator {
+  border-left: 1px solid #eeeeee;
+  width: 1px;
+  height: 395px;
+}
+
+@media screen and (max-width: 850px) {
+  .content-container .separator {
+    display: none;
+  }
+}

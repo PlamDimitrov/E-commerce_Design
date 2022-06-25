@@ -1,0 +1,127 @@
+$title-color: #575153;
+$error-background-color: #fcf6f7;
+$error-border-color: #bb5465;
+$border-color: #e7e7e7;
+$hover-color: #00c8c8;
+$content-color: #989898;
+
+.register {
+  width: 40%;
+  max-width: 500px;
+  min-width: 350px;
+  text-transform: uppercase;
+  margin: 2rem;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    .title {
+      color: $title-color;
+      font-size: 1.125rem;
+      margin: 1.563rem;
+      font-weight: bold;
+    }
+    .input-container {
+      width: 94%;
+      .email,
+      .password {
+        width: 100%;
+        margin: 0.85rem;
+        font-size: 1rem;
+        border: 1px solid $border-color;
+        padding: 0.5rem;
+
+        &:focus {
+          outline: none;
+        }
+      }
+      .error {
+        background-color: $error-background-color;
+        border: 1px solid $error-border-color;
+      }
+    }
+    .sign-up-offer-container {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      .sign-up-offer {
+        font-family: "Roboto";
+        font-size: 1rem;
+        color: $title-color;
+        text-transform: none;
+        margin-left: 1rem;
+      }
+      .enlarge {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .action-bar {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+      width: 100%;
+
+      .sign-in_button {
+        cursor: pointer;
+        padding: 1.25rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        text-transform: uppercase;
+        font-size: 1rem;
+        color: $title-color;
+        background: transparent;
+        border: 2px solid $title-color;
+        margin: 0.85rem;
+        &:hover {
+          color: white;
+          background: $hover-color;
+          border: 2px solid $hover-color;
+        }
+      }
+
+      .privacy-policy {
+        text-transform: none;
+        max-width: 50%;
+        font-size: 1rem;
+
+        .privacy-policy_link {
+          font-family: "Roboto";
+          font-size: 1rem;
+          color: $content-color;
+
+          &:hover {
+            color: $hover-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.Forgot_your_Password_ {
+  color: rgb(0, 200, 200);
+  line-height: 1.467;
+  text-align: right;
+  position: absolute;
+  left: 822.937px;
+  top: 911.881px;
+  z-index: 67;
+}
+
+.By_clicking_‘Create_Account___you__agree_to_our {
+  font-size: 15px;
+  font-family: "Roboto";
+  color: rgb(142, 140, 140);
+  line-height: 1.467;
+  text-align: right;
+  position: absolute;
+  left: 1387.937px;
+  top: 1031.881px;
+  z-index: 43;
+}
