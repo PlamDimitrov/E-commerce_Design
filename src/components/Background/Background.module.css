@@ -1,6 +1,6 @@
 .background {
+  z-index: -1000;
   position: relative;
-  z-index: 0;
 }
 
 .background img {

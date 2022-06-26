@@ -1,0 +1,21 @@
+@import url(e:\GitHub\PlamDimitrov\E-commerce_Design\src\cssResset.css);
+body {
+  text-decoration: none;
+  font-family: Montserrat;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  background-color: #ffffff;
+}
+
+.content {
+  width: 50%;
+  max-width: 2050px;
+  margin: auto;
+}
+
+@media screen and (max-width: 1150px) {
+  .content {
+    width: 100%;
+  }
+}

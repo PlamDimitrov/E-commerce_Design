@@ -15,8 +15,6 @@ $copyright-text-color: #999999;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-    }
-    .content {
         .footer-content {
             display: flex;
             justify-content: space-evenly;
@@ -91,6 +89,7 @@ $copyright-text-color: #999999;
             }
         }
     }
+
     .footer-copyright-section {
         background-color: $copyright-background-color;
         width: 100%;
@@ -115,15 +114,13 @@ $copyright-text-color: #999999;
 @media screen and (max-width: 450px) {
     .footer {
         width: 100%;
-        .content {
-            .footer-content {
-                flex-wrap: wrap;
-                justify-content: space-around;
-            }
-            .footer-banners {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
+        .footer-content {
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .footer-banners {
+            justify-content: center;
+            flex-wrap: wrap;
         }
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import backgroundImage from '../../assets/img/background.png';
-import './Background.css';
+import styles from './Background.module.css';
 
 const Background = () => {
     const titleString = "Welcome to Ave";
@@ -10,14 +10,14 @@ const Background = () => {
     const firstWord = stringToArray.shift();
     const restOfString = stringToArray.join(' ');
 
-    return <div className="background">
+    return <div className={styles["background"]}>
         <img src={backgroundImage} alt='Background' />
-        <div className='background-text'>
-            <div className='page-title'>
-                <span className='special'> {firstWord} </span>
+        <div className={styles['background-text']}>
+            <div className={styles['page-title']}>
+                <span className={styles['special']}> {firstWord} </span>
                 <span>{restOfString}</span>
             </div>
-            <div className='page-name'>
+            <div className={styles['page-name']}>
                 <span>{pageName}</span>
             </div>
         </div>

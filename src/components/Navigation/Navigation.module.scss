@@ -65,7 +65,6 @@ $search-border-color: #e7e7e7;
             color: $hover-color;
           }
           .dropdown {
-            z-index: 1;
             display: flex;
             flex-wrap: wrap;
             opacity: 1;
@@ -136,7 +135,6 @@ $search-border-color: #e7e7e7;
   position: absolute;
   opacity: 0;
   pointer-events: none;
-  opacity: 0;
   .dropdown-categories {
     position: relative;
   }

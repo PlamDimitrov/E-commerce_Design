@@ -1,5 +1,5 @@
 import React from 'react';
-import './SignInOrRegister.css';
+import styles from './SignInOrRegister.module.css';
 
 import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
@@ -13,9 +13,9 @@ const SignInOrRegister = () => {
         <Header />
         <Navigation />
         <Background />
-        <div className='content-container'>
+        <div className={styles["content-container"]}>
             <SingIn />
-            <div className="separator">
+            <div className={styles["separator"]}>
             </div>
             <Register />
         </div>

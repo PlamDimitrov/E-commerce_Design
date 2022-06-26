@@ -15,7 +15,7 @@
       justify-content: space-around;
 }
 
-.footer .content .footer-content {
+.footer .footer-body .footer-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -25,21 +25,21 @@
   width: 100%;
 }
 
-.footer .content .footer-content .section {
+.footer .footer-body .footer-content .section {
   margin-top: 4rem;
   max-width: 210px;
   margin-left: 5px;
   margin-right: 5px;
 }
 
-.footer .content .footer-content .section .section-title {
+.footer .footer-body .footer-content .section .section-title {
   color: #777274;
   margin-bottom: 1rem;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-.footer .content .footer-content .section .section-content {
+.footer .footer-body .footer-content .section .section-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,16 +52,16 @@
           align-items: stretch;
 }
 
-.footer .content .footer-content .section .section-content .section-component {
+.footer .footer-body .footer-content .section .section-content .section-component {
   color: #969696;
   margin: 0.2rem;
 }
 
-.footer .content .footer-content .section .section-content .section-component:hover {
+.footer .footer-body .footer-content .section .section-content .section-component:hover {
   color: #07b4b4;
 }
 
-.footer .content .footer-banners {
+.footer .footer-body .footer-banners {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -74,13 +74,13 @@
   padding-bottom: 3rem;
 }
 
-.footer .content .footer-banners .banner {
+.footer .footer-body .footer-banners .banner {
   padding: 3rem;
   width: 40%;
   min-width: 160px;
 }
 
-.footer .content .footer-banners .footer-info {
+.footer .footer-body .footer-banners .footer-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -97,11 +97,11 @@
   text-align: center;
 }
 
-.footer .content .footer-banners .footer-info h1:nth-child(1) {
+.footer .footer-body .footer-banners .footer-info h1:nth-child(1) {
   font-weight: bold;
 }
 
-.footer .content .footer-banners .footer-social-network {
+.footer .footer-body .footer-banners .footer-social-network {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -114,7 +114,7 @@
   background-color: #00c8c8;
 }
 
-.footer .content .footer-banners .footer-social-network i {
+.footer .footer-body .footer-banners .footer-social-network i {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -154,13 +154,13 @@
   .footer {
     width: 100%;
   }
-  .footer .content .footer-content {
+  .footer .footer-content {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     -ms-flex-pack: distribute;
         justify-content: space-around;
   }
-  .footer .content .footer-banners {
+  .footer .footer-banners {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
