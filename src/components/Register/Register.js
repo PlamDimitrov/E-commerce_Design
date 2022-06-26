@@ -4,7 +4,7 @@ import styles from './Register.module.css';
 const Register = () => {
     return <div className={styles["register"]}>
         <form >
-            <h1 className={styles["title"]}>Sign in</h1>
+            <h1 className={styles["title"]}>Register</h1>
             <div className={styles["input-container"]}>
                 <input className={`${styles["email"]} ${styles["error"]}`} type="email" required placeholder="Your Email.." autoComplete="off" />
             </div>

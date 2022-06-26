@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .sign-in {
   width: 40%;
   max-width: 500px;
@@ -99,14 +98,4 @@
 
 .sign-in form .action-bar .sign-in_link:hover {
   color: #00c8c8;
-}
-
-.Forgot_your_Password_ {
-  color: #00c8c8;
-  line-height: 1.467;
-  text-align: right;
-  position: absolute;
-  left: 822.937px;
-  top: 911.881px;
-  z-index: 67;
 }
