@@ -98,6 +98,8 @@
 .navigation nav .menu .item:hover > a,
 .navigation nav .menu .item:hover i {
   color: #00c8c8;
+  -webkit-transition: color 700ms ease-in-out;
+  transition: color 700ms ease-in-out;
 }
 
 .navigation nav .menu .item:hover .dropdown {
@@ -137,10 +139,20 @@
   color: #777274;
   text-transform: none;
   font-weight: lighter;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: -webkit-transform 400ms ease-out;
+  transition: -webkit-transform 400ms ease-out;
+  transition: transform 400ms ease-out;
+  transition: transform 400ms ease-out, -webkit-transform 400ms ease-out;
 }
 
 .navigation nav .menu .item:hover .dropdown .dropdown-categories .dropdown-item:hover {
   color: #00c8c8;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
 }
 
 .navigation nav .menu .item:last-child .dropdown {

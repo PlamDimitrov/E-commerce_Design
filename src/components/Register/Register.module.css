@@ -117,6 +117,8 @@
   color: white;
   background: #00c8c8;
   border: 2px solid #00c8c8;
+  -webkit-transition: all 700ms ease-in-out;
+  transition: all 700ms ease-in-out;
 }
 
 .register form .action-bar .privacy-policy {
@@ -140,4 +142,6 @@
 
 .register form .action-bar .privacy-policy .privacy-policy_link:hover {
   color: #00c8c8;
+  -webkit-transition: color 700ms ease-in-out;
+  transition: color 700ms ease-in-out;
 }

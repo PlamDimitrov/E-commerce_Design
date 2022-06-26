@@ -63,6 +63,7 @@ $search-border-color: #e7e7e7;
           > a,
           i {
             color: $hover-color;
+            transition: color 700ms ease-in-out;
           }
           .dropdown {
             display: flex;
@@ -88,8 +89,12 @@ $search-border-color: #e7e7e7;
                 color: $item-color;
                 text-transform: none;
                 font-weight: lighter;
+                transform: scale(1);
+                transition: transform 400ms ease-out;
                 &:hover {
                   color: $hover-color;
+                  transform: scale(1.1);
+                  transition: all 400ms ease-in-out;
                 }
               }
             }
@@ -118,6 +123,7 @@ $search-border-color: #e7e7e7;
       font-size: 0.5rem;
       border: 1px solid $search-border-color;
       border-right: 0;
+
       &:focus {
         outline: none;
       }

@@ -26,6 +26,8 @@
 
 .header .header-item-container .header-item:hover {
   color: #07b4b4;
+  -webkit-transition: color 700ms ease-in-out;
+  transition: color 700ms ease-in-out;
 }
 
 .header .header-item-container .shoping-cart {
@@ -64,6 +66,8 @@
 .header .header-item-container .shoping-cart:hover .dropdown {
   opacity: 1;
   pointer-events: auto;
+  -webkit-transition: opacity 500ms ease-in-out;
+  transition: opacity 500ms ease-in-out;
 }
 
 .dropdown {
@@ -192,6 +196,8 @@
 .dropdown .dropdown-categories:hover .product-remove {
   opacity: 1;
   pointer-events: auto;
+  -webkit-transition: opacity 500ms ease-in-out;
+  transition: opacity 500ms ease-in-out;
 }
 
 .dropdown .go-to-cart {
@@ -209,6 +215,24 @@
   color: white;
   font-size: 0.8rem;
   font-weight: bold;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: -webkit-transform 700ms ease-out;
+  transition: -webkit-transform 700ms ease-out;
+  transition: transform 700ms ease-out;
+  transition: transform 700ms ease-out, -webkit-transform 700ms ease-out;
+}
+
+.dropdown .go-to-cart:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  opacity: 1;
+  background: -webkit-gradient(linear, left top, right top, from(#008a8a), color-stop(70%, #00c8c8), to(#00d4ff));
+  background: linear-gradient(90deg, #008a8a 0%, #00c8c8 70%, #00d4ff 100%);
+  -webkit-transition: -webkit-transform 700ms ease-out;
+  transition: -webkit-transform 700ms ease-out;
+  transition: transform 700ms ease-out;
+  transition: transform 700ms ease-out, -webkit-transform 700ms ease-out;
 }
 
 @media screen and (max-width: 1150px) {

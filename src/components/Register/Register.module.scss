@@ -83,6 +83,7 @@ $content-color: #989898;
           color: white;
           background: $hover-color;
           border: 2px solid $hover-color;
+          transition: all 700ms ease-in-out;
         }
       }
 
@@ -101,6 +102,7 @@ $content-color: #989898;
 
           &:hover {
             color: $hover-color;
+            transition: color 700ms ease-in-out;
           }
         }
       }

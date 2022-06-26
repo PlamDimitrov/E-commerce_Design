@@ -59,6 +59,8 @@
 
 .footer .footer-body .footer-content .section .section-content .section-component:hover {
   color: #07b4b4;
+  -webkit-transition: color 700ms ease-in-out;
+  transition: color 700ms ease-in-out;
 }
 
 .footer .footer-body .footer-banners {
@@ -148,6 +150,8 @@
 
 .footer .footer-copyright-section .footer-content-body a:hover {
   color: #07b4b4;
+  -webkit-transition: color 700ms ease-in-out;
+  transition: color 700ms ease-in-out;
 }
 
 @media screen and (max-width: 450px) {

@@ -43,6 +43,7 @@ $copyright-text-color: #999999;
 
                     .section-component:hover {
                         color: $hover-color;
+                        transition: color 700ms ease-in-out;
                     }
                 }
             }
@@ -106,6 +107,7 @@ $copyright-text-color: #999999;
             }
             a:hover {
                 color: #07b4b4;
+                transition: color 700ms ease-in-out;
             }
         }
     }
