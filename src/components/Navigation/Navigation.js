@@ -1,13 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import styles from './Navigation.module.css';
 
 const Navigation = () => {
     return <div className={styles["navigation"]}>
         <div className={styles["brand"]}>
-            <a href="./">
+            <Link to="/">
                 <h1>Avenue</h1>
                 <h1>Fassion</h1>
-            </a>
+            </Link>
         </div>
         <nav >
             <ul className={styles["menu"]}>

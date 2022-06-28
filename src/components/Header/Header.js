@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import styles from './Header.module.css';
 import globalStyles from '../../index.module.css';
 
@@ -12,8 +14,8 @@ const Header = () => {
     return <div className={styles["header"]}>
         <div className={globalStyles["content"]}>
             <div className={styles["header-item-container"]}>
-                <a className={styles["header-item"]} href="./">Register</a>
-                <a className={styles["header-item"]} href="./">Sign in</a>
+                <Link className={styles["header-item"]} to="/sign-in-or-register">Register</Link>
+                <Link className={styles["header-item"]} to="/sign-in-or-register">Sign in</Link>
                 <div className={styles["shoping-cart"]}>
                     <i className="fa-solid fa-cart-shopping"></i>
                     <span className={styles["shoping-status"]} >1 item  <i className="fa-solid fa-chevron-down"></i></span>

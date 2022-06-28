@@ -52,7 +52,8 @@ $search-border-color: #e7e7e7;
         padding: 1.75rem;
         font-weight: bold;
         @media screen and (max-width: 1150px) {
-          margin: 0.55rem;
+          margin: 0;
+          padding: 0.5rem;
         }
         a,
         i {
@@ -66,38 +67,11 @@ $search-border-color: #e7e7e7;
             transition: color 700ms ease-in-out;
           }
           .dropdown {
-            display: flex;
-            flex-wrap: wrap;
             opacity: 1;
-            pointer-events: auto;
             transform: translateY(5px);
-            transition: opacity 500ms ease-in-out, transform 200ms ease-in-out;
-            background-color: $nav-background-color;
-            padding: 1rem;
+            pointer-events: auto;
             box-shadow: 0px 11px 20px 0px $dark-text;
-            border-radius: 5px;
-            .dropdown-categories {
-              margin: 1rem;
-              .dropdown-title {
-                margin: 0.65rem;
-                margin-bottom: 1.5rem;
-                color: $dark-text;
-                font-weight: bold;
-              }
-              .dropdown-item {
-                margin: 0.625rem;
-                color: $item-color;
-                text-transform: none;
-                font-weight: lighter;
-                transform: scale(1);
-                transition: transform 400ms ease-out;
-                &:hover {
-                  color: $hover-color;
-                  transform: scale(1.1);
-                  transition: all 400ms ease-in-out;
-                }
-              }
-            }
+            transition: all 600ms ease-in-out;
           }
         }
         &:last-child {
@@ -115,6 +89,9 @@ $search-border-color: #e7e7e7;
     align-items: center;
     @media screen and (max-width: 1150px) {
       margin: 0.5rem;
+    }
+    &:focus-within {
+      transform: scale(1.5);
     }
     input {
       color: $item-color;
@@ -142,7 +119,33 @@ $search-border-color: #e7e7e7;
   top: 100px;
   opacity: 0;
   pointer-events: none;
+  display: flex;
+  flex-wrap: wrap;
+  pointer-events: none;
+  background-color: $nav-background-color;
+  padding: 1rem;
+  border-radius: 5px;
   .dropdown-categories {
     position: relative;
+    margin: 1rem;
+    .dropdown-title {
+      margin: 0.65rem;
+      margin-bottom: 1.5rem;
+      color: $dark-text;
+      font-weight: bold;
+    }
+    .dropdown-item {
+      margin: 0.625rem;
+      color: $item-color;
+      text-transform: none;
+      font-weight: lighter;
+      transform: scale(1);
+      transition: transform 400ms ease-out;
+      &:hover {
+        color: $hover-color;
+        transform: scale(1.1);
+        transition: all 400ms ease-in-out;
+      }
+    }
   }
 }
