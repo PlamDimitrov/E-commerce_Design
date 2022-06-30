@@ -8,7 +8,7 @@ const Navigation = () => {
         <div className={styles["brand"]}>
             <Link to="/">
                 <h1>Avenue</h1>
-                <h1>Fassion</h1>
+                <h1>Fashion</h1>
             </Link>
         </div>
         <nav >
