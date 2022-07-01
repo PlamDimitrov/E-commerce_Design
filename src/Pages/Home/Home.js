@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './Home.module.css';
 import { Link } from 'react-router-dom';
 
+import PromotedProduct from '../../components/PromotedProduct/PromotedProduct';
+
 import backgroundImg from '../../assets/img/home-page/background-home.png';
 
 
@@ -36,170 +38,14 @@ const Home = () => {
             </div>
             <div className={styles["products"]}>
                 <div className={`${styles["col"]}`}>
-                    <div className={`${styles["product"]} ${styles["small"]}`}>
-                        <img src={backgroundImg} className={styles["product-image"]} alt="background" />
-                        <div className={styles["product-pricing"]}>
-                            <span className={`${styles["price"]} ${styles["old"]}`}>107€</span>
-                            <span className={`${styles["price"]}`}>99€</span>
-                        </div>
-                        <div className={`${styles["info"]}`}>
-                            <i class="fa-solid fa-circle-info"></i>
-                        </div>
-                        <div className={`${styles["thumbnails"]}`}>
-                            <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />
-                            <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />
-                        </div>
-                        <div className={styles["product-section"]}>
-                            <div className={styles["details"]}>
-                                <h1 className={styles["title"]}>Womens burnt orange casual tee
-                                    <span className={styles["price"]}>
-                                        29.95
-                                    </span>
-                                </h1>
-                                <span className={styles["description"]}>
-                                    Classic casual t-shirt for women on the move. 100% cotton.
-                                </span>
-                            </div>
-                            <div className={styles["action-section"]}>
-                                <div className={styles["hover-icon"]}>
-                                    <i className="fa-solid fa-cart-shopping"></i>
-                                </div>
-                                <div className={styles["hover-icon"]}>
-                                    <i class="fa-regular fa-heart"></i>
-                                </div>
-                                <div className={styles["hover-icon"]}>
-                                    <i class="fa-solid fa-down-left-and-up-right-to-center"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={`${styles["product"]} ${styles["small"]}`}>
-                        <img src={backgroundImg} className={styles["product-image"]} alt="background" />
-                        <div className={styles["product-pricing"]}>
-                            <span className={`${styles["price"]} ${styles["old"]}`}>107€</span>
-                            <span className={`${styles["price"]}`}>99€</span>
-                        </div>
-                        <div className={`${styles["info"]}`}>
-                            <i class="fa-solid fa-circle-info"></i>
-                        </div>
-                        <div className={`${styles["thumbnails"]}`}>
-                            <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />
-                            <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />
-                        </div>
-                        <div className={styles["product-section"]}>
-                            <div className={styles["hover-icon"]}>
-                                <i className="fa-solid fa-cart-shopping"></i>
-                            </div>
-                            <div className={styles["hover-icon"]}>
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div className={styles["hover-icon"]}>
-                                <i class="fa-solid fa-down-left-and-up-right-to-center"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={`${styles["product"]} ${styles["large"]}`}>
-                        <img src={backgroundImg} className={styles["product-image"]} alt="background" />
-                        <div className={styles["product-pricing"]}>
-                            <span className={`${styles["price"]} ${styles["old"]}`}>107€</span>
-                            <span className={`${styles["price"]}`}>99€</span>
-                        </div>
-                        <div className={`${styles["info"]}`}>
-                            <i class="fa-solid fa-circle-info"></i>
-                        </div>
-                        <div className={`${styles["thumbnails"]}`}>
-                            <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />
-                            <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />
-                        </div>
-                        <div className={styles["product-section"]}>
-                            <div className={styles["hover-icon"]}>
-                                <i className="fa-solid fa-cart-shopping"></i>
-                            </div>
-                            <div className={styles["hover-icon"]}>
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div className={styles["hover-icon"]}>
-                                <i class="fa-solid fa-down-left-and-up-right-to-center"></i>
-                            </div>
-                        </div>
-                    </div>
+                    <PromotedProduct size="small" />
+                    <PromotedProduct size="small" />
+                    <PromotedProduct size="large" />
                 </div>
                 <div className={`${styles["col"]}`}>
-                    <div className={`${styles["product"]} ${styles["large"]}`}>
-                        <img src={backgroundImg} className={styles["product-image"]} alt="background" />
-                        <div className={styles["product-pricing"]}>
-                            <span className={`${styles["price"]} ${styles["old"]}`}>107€</span>
-                            <span className={`${styles["price"]}`}>99€</span>
-                        </div>
-                        <div className={`${styles["info"]}`}>
-                            <i class="fa-solid fa-circle-info"></i>
-                        </div>
-                        <div className={`${styles["thumbnails"]}`}>
-                            <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />
-                            <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />
-                        </div>
-                        <div className={styles["product-section"]}>
-                            <div className={styles["hover-icon"]}>
-                                <i className="fa-solid fa-cart-shopping"></i>
-                            </div>
-                            <div className={styles["hover-icon"]}>
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div className={styles["hover-icon"]}>
-                                <i class="fa-solid fa-down-left-and-up-right-to-center"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={`${styles["product"]} ${styles["small"]}`}>
-                        <img src={backgroundImg} className={styles["product-image"]} alt="background" />
-                        <div className={styles["product-pricing"]}>
-                            <span className={`${styles["price"]} ${styles["old"]}`}>107€</span>
-                            <span className={`${styles["price"]}`}>99€</span>
-                        </div>
-                        <div className={`${styles["info"]}`}>
-                            <i class="fa-solid fa-circle-info"></i>
-                        </div>
-                        <div className={`${styles["thumbnails"]}`}>
-                            <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />
-                            <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />
-                        </div>
-                        <div className={styles["product-section"]}>
-                            <div className={styles["hover-icon"]}>
-                                <i className="fa-solid fa-cart-shopping"></i>
-                            </div>
-                            <div className={styles["hover-icon"]}>
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div className={styles["hover-icon"]}>
-                                <i class="fa-solid fa-down-left-and-up-right-to-center"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={`${styles["product"]} ${styles["small"]}`}>
-                        <img src={backgroundImg} className={styles["product-image"]} alt="background" />
-                        <div className={styles["product-pricing"]}>
-                            <span className={`${styles["price"]} ${styles["old"]}`}>107€</span>
-                            <span className={`${styles["price"]}`}>99€</span>
-                        </div>
-                        <div className={`${styles["info"]}`}>
-                            <i class="fa-solid fa-circle-info"></i>
-                        </div>
-                        <div className={`${styles["thumbnails"]}`}>
-                            <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />
-                            <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />
-                        </div>
-                        <div className={styles["product-section"]}>
-                            <div className={styles["hover-icon"]}>
-                                <i className="fa-solid fa-cart-shopping"></i>
-                            </div>
-                            <div className={styles["hover-icon"]}>
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div className={styles["hover-icon"]}>
-                                <i class="fa-solid fa-down-left-and-up-right-to-center"></i>
-                            </div>
-                        </div>
-                    </div>
+                    <PromotedProduct size="large" />
+                    <PromotedProduct size="small" />
+                    <PromotedProduct size="small" />
                 </div>
             </div>
         </div>
