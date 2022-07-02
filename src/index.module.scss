@@ -1,6 +1,5 @@
-@import "cssResset";
-
-$body-background-color: #ffffff;
+@import "./cssResset";
+@import "./glodalStyleVariables.scss";
 
 body {
   text-decoration: none;

@@ -1,17 +1,22 @@
 import React from 'react';
 import styles from './PromotedProduct.module.css';
 
+import { Link } from 'react-router-dom';
+
 import backgroundImg from '../../assets/img/home-page/background-home.png';
+
 
 const PromotedProduct = (props) => {
     return <div className={`${styles["product"]} ${styles[props.size]}`}>
-        <img src={backgroundImg} className={styles["product-image"]} alt="background" />
+        <Link to={"/"}>
+            <img src={backgroundImg} className={styles["product-image"]} alt="background" />
+            <div className={`${styles["info"]}`}>
+                <i className="fa-solid fa-circle-info"></i>
+            </div>
+        </Link>
         <div className={styles["product-pricing"]}>
             <span className={`${styles["price"]} ${styles["old"]}`}>107€</span>
             <span className={`${styles["price"]}`}>99€</span>
-        </div>
-        <div className={`${styles["info"]}`}>
-            <i className="fa-solid fa-circle-info"></i>
         </div>
         <div className={`${styles["thumbnails"]}`}>
             <img src={backgroundImg} className={styles["thumbnail-image"]} alt="thumbnail" />

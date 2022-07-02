@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import PromotedProduct from '../../components/PromotedProduct/PromotedProduct';
 
 import backgroundImg from '../../assets/img/home-page/background-home.png';
+import Category from '../../components/Category/Category';
 
 
 
 const Home = () => {
-    return <div className={styles["home-page"]}>
+    return <div className={`${styles["home-page"]}`}>
         <div className={styles["top-image"]}>
             <img src={backgroundImg} className={styles["background"]} alt="background" />
             <Link className={styles['shop_button']} to="/">Shop men's collection</Link>
@@ -48,6 +49,11 @@ const Home = () => {
                     <PromotedProduct size="small" />
                 </div>
             </div>
+        </div>
+        <div className={`${styles["categories"]}`}>
+            <Category />
+            <Category />
+            <Category />
         </div>
     </div >
 };
