@@ -1,14 +1,25 @@
 import React from 'react';
-import backgroundImage from '../../assets/img/background.png';
+import PropTypes from 'prop-types';
+
 import styles from './Background.module.css';
 
-const Background = () => {
-    const titleString = "Welcome to Ave";
-    const pageName = "Sign in or register";
+import backgroundImage from '../../assets/img/background.png';
 
-    const stringToArray = titleString.split(' ');
-    const firstWord = stringToArray.shift();
-    const restOfString = stringToArray.join(' ');
+const Background = (props) => {
+
+    let pageName = null;
+    let stringToArray = null;
+    let firstWord = null;
+    let restOfString = null;
+
+    if (props.titleString) {
+        pageName = props.pageName;
+    }
+    if (props.titleString) {
+        stringToArray = props.titleString.split(' ');
+        firstWord = stringToArray.shift();
+        restOfString = stringToArray.join(' ');
+    }
 
     return <div className={styles["background"]}>
         <img src={backgroundImage} alt='Background' />
@@ -23,5 +34,10 @@ const Background = () => {
         </div>
     </div>
 };
+
+Background.propTypes = {
+    titleString: PropTypes.string,
+    pageName: PropTypes.string,
+}
 
 export default Background;

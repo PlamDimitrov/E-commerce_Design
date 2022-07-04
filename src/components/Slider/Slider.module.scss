@@ -1,0 +1,18 @@
+@import "../../glodalStyleVariables.scss";
+.slider {
+  position: relative;
+  overflow: hidden;
+  transition: all 1500ms ease-in-out;
+  .image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    transition: left 1500ms ease-in-out;
+    img {
+      border: 1px solid $border-color;
+    }
+  }
+}

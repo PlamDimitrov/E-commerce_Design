@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 
 import Home from './Pages/Home/Home';
 import NotFound from './Pages/NotFound/NotFound';
+import ProductView from './Pages/ProductView/ProductView';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/product-view' element={<ProductView />} />
           <Route path='/sign-in-or-register' element={<SignInOrRegister />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

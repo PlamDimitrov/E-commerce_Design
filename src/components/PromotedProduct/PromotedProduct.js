@@ -8,7 +8,7 @@ import backgroundImg from '../../assets/img/home-page/background-home.png';
 
 const PromotedProduct = (props) => {
     return <div className={`${styles["product"]} ${styles[props.size]}`}>
-        <Link to={"/"}>
+        <Link to={"/product-view"}>
             <img src={backgroundImg} className={styles["product-image"]} alt="background" />
             <div className={`${styles["info"]}`}>
                 <i className="fa-solid fa-circle-info"></i>

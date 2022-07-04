@@ -1,6 +1,6 @@
 .footer {
   font-family: "Montserrat";
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   max-width: 100%;
   font-size: 0.8rem;
 }
@@ -33,7 +33,7 @@
 }
 
 .footer .footer-body .footer-content .section .section-title {
-  color: #777274;
+  color: #575153;
   margin-bottom: 1rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -53,12 +53,12 @@
 }
 
 .footer .footer-body .footer-content .section .section-content .section-component {
-  color: #969696;
+  color: #989898;
   margin: 0.2rem;
 }
 
 .footer .footer-body .footer-content .section .section-content .section-component:hover {
-  color: #07b4b4;
+  color: #00c8c8;
   -webkit-transition: color 700ms ease-in-out;
   transition: color 700ms ease-in-out;
 }

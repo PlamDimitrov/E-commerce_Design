@@ -3,7 +3,7 @@
   transition: all 0.6s;
 }
 
-.main {
+.page-not-found {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17,7 +17,6 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin: 5rem;
-  width: 100%;
 }
 
 .fof {

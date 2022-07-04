@@ -7,7 +7,7 @@ import Register from '../../components/Register/Register';
 
 const SignInOrRegister = () => {
     return <div >
-        <Background />
+        <Background titleString="Welcome to Ave" pageName="Sign in or register" />
         <div className={styles["content-container"]}>
             <SingIn />
             <div className={styles["separator"]}>

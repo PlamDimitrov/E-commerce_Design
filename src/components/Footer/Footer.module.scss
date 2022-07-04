@@ -1,10 +1,4 @@
-$hover-color: #07b4b4;
-$title-color: #777274;
-$content-color: #969696;
-$background-color: #f8f8f8;
-$banner-text-color: #ffffff;
-$copyright-background-color: #333333;
-$copyright-text-color: #999999;
+@import "../../glodalStyleVariables.scss";
 
 .footer {
     font-family: "Montserrat";
@@ -68,7 +62,7 @@ $copyright-text-color: #999999;
                 flex-direction: column;
                 justify-content: center;
                 background-color: $copyright-background-color;
-                color: $banner-text-color;
+                color: $background-color;
                 text-transform: uppercase;
                 text-align: center;
                 h1:nth-child(1) {
@@ -83,7 +77,7 @@ $copyright-text-color: #999999;
                 i {
                     display: flex;
                     margin: 5px;
-                    color: $banner-text-color;
+                    color: $background-color;
                 }
 
                 background-color: #00c8c8;
