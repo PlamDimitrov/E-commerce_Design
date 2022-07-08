@@ -1,18 +1,42 @@
 @import "../../glodalStyleVariables.scss";
+
 .slider {
-  position: relative;
-  overflow: hidden;
-  transition: all 1500ms ease-in-out;
-  .image {
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    transition: left 1500ms ease-in-out;
-    img {
-      border: 1px solid $border-color;
+  .viewport {
+    position: relative;
+    overflow: hidden;
+    transition: all 1500ms ease-in-out;
+    .image {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      transition: left 1500ms ease-in-out;
+      img {
+        border: 1px solid $border-color;
+      }
+    }
+    .slide {
+      background-color: rgba($color: $item-color, $alpha: 0.1);
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 10%;
+      border: 0;
+      font-size: 1.5rem;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba($color: $hover-color, $alpha: 0.5);
+        color: white;
+        transition: background-color 800ms ease-in-out;
+      }
+    }
+    .left {
+      left: 0;
+    }
+    .right {
+      right: 0;
     }
   }
 }

@@ -1,17 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './Slider.module.css';
 
-import { Link } from 'react-router-dom';
-
-import categoryImg from '../../assets/img/category.png';
-
-
 const Slider = (props) => {
     const images = props.images;
     const amountOfImages = images.length;
 
-    let slider = null;
-    let image = null;
+    const slider = useRef(null)
+    const image = useRef(null)
+
     let currentImage = 1;
     let leftPossition = 0;
 
@@ -23,11 +19,11 @@ const Slider = (props) => {
     }
 
     const setCarouselWidth = (currentImage) => {
-        slider.style.width = `${getImageWidth(currentImage)}px`;
+        slider.current.style.width = `${getImageWidth(currentImage)}px`;
 
     };
     const setCarouselHeight = (currentImage) => {
-        slider.style.height = `${getImageHeight(currentImage)}px`;
+        slider.current.style.height = `${getImageHeight(currentImage)}px`;
 
     };
 
@@ -35,79 +31,70 @@ const Slider = (props) => {
         return document.querySelector(`.${styles["image"]} img:nth-child(${childNumber})`);
     }
 
-    const moveCarouselRight = () => {
-
+    const getImages = () => {
         let imagesWidts = [];
+        for (let index = 0; index < amountOfImages; index++) {
+            imagesWidts.push(getSpecificImage(index + 1).offsetWidth);
+        }
+        return imagesWidts;
+    }
+
+    const getPossition = (imagesWidts) => {
         leftPossition = 0;
+        for (let index = 0; index < currentImage - 1; index++) {
+            leftPossition += imagesWidts[index];
+        }
+    }
+
+    const moveViewport = (currentImage) => {
+        if (currentImage === 1) {
+            image.current.style.left = `0px`
+            setCarouselWidth(currentImage);
+            setCarouselHeight(currentImage);
+        } else {
+            setCarouselWidth(currentImage);
+            setCarouselHeight(currentImage);
+            image.current.style.left = `-${leftPossition}px`;
+        }
+    }
+
+    const moveCarouselRight = () => {
         if (currentImage < amountOfImages && currentImage >= 1) {
             currentImage++;
         } else if (currentImage === amountOfImages) {
             currentImage = 1;
         }
-        for (let index = 0; index < amountOfImages; index++) {
-            imagesWidts.push(getSpecificImage(index + 1).offsetWidth);
-        }
-        for (let index = 0; index < currentImage - 1; index++) {
-            leftPossition += imagesWidts[index];
-        }
-        if (currentImage === 1) {
-            image.style.left = `0px`
-            setCarouselWidth(currentImage);
-            setCarouselHeight(currentImage);
-        } else {
-            setCarouselWidth(currentImage);
-            setCarouselHeight(currentImage);
-            image.style.left = `-${leftPossition}px`;
-        }
-        console.log(imagesWidts);
+        getPossition(getImages());
+        moveViewport(currentImage);
     }
 
     const moveCarouselLeft = () => {
-        let imagesWidts = [];
-        leftPossition = 0;
         if (currentImage <= amountOfImages && currentImage > 1) {
             currentImage--;
         } else if (currentImage - amountOfImages <= 0) {
             currentImage = amountOfImages;
         }
-        for (let index = 0; index < amountOfImages; index++) {
-            imagesWidts.push(getSpecificImage(index + 1).offsetWidth);
-        }
-        for (let index = 0; index < currentImage - 1; index++) {
-            leftPossition += imagesWidts[index];
-        }
-        if (currentImage === 1) {
-            image.style.left = `0px`
-            setCarouselWidth(currentImage);
-            setCarouselHeight(currentImage);
-        } else {
-            setCarouselWidth(currentImage);
-            setCarouselHeight(currentImage);
-            image.style.left = `-${leftPossition}px`;
-        }
+        getPossition(getImages());
+        moveViewport(currentImage);
     }
 
 
-
     useEffect(() => {
-        slider = document.querySelector(`.${styles["slider"]}`);
-        image = document.querySelector(`.${styles["image"]}`);
-        slider.style.width = `${getSpecificImage(1).offsetWidth}px`;
-        slider.style.height = `${getSpecificImage(1).offsetHeight}px`;
-        console.log(1);
+        slider.current = document.querySelector(`.${styles["viewport"]}`);
+        image.current = document.querySelector(`.${styles["image"]}`);
+        slider.current.style.width = `${getSpecificImage(1).offsetWidth}px`;
+        slider.current.style.height = `${getSpecificImage(1).offsetHeight}px`;
     }, []);
 
-    return (
-        <>
-            <div className={`${styles["slider"]}`}>
-                <div className={`${styles["image"]}`}>
-                    {images.map(i => <img src={i.image} key={i.id} alt={i.alt} />)}
-                </div>
+    return <div className={`${styles["slider"]}`}>
+        <div className={`${styles["viewport"]}`}>
+            <div className={`${styles["image"]}`}>
+                {images.map(i => <img onClick={moveCarouselRight} src={i.image} key={i.id} alt={i.alt} />)}
             </div>
-            <button onClick={moveCarouselLeft} ><i className="fa-solid fa-chevron-left"></i></button>
-            <button onClick={moveCarouselRight}><i className="fa-solid fa-chevron-right"></i></button>
-        </>
-    )
+            <button className={`${styles["slide"]} ${styles["left"]}`} onClick={moveCarouselLeft} ><i className="fa-solid fa-chevron-left"></i></button>
+            <button className={`${styles["slide"]} ${styles["right"]}`} onClick={moveCarouselRight}><i className="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </div>
 };
 
 export default Slider;

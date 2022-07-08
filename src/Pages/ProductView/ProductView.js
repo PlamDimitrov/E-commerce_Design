@@ -1,18 +1,18 @@
 import React from 'react';
 import styles from './ProductView.module.css';
-import { Link } from 'react-router-dom';
 
 import Background from '../../components/Background/Background';
 import Slider from '../../components/Slider/Slider';
-import PromotedProduct from '../../components/PromotedProduct/PromotedProduct';
 
+//---simulation of images from DB... To Be Deleted! Only for test!---
 import productImg from '../../assets/img/product.png';
 import category from '../../assets/img/category.png';
-import backgroundImg from '../../assets/img/background.png';
+//---simulation of images from DB... To Be Deleted! Only for test!---
 
 const ProductView = () => {
+  //---simulation of images from DB... To Be Deleted! Only for test!---
   let index = 0;
-  const images = [productImg, category, backgroundImg];
+  const images = [productImg, category, productImg, productImg, productImg, productImg];
   const imagesToTransfer = [];
   images.map(i => {
     imagesToTransfer.push({
@@ -23,11 +23,11 @@ const ProductView = () => {
     index++;
   }
   )
+  //---simulation of images from DB... To Be Deleted! Only for test!---
 
   return <div className={styles["product-view"]} >
     <Background titleString="Product view" pageName="mens - casuals - hoodies & sweatshirts - ave classic sweatshirt" />
     <Slider images={imagesToTransfer} />
-    Product view
   </div>
 };
 
