@@ -1,11 +1,14 @@
 @import "../../glodalStyleVariables.scss";
 
 .slider {
+  max-width: 35rem;
   .viewport {
     position: relative;
     overflow: hidden;
     transition: all 1500ms ease-in-out;
+    max-width: 100%;
     .image {
+      max-width: 100%;
       position: absolute;
       left: 0;
       top: 0;
@@ -14,6 +17,7 @@
       flex-wrap: nowrap;
       transition: left 1500ms ease-in-out;
       img {
+        // width: 100%;
         border: 1px solid $border-color;
       }
     }

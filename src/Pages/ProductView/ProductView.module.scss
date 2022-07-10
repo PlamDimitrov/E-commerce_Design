@@ -1,1 +1,13 @@
 @import "../../glodalStyleVariables.scss";
+
+.product-view {
+  .product {
+    margin: 4rem 0 4rem 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    > :first-child {
+      margin-right: 2rem;
+    }
+  }
+}
