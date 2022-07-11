@@ -1,0 +1,10 @@
+@import "../../glodalStyleVariables.scss";
+
+.product-content {
+  font-family: Montserrat;
+  .title {
+    text-transform: uppercase;
+    color: $title-color;
+    font-weight: 600;
+  }
+}

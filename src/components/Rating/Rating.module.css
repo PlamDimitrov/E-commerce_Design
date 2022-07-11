@@ -1,0 +1,9 @@
+.product-content {
+  font-family: Montserrat;
+}
+
+.product-content .title {
+  text-transform: uppercase;
+  color: #575153;
+  font-weight: 600;
+}
