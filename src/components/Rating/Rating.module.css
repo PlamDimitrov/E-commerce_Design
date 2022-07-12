@@ -1,9 +1,14 @@
-.product-content {
-  font-family: Montserrat;
+.rating {
+  color: #ded3aa;
+  padding: 0 0.5rem 0 0.5rem;
 }
 
-.product-content .title {
-  text-transform: uppercase;
-  color: #575153;
-  font-weight: 600;
+.rating .empty {
+  color: #989898;
+}
+
+.rating .reviews {
+  color: #989898;
+  font-weight: bold;
+  margin: 0.5rem;
 }

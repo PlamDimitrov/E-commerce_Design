@@ -9,7 +9,7 @@ body {
 }
 
 .content {
-  width: 50%;
+  width: 60%;
   max-width: 2050px;
   margin: auto;
 }
@@ -18,4 +18,9 @@ body {
   .content {
     width: 100%;
   }
+}
+
+* {
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
 }

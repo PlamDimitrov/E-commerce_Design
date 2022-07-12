@@ -2,9 +2,44 @@
 
 .product-content {
   font-family: Montserrat;
+  font-size: small;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   .title {
     text-transform: uppercase;
     color: $title-color;
     font-weight: 600;
+    margin: 0 0.5rem 0.5rem 0.5rem;
+  }
+  .atributes {
+    display: flex;
+    .add-review {
+      color: $content-color;
+      font-weight: bold;
+      padding: 0 0.5rem 0 0.5rem;
+      border-left: 2px solid $content-color;
+      border-right: 2px solid $content-color;
+      &:hover {
+        color: $hover-color;
+      }
+    }
+    .share {
+      color: $content-color;
+      font-weight: bold;
+      padding: 0 0.5rem 0 0.5rem;
+      a {
+        color: $content-color;
+        font-weight: bold;
+        padding: 0 0.5rem 0 0.5rem;
+        transform: scale(1);
+        &:hover {
+          color: $hover-color;
+          i {
+            transform: scale(1.5);
+          }
+        }
+      }
+    }
   }
 }

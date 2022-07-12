@@ -3,6 +3,7 @@ import styles from './Rating.module.css';
 
 const Rating = (props) => {
     let [rating, setRating] = useState(props.rating);
+    let [reviewsCounter, setReviewsCounter] = useState(props.reviews);
     let afterDecimal = useRef(0);
 
     const calculateRating = () => {
@@ -29,11 +30,11 @@ const Rating = (props) => {
         if (afterDecimal.current > 0) {
             stars.push(<i onClick={rate} key={Math.ceil(rating)} className="fa-solid fa-star-half-stroke"></i>);
             for (let i = rating + 1; i < 6; i++) {
-                stars.push(<i onClick={rate} key={i} className="fa-regular fa-star"></i>);
+                stars.push(<i onClick={rate} key={i} className={`fa-regular fa-star ${styles["empty"]}`}></i>);
             }
         } else {
             for (let i = rating; i < 6; i++) {
-                stars.push(<i onClick={rate} key={i} className="fa-regular fa-star"></i>);
+                stars.push(<i onClick={rate} key={i} className={`fa-regular fa-star ${styles["empty"]}`}></i>);
             }
         }
         return stars;
@@ -45,6 +46,7 @@ const Rating = (props) => {
 
     return <div className={`${styles["rating"]}`}>
         {passRating()}
+        <span className={`${styles["reviews"]}`}>{reviewsCounter > 1 ? `${reviewsCounter} Reviews` : 'Review'}</span>
     </div>
 };
 
