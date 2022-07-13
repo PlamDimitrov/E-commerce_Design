@@ -1,30 +1,19 @@
 .product-content {
   font-family: Montserrat;
   font-size: small;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
-
 .product-content .title {
   text-transform: uppercase;
   color: #575153;
   font-weight: 600;
   margin: 0 0.5rem 0.5rem 0.5rem;
 }
-
 .product-content .atributes {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .product-content .atributes .add-review {
   color: #989898;
   font-weight: bold;
@@ -32,30 +21,23 @@
   border-left: 2px solid #989898;
   border-right: 2px solid #989898;
 }
-
 .product-content .atributes .add-review:hover {
   color: #00c8c8;
 }
-
 .product-content .atributes .share {
   color: #989898;
   font-weight: bold;
   padding: 0 0.5rem 0 0.5rem;
 }
-
 .product-content .atributes .share a {
   color: #989898;
   font-weight: bold;
   padding: 0 0.5rem 0 0.5rem;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
-
 .product-content .atributes .share a:hover {
   color: #00c8c8;
 }
-
 .product-content .atributes .share a:hover i {
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
+  transform: scale(1.5);
 }

@@ -2,13 +2,11 @@
   position: relative;
   pointer-events: none;
 }
-
 .home-page .top-image .background {
   z-index: -1000;
   position: relative;
   width: 100%;
 }
-
 .home-page .top-image .shop_button {
   position: absolute;
   bottom: 5rem;
@@ -27,42 +25,28 @@
   margin: 0.85rem;
   z-index: 1000;
 }
-
 .home-page .top-image .shop_button:hover {
   color: white;
   background: #00c8c8;
   border: 2px solid #00c8c8;
-  -webkit-transition: all 700ms ease-in-out;
   transition: all 700ms ease-in-out;
 }
-
 @media screen and (max-width: 1150px) {
   .home-page .top-image .shop_button {
     bottom: 1rem;
     right: 1rem;
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
+    transform: scale(0.5);
   }
 }
-
 @media screen and (max-width: 450px) {
   .home-page .top-image .shop_button {
     bottom: -1rem;
     right: -5rem;
   }
 }
-
 .home-page .categories {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
 }

@@ -1,16 +1,8 @@
 .page-not-found {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
   margin: 5rem;
 }
 
@@ -18,7 +10,6 @@
   display: table-cell;
   vertical-align: middle;
 }
-
 .fof h1 {
   font-size: 50px;
   display: inline-block;
@@ -29,22 +20,18 @@
 
 @-webkit-keyframes type {
   from {
-    -webkit-box-shadow: inset -3px 0px 0px #888;
-            box-shadow: inset -3px 0px 0px #888;
+    box-shadow: inset -3px 0px 0px #888;
   }
   to {
-    -webkit-box-shadow: inset -3px 0px 0px transparent;
-            box-shadow: inset -3px 0px 0px transparent;
+    box-shadow: inset -3px 0px 0px transparent;
   }
 }
 
 @keyframes type {
   from {
-    -webkit-box-shadow: inset -3px 0px 0px #888;
-            box-shadow: inset -3px 0px 0px #888;
+    box-shadow: inset -3px 0px 0px #888;
   }
   to {
-    -webkit-box-shadow: inset -3px 0px 0px transparent;
-            box-shadow: inset -3px 0px 0px transparent;
+    box-shadow: inset -3px 0px 0px transparent;
   }
 }

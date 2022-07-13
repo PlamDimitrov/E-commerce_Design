@@ -4,153 +4,96 @@
   max-width: 100%;
   font-size: 0.8rem;
 }
-
 .footer .footer-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
-
 .footer .footer-body .footer-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  justify-content: space-evenly;
   width: 100%;
 }
-
 .footer .footer-body .footer-content .section {
   margin-top: 4rem;
   max-width: 210px;
   margin-left: 5px;
   margin-right: 5px;
 }
-
 .footer .footer-body .footer-content .section .section-title {
   color: #575153;
   margin-bottom: 1rem;
   font-weight: bold;
   text-transform: uppercase;
 }
-
 .footer .footer-body .footer-content .section .section-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  flex-direction: column;
+  align-items: stretch;
 }
-
 .footer .footer-body .footer-content .section .section-content .section-component {
   color: #989898;
   margin: 0.2rem;
 }
-
 .footer .footer-body .footer-content .section .section-content .section-component:hover {
   color: #00c8c8;
-  -webkit-transition: color 700ms ease-in-out;
   transition: color 700ms ease-in-out;
 }
-
 .footer .footer-body .footer-banners {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   width: 100%;
   gap: 2rem;
   font-size: 2rem;
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-
 .footer .footer-body .footer-banners .banner {
   padding: 3rem;
   width: 40%;
   min-width: 160px;
 }
-
 .footer .footer-body .footer-banners .footer-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  justify-content: center;
   background-color: #333333;
   color: #ffffff;
   text-transform: uppercase;
   text-align: center;
 }
-
 .footer .footer-body .footer-banners .footer-info h1:nth-child(1) {
   font-weight: bold;
 }
-
 .footer .footer-body .footer-banners .footer-social-network {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   background-color: #00c8c8;
 }
-
 .footer .footer-body .footer-banners .footer-social-network i {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin: 5px;
   color: #ffffff;
 }
-
 .footer .footer-copyright-section {
   background-color: #333333;
   width: 100%;
 }
-
 .footer .footer-copyright-section .footer-content-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
 }
-
 .footer .footer-copyright-section .footer-content-body a:nth-child(1) {
   margin-right: auto;
 }
-
 .footer .footer-copyright-section .footer-content-body a {
   display: block;
   color: #999999;
   margin: 17px;
 }
-
 .footer .footer-copyright-section .footer-content-body a:hover {
   color: #07b4b4;
-  -webkit-transition: color 700ms ease-in-out;
   transition: color 700ms ease-in-out;
 }
 
@@ -159,16 +102,11 @@
     width: 100%;
   }
   .footer .footer-content {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
   .footer .footer-banners {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }

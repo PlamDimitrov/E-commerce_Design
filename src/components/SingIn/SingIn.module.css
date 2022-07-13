@@ -5,33 +5,21 @@
   text-transform: uppercase;
   margin: 2rem;
 }
-
 .sign-in form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
 }
-
 .sign-in form .title {
   color: #575153;
   font-size: 1.125rem;
   margin: 1.563rem;
   font-weight: bold;
 }
-
 .sign-in form .input-container {
   width: 94%;
 }
-
 .sign-in form .input-container .email,
 .sign-in form .input-container .password {
   width: 100%;
@@ -40,36 +28,22 @@
   border: 1px solid #e7e7e7;
   padding: 0.5rem;
 }
-
 .sign-in form .input-container .email:focus,
 .sign-in form .input-container .password:focus {
   outline: none;
 }
-
 .sign-in form .input-container .error {
   background-color: #fcf6f7;
   border: 1px solid #bb5465;
 }
-
 .sign-in form .action-bar {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
   width: 100%;
 }
-
 .sign-in form .action-bar .sign-in_button {
   cursor: pointer;
   padding: 1.25rem;
@@ -82,24 +56,19 @@
   border: 2px solid #575153;
   margin: 0.85rem;
 }
-
 .sign-in form .action-bar .sign-in_button:hover {
   color: white;
   background: #00c8c8;
   border: 2px solid #00c8c8;
-  -webkit-transition: all 700ms ease-in-out;
   transition: all 700ms ease-in-out;
 }
-
 .sign-in form .action-bar .sign-in_link {
   text-transform: lowercase;
   font-family: "Roboto";
   font-size: 1rem;
   color: #989898;
 }
-
 .sign-in form .action-bar .sign-in_link:hover {
   color: #00c8c8;
-  -webkit-transition: color 700ms ease-in-out;
   transition: color 700ms ease-in-out;
 }

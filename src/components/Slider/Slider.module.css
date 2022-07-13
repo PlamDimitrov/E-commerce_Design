@@ -1,37 +1,25 @@
 .slider {
   max-width: 35rem;
 }
-
 .slider .viewport {
   position: relative;
   overflow: hidden;
-  -webkit-transition: all 1500ms ease-in-out;
   transition: all 1500ms ease-in-out;
   max-width: 100%;
 }
-
 .slider .viewport .image {
   max-width: 100%;
   position: absolute;
   left: 0;
   top: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-transition: left 1500ms ease-in-out;
+  flex-direction: row;
+  flex-wrap: nowrap;
   transition: left 1500ms ease-in-out;
 }
-
 .slider .viewport .image img {
   border: 1px solid #e7e7e7;
 }
-
 .slider .viewport .slide {
   background-color: rgba(119, 114, 116, 0.1);
   position: absolute;
@@ -42,18 +30,14 @@
   font-size: 1.5rem;
   cursor: pointer;
 }
-
 .slider .viewport .slide:hover {
   background-color: rgba(0, 200, 200, 0.5);
   color: white;
-  -webkit-transition: background-color 800ms ease-in-out;
   transition: background-color 800ms ease-in-out;
 }
-
 .slider .viewport .left {
   left: 0;
 }
-
 .slider .viewport .right {
   right: 0;
 }

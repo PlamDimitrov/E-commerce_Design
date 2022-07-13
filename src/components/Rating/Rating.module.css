@@ -2,11 +2,9 @@
   color: #ded3aa;
   padding: 0 0.5rem 0 0.5rem;
 }
-
 .rating .empty {
   color: #989898;
 }
-
 .rating .reviews {
   color: #989898;
   font-weight: bold;

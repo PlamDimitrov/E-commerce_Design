@@ -4,18 +4,12 @@
   min-width: 300px;
   height: 45px;
 }
-
 .header .header-item-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: right;
-      -ms-flex-pack: right;
-          justify-content: right;
+  justify-content: right;
   max-height: 45px;
   height: 100%;
 }
-
 .header .header-item-container .header-item {
   display: block;
   font-size: 0.65rem;
@@ -23,50 +17,36 @@
   color: #999999;
   min-width: 2.5rem;
 }
-
 .header .header-item-container .header-item:hover {
   color: #07b4b4;
-  -webkit-transition: color 700ms ease-in-out;
   transition: color 700ms ease-in-out;
 }
-
 .header .header-item-container .shoping-cart {
   position: relative;
   background-color: #07b4b4;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   min-width: 145px;
   color: #ffffff;
   cursor: pointer;
   font-size: 0.65rem;
 }
-
 .header .header-item-container .shoping-cart > i {
   min-width: 45px;
   font-size: 0.97rem;
 }
-
 .header .header-item-container .shoping-cart .shoping-status {
   font-weight: bold;
 }
-
 .header .header-item-container .shoping-cart .fa-chevron-down {
   display: contents;
   font-size: 0.65rem;
   margin: 0px;
 }
-
 .header .header-item-container .shoping-cart:hover .dropdown {
   opacity: 1;
   pointer-events: auto;
-  -webkit-transition: opacity 500ms ease-in-out;
   transition: opacity 500ms ease-in-out;
 }
 
@@ -77,27 +57,16 @@
   right: 0;
   min-width: 80%;
   opacity: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-transform: translateY(5px);
-          transform: translateY(5px);
-  -webkit-transition: opacity 500ms ease-in-out, -webkit-transform 200ms ease-in-out;
-  transition: opacity 500ms ease-in-out, -webkit-transform 200ms ease-in-out;
+  flex-direction: column;
+  transform: translateY(5px);
   transition: opacity 500ms ease-in-out, transform 200ms ease-in-out;
-  transition: opacity 500ms ease-in-out, transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
   background-color: #ffffff;
   padding: 1rem;
-  -webkit-box-shadow: 0px 11px 20px 0px #222222;
-          box-shadow: 0px 11px 20px 0px #222222;
+  box-shadow: 0px 11px 20px 0px #222222;
   border-radius: 5px;
   cursor: auto;
 }
-
 .dropdown .dropdown-title {
   font-size: 0.5rem;
   font-size: 1rem;
@@ -105,20 +74,11 @@
   color: #222222;
   font-weight: bold;
 }
-
 .dropdown .dropdown-categories {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   position: relative;
   padding: 0.25rem;
   padding-bottom: 0.25rem;
@@ -126,55 +86,32 @@
   font-size: 0.7rem;
   border-top: 1px solid #e7e7e7;
 }
-
 .dropdown .dropdown-categories .product-image {
   max-width: 2.5rem;
 }
-
 .dropdown .dropdown-categories .product-title {
   padding: 0.2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .dropdown .dropdown-categories .product-quantity {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  flex-direction: row;
+  flex-wrap: nowrap;
   padding: 0.2rem;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .dropdown .dropdown-categories .product-quantity .product-dimension {
   margin: 0.1rem;
 }
-
 .dropdown .dropdown-categories .product-price {
   padding: 0.2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .dropdown .dropdown-categories .product-price .product-currency {
   margin: 0.1rem;
 }
-
 .dropdown .dropdown-categories .product-remove {
   opacity: 0;
   pointer-events: none;
@@ -183,7 +120,6 @@
   height: 90%;
   background-color: rgba(243, 118, 118, 0.2);
 }
-
 .dropdown .dropdown-categories .product-remove i {
   font-size: 1rem;
   color: red;
@@ -192,49 +128,30 @@
   right: 0;
   cursor: pointer;
 }
-
 .dropdown .dropdown-categories:hover .product-remove {
   opacity: 1;
   pointer-events: auto;
-  -webkit-transition: opacity 500ms ease-in-out;
   transition: opacity 500ms ease-in-out;
 }
-
 .dropdown .go-to-cart {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  justify-content: space-between;
+  flex-wrap: nowrap;
   background-color: #00c8c8;
   margin: 0.5rem;
   padding: 0.5rem;
   color: white;
   font-size: 0.8rem;
   font-weight: bold;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  -webkit-transition: -webkit-transform 700ms ease-out;
-  transition: -webkit-transform 700ms ease-out;
+  transform: scale(1);
   transition: transform 700ms ease-out;
-  transition: transform 700ms ease-out, -webkit-transform 700ms ease-out;
 }
-
 .dropdown .go-to-cart:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  transform: scale(1.1);
   opacity: 1;
-  background: -webkit-gradient(linear, left top, right top, from(#008a8a), color-stop(70%, #00c8c8), to(#00d4ff));
-  background: linear-gradient(90deg, #008a8a 0%, #00c8c8 70%, #00d4ff 100%);
-  -webkit-transition: -webkit-transform 700ms ease-out;
-  transition: -webkit-transform 700ms ease-out;
+  background: linear-gradient(90deg, rgb(0, 138, 138) 0%, rgb(0, 200, 200) 70%, rgb(0, 212, 255) 100%);
   transition: transform 700ms ease-out;
-  transition: transform 700ms ease-out, -webkit-transform 700ms ease-out;
 }
-
 @media screen and (max-width: 1150px) {
   .dropdown {
     right: 35%;

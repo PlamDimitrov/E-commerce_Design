@@ -1,4 +1,4 @@
-@import url(e:\GitHub\PlamDimitrov\E-commerce_Design\src\cssResset.css);
+@import "./cssResset.css";
 body {
   text-decoration: none;
   font-family: Montserrat;
@@ -19,8 +19,6 @@ body {
     width: 100%;
   }
 }
-
 * {
-  -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
