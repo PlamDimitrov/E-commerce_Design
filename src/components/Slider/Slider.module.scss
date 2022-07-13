@@ -1,7 +1,7 @@
 @import "../../glodalStyleVariables.scss";
 
 .slider {
-  max-width: 35rem;
+  max-width: 100%;
   .viewport {
     position: relative;
     overflow: hidden;
@@ -17,7 +17,6 @@
       flex-wrap: nowrap;
       transition: left 1500ms ease-in-out;
       img {
-        // width: 100%;
         border: 1px solid $border-color;
       }
     }

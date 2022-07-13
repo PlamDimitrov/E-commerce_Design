@@ -14,7 +14,7 @@ body {
   margin: auto;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: $screen-size-6) {
   .content {
     width: 100%;
   }

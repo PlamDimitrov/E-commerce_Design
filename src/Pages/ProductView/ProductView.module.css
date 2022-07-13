@@ -5,5 +5,5 @@
   flex-wrap: wrap;
 }
 .product-view .product > :first-child {
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
