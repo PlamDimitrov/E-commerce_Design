@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .product-view .product > :first-child {
   margin-right: 1rem;

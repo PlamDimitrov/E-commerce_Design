@@ -1,6 +1,10 @@
 .rating {
   color: #ded3aa;
   padding: 0 0.5rem 0 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 .rating .empty {
   color: #989898;
@@ -9,4 +13,5 @@
   color: #989898;
   font-weight: bold;
   margin: 0.5rem;
+  white-space: nowrap;
 }

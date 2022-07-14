@@ -3,6 +3,10 @@
 .rating {
   color: $gold;
   padding: 0 0.5rem 0 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
   .empty {
     color: $content-color;
   }
@@ -10,5 +14,6 @@
     color: $content-color;
     font-weight: bold;
     margin: 0.5rem;
+    white-space: nowrap;
   }
 }

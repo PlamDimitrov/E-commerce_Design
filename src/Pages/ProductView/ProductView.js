@@ -14,9 +14,27 @@ import ProductContent from '../../components/ProductContent/ProductContent';
 const ProductView = () => {
   //---simulation of images from DB... To Be Deleted! Only for test!---
   let index = 0;
-  const images = [productImg, category, productImg, productImg, productImg, productImg];
+
+  const product = {
+    title: "Ave classic sweatshirt",
+    images: [productImg, category, productImg, productImg, productImg, productImg],
+    oldPrice: 107,
+    price: 89.99,
+    availability: true,
+    code: "#499577",
+    tags: ["Classic", "Casual", "V-neck", "Loose"],
+    description: `Donec sem lorem laoreet tempor un risus vitae, rutrum sodales nibh suspendisse est congue metus nunc, id viverra elit loreti rhoncus quis consecteur es. Donec pulvinar tempor lorem a pretium justo interdum.`,
+    colour: "Red",
+    size: "",
+    detailedDescription: "",
+    video: "",
+    reviews: [{ id: 1 }, { id: 5 }]
+  }
+
+
+
   const imagesToTransfer = [];
-  images.map(i => {
+  product.images.map(i => {
     imagesToTransfer.push({
       image: i,
       id: index,
@@ -31,8 +49,23 @@ const ProductView = () => {
     <Background titleString="Product view" pageName="mens - casuals - hoodies & sweatshirts - ave classic sweatshirt" />
     <div className={globalStyles["content"]} >
       <div className={styles["product"]}>
-        <Slider images={imagesToTransfer} />
-        <ProductContent />
+        <Slider
+          images={imagesToTransfer}
+        />
+        <ProductContent
+          title={product.title}
+          oldPrice={product.oldPrice}
+          price={product.price}
+          availability={product.availability}
+          code={product.code}
+          tags={product.tags}
+          description={product.description}
+          colour={product.colour}
+          size={product.size}
+          detailedDescription={product.detailedDescription}
+          video={product.video}
+          reviews={product.reviews}
+        />
       </div>
     </div>
   </div>
