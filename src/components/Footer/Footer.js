@@ -5,8 +5,8 @@ import globalStyles from '../../index.module.css';
 
 const Footer = () => {
     return <div className={styles["footer"]}>
-        <div className={`${globalStyles["content"]} ${styles["footer-body"]}`}>
-            <div className={styles["footer-content"]}>
+        <div className={`${styles["footer-body"]}`}>
+            <div className={`${globalStyles["content"]} ${styles["footer-content"]}`}>
                 <div className={styles["section"]}>
                     <h2 className={styles["section-title"]}>Information</h2>
                     <div className={styles["section-content"]}>
@@ -58,7 +58,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className={styles["footer-banners"]}>
+            <div className={`${globalStyles["content"]} ${styles["footer-banners"]}`}>
                 <div className={`${styles["footer-info"]} ${styles["banner"]}`}>
                     <h1>Award winner</h1>
                     <h1>Fashion awards 2022</h1>

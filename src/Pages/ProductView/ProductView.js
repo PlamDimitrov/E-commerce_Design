@@ -9,6 +9,8 @@ import Slider from '../../components/Slider/Slider';
 import productImg from '../../assets/img/product.png';
 import category from '../../assets/img/background.png';
 import ProductContent from '../../components/ProductContent/ProductContent';
+import { Link as span } from 'react-router-dom';
+import ProductSubTabs from '../../components/ProductSubTabs/ProductSubTabs';
 //---simulation of images from DB... To Be Deleted! Only for test!---
 
 const ProductView = () => {
@@ -67,6 +69,7 @@ const ProductView = () => {
           reviews={product.reviews}
         />
       </div>
+      <ProductSubTabs />
     </div>
   </div>
 };

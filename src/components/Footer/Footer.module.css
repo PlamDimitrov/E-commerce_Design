@@ -5,6 +5,7 @@
   font-size: 0.8rem;
 }
 .footer .footer-body {
+  background-color: #f8f8f8;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -12,7 +13,6 @@
 .footer .footer-body .footer-content {
   display: flex;
   justify-content: space-evenly;
-  width: 100%;
 }
 .footer .footer-body .footer-content .section {
   margin-top: 4rem;
@@ -42,7 +42,6 @@
 .footer .footer-body .footer-banners {
   display: flex;
   justify-content: space-around;
-  width: 100%;
   gap: 2rem;
   font-size: 2rem;
   padding-top: 3rem;

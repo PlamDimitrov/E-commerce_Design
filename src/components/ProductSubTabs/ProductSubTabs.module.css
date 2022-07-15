@@ -1,0 +1,16 @@
+.product-subtabs {
+  margin: 1rem;
+}
+.product-subtabs .tabs .tab {
+  cursor: pointer;
+  color: #575153;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #f8f8f8;
+  padding: 1rem;
+  font-size: 0.8rem;
+}
+.product-subtabs .tabs .active {
+  background-color: #333333;
+  color: white;
+}

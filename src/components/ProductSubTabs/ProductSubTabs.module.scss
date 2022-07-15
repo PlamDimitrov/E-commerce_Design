@@ -1,0 +1,20 @@
+@import "../../glodalStyleVariables.scss";
+
+.product-subtabs {
+  margin: 1rem;
+  .tabs {
+    .tab {
+      cursor: pointer;
+      color: $title-color;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: $subsection-color;
+      padding: 1rem;
+      font-size: 0.8rem;
+    }
+    .active {
+      background-color: $copyright-background-color;
+      color: white;
+    }
+  }
+}
