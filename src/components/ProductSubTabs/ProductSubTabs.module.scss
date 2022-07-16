@@ -3,7 +3,10 @@
 .product-subtabs {
   margin: 1rem;
   .tabs {
+    display: flex;
+    flex-wrap: nowrap;
     .tab {
+      white-space: nowrap;
       cursor: pointer;
       color: $title-color;
       font-weight: bold;
@@ -15,6 +18,45 @@
     .active {
       background-color: $copyright-background-color;
       color: white;
+    }
+  }
+  .tab-content {
+    .description,
+    .sizeandspecs,
+    .deliveryandreturns,
+    .reviews {
+      opacity: 0;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      margin: 1rem 0 1rem 0;
+      color: $dark-text;
+      transition: opacity 0s;
+      .title {
+        color: $dark-text;
+        font-weight: 500;
+        margin: 1rem 0 1rem 0;
+      }
+    }
+    .video {
+      opacity: 0;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 2rem 0 2rem 0;
+      transition: opacity 0s;
+    }
+    .sizeandspecs {
+      img {
+        width: 50rem;
+      }
+    }
+    .active {
+      opacity: 1;
+      position: relative;
+      transition: opacity 1s;
     }
   }
 }

@@ -69,7 +69,7 @@ const ProductView = () => {
           reviews={product.reviews}
         />
       </div>
-      <ProductSubTabs />
+      <ProductSubTabs videoUrl="https://www.youtube.com/embed/Qx0zSF6y70Y" />
     </div>
   </div>
 };

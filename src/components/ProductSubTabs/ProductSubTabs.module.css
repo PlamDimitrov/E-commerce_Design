@@ -1,7 +1,12 @@
 .product-subtabs {
   margin: 1rem;
 }
+.product-subtabs .tabs {
+  display: flex;
+  flex-wrap: nowrap;
+}
 .product-subtabs .tabs .tab {
+  white-space: nowrap;
   cursor: pointer;
   color: #575153;
   font-weight: bold;
@@ -13,4 +18,42 @@
 .product-subtabs .tabs .active {
   background-color: #333333;
   color: white;
+}
+.product-subtabs .tab-content .description,
+.product-subtabs .tab-content .sizeandspecs,
+.product-subtabs .tab-content .deliveryandreturns,
+.product-subtabs .tab-content .reviews {
+  opacity: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 1rem 0 1rem 0;
+  color: #222222;
+  transition: opacity 0s;
+}
+.product-subtabs .tab-content .description .title,
+.product-subtabs .tab-content .sizeandspecs .title,
+.product-subtabs .tab-content .deliveryandreturns .title,
+.product-subtabs .tab-content .reviews .title {
+  color: #222222;
+  font-weight: 500;
+  margin: 1rem 0 1rem 0;
+}
+.product-subtabs .tab-content .video {
+  opacity: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem 0 2rem 0;
+  transition: opacity 0s;
+}
+.product-subtabs .tab-content .sizeandspecs img {
+  width: 50rem;
+}
+.product-subtabs .tab-content .active {
+  opacity: 1;
+  position: relative;
+  transition: opacity 1s;
 }
