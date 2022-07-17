@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Overview.module.css';
 import { Link } from 'react-router-dom';
 
-import PromotedProduct from '../../components/PromotedProduct/PromotedProduct';
+import Product from '../Product/Product';
 
 const Overview = () => {
     return <div className={styles["products-overview"]} >
@@ -29,14 +29,14 @@ const Overview = () => {
         </div>
         <div className={styles["products"]}>
             <div className={`${styles["col"]}`}>
-                <PromotedProduct size="small" />
-                <PromotedProduct size="small" />
-                <PromotedProduct size="large" />
+                <Product size="small" />
+                <Product size="small" />
+                <Product size="large" />
             </div>
             <div className={`${styles["col"]}`}>
-                <PromotedProduct size="large" />
-                <PromotedProduct size="small" />
-                <PromotedProduct size="small" />
+                <Product size="large" />
+                <Product size="small" />
+                <Product size="small" />
             </div>
         </div>
     </div>

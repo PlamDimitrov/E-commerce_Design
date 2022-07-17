@@ -1,0 +1,27 @@
+.shop-page .actrion-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background-color: #f8f8f8;
+}
+.shop-page .actrion-bar .display-single,
+.shop-page .actrion-bar .display-many {
+  margin: 0.5rem;
+  cursor: pointer;
+}
+.shop-page .grid-container {
+  background-color: #f8f8f8;
+  margin: 1rem, 0, 1rem, 0;
+  display: flex;
+  justify-content: center;
+}
+.shop-page .many {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.shop-page .single {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}

@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './Slider.module.css';
 
 const Slider = (props) => {
-    const images = props.images;
+    const [images, setImages] = useState(props.images);
     const amountOfImages = images.length;
 
     const slider = useRef(null)
@@ -28,7 +28,9 @@ const Slider = (props) => {
     };
 
     const getSpecificImage = (childNumber) => {
-        return document.querySelector(`.${styles["image"]} img:nth-child(${childNumber})`);
+        const image = document.querySelector(`.${styles["image"]} img:nth-child(${childNumber})`)
+        console.log(image); ///static/media/product.04842240e8cb9625acb3.png
+        return image;
     }
 
     const getImages = () => {
@@ -78,13 +80,21 @@ const Slider = (props) => {
         moveViewport(currentImage);
     }
 
-
-    useEffect(() => {
+    const initialSettings = () => {
         slider.current = document.querySelector(`.${styles["viewport"]}`);
         image.current = document.querySelector(`.${styles["image"]}`);
         slider.current.style.width = `${getSpecificImage(1).offsetWidth}px`;
         slider.current.style.height = `${getSpecificImage(1).offsetHeight}px`;
-    }, []);
+    }
+
+
+    useEffect(() => {
+        setImages(props.images);
+        slider.current = document.querySelector(`.${styles["viewport"]}`);
+        image.current = document.querySelector(`.${styles["image"]}`);
+        slider.current.style.width = `${getSpecificImage(1).offsetWidth}px`;
+        slider.current.style.height = `${getSpecificImage(1).offsetHeight}px`;
+    }, [props]);
 
     return <div className={`${styles["slider"]}`}>
         <div className={`${styles["viewport"]}`}>

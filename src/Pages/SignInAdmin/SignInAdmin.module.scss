@@ -1,0 +1,17 @@
+@import "../../glodalStyleVariables.scss";
+
+.content-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 7rem;
+  .separator {
+    border-left: 1px solid $border-color;
+    width: 1px;
+    height: 395px;
+    @media screen and (max-width: 850px) {
+      display: none;
+    }
+  }
+}

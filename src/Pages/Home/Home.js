@@ -12,7 +12,7 @@ const Home = () => {
     return <div className={`${styles["home-page"]}`}>
         <div className={styles["top-image"]}>
             <img src={backgroundImg} className={styles["background"]} alt="background" />
-            <Link className={styles['shop_button']} to="/">Shop men's collection</Link>
+            <Link className={styles['shop_button']} to="/shop">Shop men's collection</Link>
         </div>
         <Overview />
         <div className={`${styles["categories"]}`}>

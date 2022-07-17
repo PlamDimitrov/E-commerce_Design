@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './ProductView.module.css';
 import globalStyles from '../../index.module.css';
 
@@ -34,17 +34,20 @@ const ProductView = () => {
   }
 
 
+  const setupImages = () => {
 
-  const imagesToTransfer = [];
-  product.images.map(i => {
-    imagesToTransfer.push({
-      image: i,
-      id: index,
-      alt: "some text"
-    });
-    index++;
+    const imagesToTransfer = [];
+    product.images.map(i => {
+      imagesToTransfer.push({
+        image: i,
+        id: index,
+        alt: "some text"
+      });
+      index++;
+    }
+    )
+    return imagesToTransfer;
   }
-  )
   //---simulation of images from DB... To Be Deleted! Only for test!---
 
   return <div className={styles["product-view"]} >
@@ -52,7 +55,7 @@ const ProductView = () => {
     <div className={globalStyles["content"]} >
       <div className={styles["product"]}>
         <Slider
-          images={imagesToTransfer}
+          images={setupImages()}
         />
         <ProductContent
           title={product.title}

@@ -28,7 +28,6 @@ const ProductSubTabs = (props) => {
     useEffect(() => {
         document.querySelector(`.${styles["tab"]}`).className = `${styles["tab"]} ${styles["active"]}`;
         document.querySelector(`.${styles["description"]}`).className = `${styles["description"]} ${styles["active"]}`;
-        console.log(clearSpaces("asda asdasd"));
     }, [])
 
     return <div className={styles["product-subtabs"]}>

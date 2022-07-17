@@ -1,13 +1,21 @@
-import React from 'react';
-import styles from './PromotedProduct.module.css';
+import React, { useEffect, useState } from 'react';
+import styles from './Product.module.css';
 
 import { Link } from 'react-router-dom';
 
 import backgroundImg from '../../assets/img/home-page/background-home.png';
 
 
-const PromotedProduct = (props) => {
-    return <div className={`${styles["product"]} ${styles[props.size]}`}>
+const Product = (props) => {
+
+    const [size, setSize] = useState(props.size);
+
+    useEffect(() => {
+        setSize(props.size)
+        console.log("I have rerendered!");
+    }, [props.size])
+
+    return <div className={`${styles["product"]} ${styles[size]}`}>
         <Link to={"/product-view"}>
             <img src={backgroundImg} className={styles["product-image"]} alt="background" />
             <div className={`${styles["info"]}`}>
@@ -35,7 +43,7 @@ const PromotedProduct = (props) => {
             </span>
             <div className={styles["action-section"]}>
                 <div className={styles["hover-icon"]}>
-                    <i className="fa-solid fa-cart-shopping"></i>
+                    <i className={`fa-solid fa-cart-shopping ${styles["cart"]}`}></i>
                 </div>
                 <div className={styles["hover-icon"]}>
                     <i className="fa-regular fa-heart"></i>
@@ -48,4 +56,4 @@ const PromotedProduct = (props) => {
     </div>
 };
 
-export default PromotedProduct;
+export default Product;

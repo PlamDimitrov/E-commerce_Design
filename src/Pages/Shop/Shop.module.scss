@@ -1,0 +1,32 @@
+@import "../../glodalStyleVariables.scss";
+
+.shop-page {
+  .actrion-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: $subsection-color;
+    .display-single,
+    .display-many {
+      margin: 0.5rem;
+      cursor: pointer;
+    }
+  }
+  .grid-container {
+    background-color: $subsection-color;
+    margin: 1rem, 0, 1rem, 0;
+    display: flex;
+    justify-content: center;
+  }
+  .many {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .single {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+}
