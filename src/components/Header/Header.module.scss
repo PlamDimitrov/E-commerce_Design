@@ -29,15 +29,17 @@
       justify-content: center;
       align-items: center;
       min-width: 145px;
-      color: #ffffff;
       cursor: pointer;
       font-size: 0.65rem;
-      > i {
-        min-width: 45px;
-        font-size: 0.97rem;
-      }
-      .shoping-status {
-        font-weight: bold;
+      a {
+        color: #ffffff;
+        > i {
+          min-width: 45px;
+          font-size: 0.97rem;
+        }
+        .shoping-status {
+          font-weight: bold;
+        }
       }
 
       .fa-chevron-down {

@@ -28,15 +28,17 @@
   justify-content: center;
   align-items: center;
   min-width: 145px;
-  color: #ffffff;
   cursor: pointer;
   font-size: 0.65rem;
 }
-.header .header-item-container .shoping-cart > i {
+.header .header-item-container .shoping-cart a {
+  color: #ffffff;
+}
+.header .header-item-container .shoping-cart a > i {
   min-width: 45px;
   font-size: 0.97rem;
 }
-.header .header-item-container .shoping-cart .shoping-status {
+.header .header-item-container .shoping-cart a .shoping-status {
   font-weight: bold;
 }
 .header .header-item-container .shoping-cart .fa-chevron-down {

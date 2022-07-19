@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './ProductView.module.css';
 import globalStyles from '../../index.module.css';
 
 import Background from '../../components/Background/Background';
 import Slider from '../../components/Slider/Slider';
+import ProductContent from '../../components/ProductContent/ProductContent';
+import ProductSubTabs from '../../components/ProductSubTabs/ProductSubTabs';
 
 //---simulation of images from DB... To Be Deleted! Only for test!---
 import productImg from '../../assets/img/product.png';
 import category from '../../assets/img/background.png';
-import ProductContent from '../../components/ProductContent/ProductContent';
-import { Link as span } from 'react-router-dom';
-import ProductSubTabs from '../../components/ProductSubTabs/ProductSubTabs';
 //---simulation of images from DB... To Be Deleted! Only for test!---
 
 const ProductView = () => {

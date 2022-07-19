@@ -1,0 +1,76 @@
+@import "../../glodalStyleVariables.scss";
+
+.checkout {
+  background-color: $subsection-color;
+  margin: 4rem auto 4rem auto;
+  padding: 1rem;
+  box-shadow: 15px 15px 40px 2px $title-color;
+  border-radius: 1rem;
+  .products {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    .product {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+      margin: 0.5rem;
+      padding: 1rem;
+      border: 1px dashed $content-color;
+      border-radius: 1rem;
+      img {
+        width: 10rem;
+        border-radius: 0.5rem;
+      }
+      .product-content {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+        .title {
+          color: $content-color;
+          margin: 0 1rem;
+        }
+        input {
+          background-color: transparent;
+          width: 2.5rem;
+          border: 1px solid $content-color;
+          color: $content-color;
+          padding: 0.5rem;
+          &:focus {
+            outline: none;
+          }
+        }
+        span {
+          font-size: 1rem;
+          color: $content-color;
+          margin: 0.8rem 1rem 0 0.5rem;
+        }
+        .hover-icon {
+          padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+          margin: 0 0.5rem;
+          background-color: $title-color;
+          color: white;
+          border-radius: 1rem;
+          width: 0.5rem;
+          font-size: 0.5rem;
+          cursor: pointer;
+          &:hover {
+            background-color: $hover-color;
+          }
+        }
+        .product-remove {
+          font-size: 1.1rem;
+          color: $content-color;
+          i {
+            color: red;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

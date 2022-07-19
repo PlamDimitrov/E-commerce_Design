@@ -17,8 +17,10 @@ const Header = () => {
                 <Link className={styles["header-item"]} to="/sign-in-or-register">Register</Link>
                 <Link className={styles["header-item"]} to="/sign-in-or-register">Sign in</Link>
                 <div className={styles["shoping-cart"]}>
-                    <i className="fa-solid fa-cart-shopping"></i>
-                    <span className={styles["shoping-status"]} >1 item  <i className="fa-solid fa-chevron-down"></i></span>
+                    <Link to="/checkout">
+                        <i className="fa-solid fa-cart-shopping"></i>
+                        <span className={styles["shoping-status"]} >1 item  <i className="fa-solid fa-chevron-down"></i></span>
+                    </Link>
 
                     <div className={styles["dropdown"]}>
                         <h1 className={styles["dropdown-title"]}>Products:</h1>
@@ -50,7 +52,7 @@ const Header = () => {
                                 </span>
                             </span>
                         </div>
-                        <a className={styles["go-to-cart"]} href='./'>Go to cart <i className="fa-solid fa-arrow-right-long"> <i className="fa-solid fa-cart-arrow-down"></i></i></a>
+                        <Link className={styles["go-to-cart"]} to='/checkout'>Go to cart <i className="fa-solid fa-arrow-right-long"> <i className="fa-solid fa-cart-arrow-down"></i></i></Link>
                     </div>
 
                 </div>
