@@ -74,6 +74,21 @@ const Checkout = () => {
                 </div>
             </div>
         </div>
+        <div className={`${styles["total-and-continue"]}`}>
+            <h1>Order information:</h1>
+            <span>Your Order cotains: {"3"} products</span>
+            <span>shiping will cost: {0} $</span>
+
+            <div className={`${styles["total"]}`}>
+                <h1>
+                    Total: <span>1999</span> $
+                </h1>
+            </div>
+            <div className={`${styles["continue"]}`}>
+                <button className={styles['add-to-cart']}><i class="fa-solid fa-forward"></i>Continue</button>
+            </div>
+        </div>
+
     </div >
 };
 
