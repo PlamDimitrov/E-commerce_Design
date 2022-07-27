@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActionTypes, loginSuccess, loginFailure, logoutSuccess, logoutFailure } from './actions';
-import { logInUser, logOutUser } from '../api';
+import { logInUser, logOutUser } from '../../api';
 
 export const StoreContext = React.createContext({});
 
@@ -11,7 +11,7 @@ const initialState = {
 
 let hasError = false;
 
-function init() {
+function init(state) {
   return initialState;
 }
 
@@ -24,6 +24,7 @@ const asyncActionMap = {
         } else {
           hasError = false;
         }
+        console.log(`HERE: ${JSON.stringify(res)}`);
         return res;
       })
       .then(res => res.json())

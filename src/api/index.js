@@ -1,6 +1,6 @@
 import route from './apiRoutes'
 
-const api = (route, method, data) => {
+const call = (route, method, data) => {
     const headers = {
         method: method, // *GET, POST, PUT, DELETE, etc.
         headers: { 'Content-Type': 'application/json' },
@@ -13,18 +13,29 @@ const api = (route, method, data) => {
 }
 
 const post = (route, data) => {
-    return api(route, 'POST', data)
+    return call(route, 'POST', data)
 }
 const get = (route) => {
-    return api(route, 'GET')
+    return call(route, 'GET')
 }
 const put = (route, data) => {
-    return api(route, 'PUT', data)
+    return call(route, 'PUT', data)
 }
 const _delete = (route, data) => {
-    return api(route, 'DELETE', data)
+    return call(route, 'DELETE', data)
 }
 // Services
+
+// Admin
+const registerAdmin = (admin) => {
+    return post(route.adminRegister, admin)
+}
+const logInAdmin = (admin) => {
+    return post(route.adminLogIn, admin)
+}
+const logOutAdmin = () => {
+    return get(route.adminLogOut)
+}
 
 // User
 const registerUser = (user) => {
@@ -88,9 +99,10 @@ const getOneBrand = (brand) => {
     return post(route.brandGetOne, brand).then(res => res.json())
 }
 
-
-
-export {
+const api = {
+    registerAdmin,
+    logInAdmin,
+    logOutAdmin,
     registerUser,
     logInUser,
     createProduct,
@@ -110,3 +122,5 @@ export {
     deleteBrand,
     logOutUser,
 }
+
+export default api;

@@ -26,7 +26,7 @@ function App() {
           <Route path='/shop' element={<Shop />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/sign-in-or-register' element={<SignInOrRegister />} />
-          <Route path='/sign-in-admin' element={<SignInAdmin />} />
+          <Route path='/admin' element={<SignInAdmin />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />

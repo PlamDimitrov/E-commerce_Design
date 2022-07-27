@@ -20,7 +20,7 @@
 .sign-in form .input-container {
   width: 94%;
 }
-.sign-in form .input-container .email,
+.sign-in form .input-container .user-name,
 .sign-in form .input-container .password {
   width: 100%;
   margin: 0.85rem;
@@ -28,7 +28,7 @@
   border: 1px solid #e7e7e7;
   padding: 0.5rem;
 }
-.sign-in form .input-container .email:focus,
+.sign-in form .input-container .user-name:focus,
 .sign-in form .input-container .password:focus {
   outline: none;
 }
