@@ -1,13 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './SingIn.module.css';
+import { StoreContext } from "../../globalFunctions/Store/Store";
+
 import getDataFromForm from '../../globalFunctions/formsHanler';
 
 const SingIn = (props) => {
-    let userNameInput = useRef(null);
-    let passwordInput = useRef(null);
+    const { state, dispatch } = React.useContext(StoreContext);
     const [userName, setUserName] = useState(null);
     const [password, setPassword] = useState(null);
-    const signInCall = props.call;
+    const loginCall = props.call;
+
+    let userNameInput = useRef(null);
+    let passwordInput = useRef(null);
 
     const getUserName = (event) => {
         setUserName(userNameInput.current.value);
@@ -24,12 +28,10 @@ const SingIn = (props) => {
             password: password
         };
         try {
-            console.log(user);
-            signInCall(user);
+            dispatch(loginCall(user));
         } catch (error) {
-            console.log(`Error:aaa ${error}`);
+            console.log(`Login error: ${error}`);
         }
-        // console.log(signInCall);
     };
 
     useEffect(() => {
