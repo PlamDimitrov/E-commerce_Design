@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import styles from './SingIn.module.css';
 import { StoreContext } from "../../globalFunctions/Store/Store";
 
 import getDataFromForm from '../../globalFunctions/formsHanler';
 
 const SingIn = (props) => {
+    const navigate = useNavigate();
     const { state, dispatch } = React.useContext(StoreContext);
     const [userName, setUserName] = useState(null);
     const [password, setPassword] = useState(null);
@@ -43,10 +46,11 @@ const SingIn = (props) => {
         <form onSubmit={submit}>
             <h1 className={styles['title']}>Sign in</h1>
             <div className={styles['input-container']}>
-                <input onChange={getUserName} className={`${styles["user-name"]} ${styles["error"]}`} required placeholder="Your Username.." autoComplete="off" />
+                {state.error ? <p>Wrong username or password</p> : ""}
+                <input onChange={getUserName} className={`${styles["user-name"]} ${state.error ? styles["error"] : ""}`} required placeholder="Your Username.." autoComplete="off" />
             </div>
             <div className={styles['input-container']}>
-                <input onChange={getPassword} className={styles['password']} type="password" required placeholder="Your password.." autoComplete="off" />
+                <input onChange={getPassword} className={`${styles['password']} ${state.error ? styles["error"] : ""}`} type="password" required placeholder="Your password.." autoComplete="off" />
             </div>
             <div className={styles['action-bar']}>
                 <button className={styles['sign-in_button']}>Sign In</button>

@@ -19,6 +19,13 @@
     }
     .input-container {
       width: 94%;
+      p {
+        display: flex;
+        justify-content: center;
+        color: red;
+        font-size: 0.8rem;
+        text-transform: lowercase;
+      }
       .user-name,
       .password {
         width: 100%;

@@ -20,6 +20,13 @@
 .sign-in form .input-container {
   width: 94%;
 }
+.sign-in form .input-container p {
+  display: flex;
+  justify-content: center;
+  color: red;
+  font-size: 0.8rem;
+  text-transform: lowercase;
+}
 .sign-in form .input-container .user-name,
 .sign-in form .input-container .password {
   width: 100%;
