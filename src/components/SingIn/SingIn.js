@@ -32,6 +32,7 @@ const SingIn = (props) => {
         };
         try {
             dispatch(loginCall(user));
+            console.log(state.error);
         } catch (error) {
             console.log(`Login error: ${error}`);
         }
@@ -46,7 +47,7 @@ const SingIn = (props) => {
         <form onSubmit={submit}>
             <h1 className={styles['title']}>Sign in</h1>
             <div className={styles['input-container']}>
-                {state.error ? <p>Wrong username or password</p> : ""}
+                {state.error ? <p>{state.error}</p> : ""}
                 <input onChange={getUserName} className={`${styles["user-name"]} ${state.error ? styles["error"] : ""}`} required placeholder="Your Username.." autoComplete="off" />
             </div>
             <div className={styles['input-container']}>

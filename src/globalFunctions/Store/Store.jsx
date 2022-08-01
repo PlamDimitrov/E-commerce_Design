@@ -5,8 +5,12 @@ import {
   loginFailure,
   logoutSuccess,
   logoutFailure,
+  loginFailureAdmin,
+  loginSuccessAdmin,
 } from "./actions";
 import api from "../../api";
+
+import handleError from "../serverErrors"
 
 export const StoreContext = React.createContext({});
 
@@ -28,14 +32,13 @@ const asyncActionMap = {
       .then((res) => {
         if (res.status === 401) {
           hasError = true;
+          return res;
         } else {
           hasError = false;
+          return res.json();
         }
-        console.log(`HERE: ${JSON.stringify(res)}`);
-        return res;
       })
-      .then((res) => res.json())
-      .then((res) => (hasError ? loginFailure(res) : loginSuccess(res)))
+      .then((res) => (hasError ? loginFailure(handleError(res.status)) : loginSuccess(res)))
       .catch((error) => loginFailure(error)),
   [ActionTypes.Logout]: () =>
     api
@@ -48,14 +51,14 @@ const asyncActionMap = {
       .then((res) => {
         if (res.status === 401) {
           hasError = true;
+          return res;
         } else {
           hasError = false;
+          return res.json();
         }
-        return res;
       })
-      .then((res) => res.json())
-      .then((res) => (hasError ? loginFailure(res) : loginSuccess(res)))
-      .catch((error) => loginFailure(error)),
+      .then((res) => (hasError ? loginFailureAdmin(handleError(res.status)) : loginSuccessAdmin(res)))
+      .catch((error) => loginFailureAdmin(error)),
   [ActionTypes.LogoutAdmin]: () =>
     api
       .logOutAdmin()
