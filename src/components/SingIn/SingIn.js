@@ -32,7 +32,7 @@ const SingIn = (props) => {
         };
         try {
             dispatch(loginCall(user));
-            console.log(state.error);
+            console.log(state);
         } catch (error) {
             console.log(`Login error: ${error}`);
         }
