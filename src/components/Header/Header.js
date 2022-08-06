@@ -5,17 +5,32 @@ import styles from './Header.module.css';
 import globalStyles from '../../index.module.css';
 
 import product from '../../assets/img/product.png';
+import { StoreContext } from "../../globalFunctions/Store/Store";
 
 
 const Header = () => {
-    const removeItem = () => {
-        console.log("Removed");
+    const { state, dispatch } = React.useContext(StoreContext);
+    const user = state.user;
+
+    const userLoggedIn = () => {
+        return <Link className={styles["header-item"]} to="/sign-in-or-register">Welcome, {user.userName}</Link>
     }
+
+    const userNotLoggedIn = () => {
+        return <>
+            <Link className={styles["header-item"]} to="/sign-in-or-register">Register</Link>
+            <Link className={styles["header-item"]} to="/sign-in-or-register">Sign in</Link>
+        </>
+    }
+
+    const removeItem = () => {
+        console.log(state);
+    }
+
     return <div className={styles["header"]}>
         <div className={globalStyles["content"]}>
             <div className={styles["header-item-container"]}>
-                <Link className={styles["header-item"]} to="/sign-in-or-register">Register</Link>
-                <Link className={styles["header-item"]} to="/sign-in-or-register">Sign in</Link>
+                {user ? userLoggedIn() : userNotLoggedIn()}
                 <div className={styles["shoping-cart"]}>
                     <Link to="/checkout">
                         <i className="fa-solid fa-cart-shopping"></i>

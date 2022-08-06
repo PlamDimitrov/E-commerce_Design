@@ -61,7 +61,7 @@ const asyncActionMap = {
       .logOutUser()
       .then(() => logoutSuccess())
       .catch((error) => logoutFailure(error)),
-  [ActionTypes.LoginAdmin]: ({ user }) => {
+  [ActionTypes.LoginAdmin]: ({ user }) =>
     api
       .logInAdmin(user)
       .then((res) => {
@@ -74,8 +74,7 @@ const asyncActionMap = {
         }
       })
       .then((res) => (hasError ? loginFailureAdmin(handleError(res.status)) : loginSuccessAdmin(res)))
-      .catch((error) => loginFailureAdmin(error))
-  },
+      .catch((error) => loginFailureAdmin(error)),
 
   [ActionTypes.LogoutAdmin]: () =>
     api
@@ -109,10 +108,8 @@ const Store = ({ children }) => {
       state,
       dispatch: (action) => {
         const asyncActionHandler = asyncActionMap[action.type];
-        debugger;
         if (asyncActionHandler) {
-          asyncActionHandler(action.payload)
-            .then(dispatch)
+          asyncActionHandler(action.payload).then(dispatch)
             .catch(error => console.log(`asyncActionHandler problem: ${error}`));
         }
         dispatch(action);

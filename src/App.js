@@ -1,7 +1,7 @@
 import './App.module.css';
 import { Routes, Route } from "react-router-dom";
 import Store, { StoreContext } from "./globalFunctions/Store/Store";
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import Auth from "./globalFunctions/Authenticator";
 
 import SignInOrRegister from './Pages/SignInOrRegister/SignInOrRegister';
@@ -31,18 +31,18 @@ const content = () => {
     </Routes>
     <Footer />
   </Fragment>
-
 };
+
 
 function App() {
   return (
     <div className="App">
       <Store>
-        {/* <Auth> */}
-        <StoreContext.Consumer>
-          {content}
-        </StoreContext.Consumer>
-        {/* </Auth> */}
+        <Auth>
+          <StoreContext.Consumer>
+            {content}
+          </StoreContext.Consumer>
+        </Auth>
       </Store>
     </div>
   );
