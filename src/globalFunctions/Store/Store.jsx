@@ -10,7 +10,7 @@ import {
 } from "./actions";
 import api from "../../api";
 
-import handleError from "../serverErrors"
+import handleError from "../serverErrors";
 
 export const StoreContext = React.createContext({});
 
@@ -25,22 +25,6 @@ function init() {
   return initialState;
 }
 
-const loginAdminLogic = ({ user }) => {
-  api
-    .logInAdmin(user)
-    .then((res) => {
-      if (res.status === 401) {
-        hasError = true;
-        return res;
-      } else {
-        hasError = false;
-        return res.json();
-      }
-    })
-    .then((res) => (hasError ? loginFailureAdmin(handleError(res.status)) : loginSuccessAdmin(res)))
-    .catch((error) => loginFailureAdmin(error))
-};
-
 const asyncActionMap = {
   [ActionTypes.Login]: ({ user }) =>
     api
@@ -54,7 +38,9 @@ const asyncActionMap = {
           return res.json();
         }
       })
-      .then((res) => (hasError ? loginFailure(handleError(res.status)) : loginSuccess(res)))
+      .then((res) =>
+        hasError ? loginFailure(handleError(res.status)) : loginSuccess(res)
+      )
       .catch((error) => loginFailure(error)),
   [ActionTypes.Logout]: () =>
     api
@@ -73,7 +59,11 @@ const asyncActionMap = {
           return res.json();
         }
       })
-      .then((res) => (hasError ? loginFailureAdmin(handleError(res.status)) : loginSuccessAdmin(res)))
+      .then((res) =>
+        hasError
+          ? loginFailureAdmin(handleError(res.status))
+          : loginSuccessAdmin(res)
+      )
       .catch((error) => loginFailureAdmin(error)),
 
   [ActionTypes.LogoutAdmin]: () =>
@@ -109,8 +99,11 @@ const Store = ({ children }) => {
       dispatch: (action) => {
         const asyncActionHandler = asyncActionMap[action.type];
         if (asyncActionHandler) {
-          asyncActionHandler(action.payload).then(dispatch)
-            .catch(error => console.log(`asyncActionHandler problem: ${error}`));
+          asyncActionHandler(action.payload)
+            .then(dispatch)
+            .catch((error) =>
+              console.log(`asyncActionHandler problem: ${error}`)
+            );
         }
         dispatch(action);
       },

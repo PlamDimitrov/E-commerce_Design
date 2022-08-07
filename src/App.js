@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Store, { StoreContext } from "./globalFunctions/Store/Store";
 import { Fragment, useEffect } from 'react';
 import Auth from "./globalFunctions/Authenticator";
+import cookieParser from "./globalFunctions/cookieParser";
 
 import SignInOrRegister from './Pages/SignInOrRegister/SignInOrRegister';
 import SignInAdmin from './Pages/SignInAdmin/SignInAdmin';
