@@ -11,6 +11,9 @@ const Login = (props) => {
     const { state, dispatch } = React.useContext(StoreContext);
     const [userName, setUserName] = useState(null);
     const [password, setPassword] = useState(null);
+    const [error, setError] = useState(state.error);
+
+
     const loginCall = props.call;
 
     let userNameInput = useRef(null);
@@ -32,18 +35,24 @@ const Login = (props) => {
         };
         try {
             dispatch(loginCall(user));
-            if (!state.error) {
-                navigate("/");
-            }
+
         } catch (error) {
             console.log(`Login error: ${error}`);
         }
     };
 
+    const redirectAfterLogin = (condition) => {
+        if (condition) {
+            navigate("/");
+        }
+    }
+
     useEffect(() => {
         userNameInput.current = document.querySelector(`.${styles["user-name"]}`);
         passwordInput.current = document.querySelector(`.${styles["password"]}`);
-    }, [])
+        setError(state.error);
+        redirectAfterLogin(error);
+    }, [state])
 
     return <div className={styles["sign-in"]}>
         <form onSubmit={submit}>

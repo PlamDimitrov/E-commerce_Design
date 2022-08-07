@@ -1,12 +1,11 @@
 import './App.module.css';
 import { Routes, Route } from "react-router-dom";
 import Store, { StoreContext } from "./globalFunctions/Store/Store";
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import Auth from "./globalFunctions/Authenticator";
-import cookieParser from "./globalFunctions/cookieParser";
 
-import SignInOrRegister from './Pages/SignInOrRegister/SignInOrRegister';
-import SignInAdmin from './Pages/SignInAdmin/SignInAdmin';
+import LoginOrRegister from './Pages/LoginOrRegister/LoginOrRegister';
+import LoginAdmin from './Pages/LoginAdmin/LoginAdmin';
 import Shop from './Pages/Shop/Shop';
 import Header from './components/Header/Header';
 import Navigation from './components/Navigation/Navigation';
@@ -26,8 +25,8 @@ const content = () => {
       <Route path='/product-view' element={<ProductView />} />
       <Route path='/shop' element={<Shop />} />
       <Route path='/checkout' element={<Checkout />} />
-      <Route path='/sign-in-or-register' element={<SignInOrRegister />} />
-      <Route path='/admin' element={<SignInAdmin />} />
+      <Route path='/sign-in-or-register' element={<LoginOrRegister />} />
+      <Route path='/admin' element={<LoginAdmin />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
     <Footer />

@@ -12,7 +12,6 @@ const Product = (props) => {
 
     useEffect(() => {
         setSize(props.size)
-        console.log("I have rerendered!");
     }, [props.size])
 
     return <div className={`${styles["product"]} ${styles[size]}`}>
