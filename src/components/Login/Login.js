@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import styles from './Login.module.css';
 import { StoreContext } from "../../globalFunctions/Store/Store";
+import handleError from "../../globalFunctions/serverErrors";
+import styles from './Login.module.css';
 
 import getDataFromForm from '../../globalFunctions/formsHanler';
 
@@ -11,10 +11,12 @@ const Login = (props) => {
     const { state, dispatch } = React.useContext(StoreContext);
     const [userName, setUserName] = useState(null);
     const [password, setPassword] = useState(null);
-    const [error, setError] = useState(state.error);
+    const [error, setError] = useState(null);
 
 
-    const loginCall = props.call;
+    const loginCall = props.loginCall;
+    const storeCallSuccess = props.storeCallSuccess;
+    const storeCallFailure = props.storeCallFailure;
 
     let userNameInput = useRef(null);
     let passwordInput = useRef(null);
@@ -33,32 +35,34 @@ const Login = (props) => {
             userName: userName,
             password: password
         };
-        try {
-            dispatch(loginCall(user));
-
-        } catch (error) {
-            console.log(`Login error: ${error}`);
-        }
+        loginCall(user)
+            .then(res => {
+                if (res.status >= 200 && res.status < 300) {
+                    setError(null);
+                    navigate("/");
+                    return res.json();
+                } else {
+                    const errorMessage = handleError(res.status);
+                    setError(errorMessage);
+                    dispatch(storeCallFailure(res));
+                }
+            })
+            .then(res => {
+                dispatch(storeCallSuccess(res));
+            })
+            .catch(err => console.log(`LoginError: ${err}`))
     };
-
-    const redirectAfterLogin = (condition) => {
-        if (condition) {
-            navigate("/");
-        }
-    }
 
     useEffect(() => {
         userNameInput.current = document.querySelector(`.${styles["user-name"]}`);
         passwordInput.current = document.querySelector(`.${styles["password"]}`);
-        setError(state.error);
-        redirectAfterLogin(error);
     }, [state])
 
     return <div className={styles["sign-in"]}>
+        {error ? <p>{error}</p> : ""}
         <form onSubmit={submit}>
             <h1 className={styles['title']}>Sign in</h1>
             <div className={styles['input-container']}>
-                {state.error ? <p>Wrong username or password</p> : ""}
                 <input onChange={getUserName} className={`${styles["user-name"]} ${state.error ? styles["error"] : ""}`} required placeholder="Your Username.." autoComplete="off" />
             </div>
             <div className={styles['input-container']}>

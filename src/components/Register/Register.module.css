@@ -21,6 +21,7 @@
   width: 94%;
 }
 .register form .input-container .email,
+.register form .input-container .user-name,
 .register form .input-container .password {
   width: 100%;
   margin: 0.85rem;
@@ -29,6 +30,7 @@
   padding: 0.5rem;
 }
 .register form .input-container .email:focus,
+.register form .input-container .user-name:focus,
 .register form .input-container .password:focus {
   outline: none;
 }

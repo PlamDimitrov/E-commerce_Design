@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './LoginOrRegister.module.css';
-import { login } from '../../globalFunctions/Store/actions';
+import { loginFailure, loginSuccess } from '../../globalFunctions/Store/actions';
+import api from '../../api';
 
 import Background from '../../components/Background/Background';
 import Login from '../../components/Login/Login';
@@ -10,10 +11,17 @@ const LoginOrRegister = () => {
     return <div >
         <Background titleString="Welcome to Ave" pageName="Sign in or register" />
         <div className={styles["content-container"]}>
-            <Login call={login} />
+            <Login {...{
+                loginCall: api.logIn,
+                storeCallSuccess: loginSuccess,
+                storeCallFailure: loginFailure
+            }} />
             <div className={styles["separator"]}>
             </div>
-            <Register />
+            <Register {...{
+                loginCall: api.logIn,
+                storeCallSuccess: loginSuccess,
+            }} />
         </div>
     </div>
 };
