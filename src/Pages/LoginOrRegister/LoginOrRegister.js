@@ -12,14 +12,15 @@ const LoginOrRegister = () => {
         <Background titleString="Welcome to Ave" pageName="Sign in or register" />
         <div className={styles["content-container"]}>
             <Login {...{
-                loginCall: api.logIn,
+                loginCall: api.logInUser,
                 storeCallSuccess: loginSuccess,
                 storeCallFailure: loginFailure
             }} />
             <div className={styles["separator"]}>
             </div>
             <Register {...{
-                loginCall: api.logIn,
+                registerCall: api.registerUser,
+                loginCall: api.logInUser,
                 storeCallSuccess: loginSuccess,
             }} />
         </div>
