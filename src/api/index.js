@@ -34,7 +34,7 @@ const logInAdmin = (admin) => {
     return post(route.adminLogIn, admin)
 }
 const logOutAdmin = () => {
-    return get(route.adminLogOut)
+    return post(route.adminLogOut)
 }
 
 // User
@@ -45,7 +45,7 @@ const logInUser = (user) => {
     return post(route.userLogIn, user)
 }
 const logOutUser = () => {
-    return get(route.userLogOut)
+    return post(route.userLogOut)
 }
 
 // Product

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import globalStyles from '../../index.module.css';
 
+import { logout, logoutAdmin } from "../../globalFunctions/Store/actions";
 import product from '../../assets/img/product.png';
 import { StoreContext } from "../../globalFunctions/Store/Store";
 
@@ -12,8 +13,25 @@ const Header = () => {
     const { state, dispatch } = React.useContext(StoreContext);
     const user = state.user;
 
+    const logOut = () => {
+        const hasUserCookie = !!document.cookie.match(
+            /^(.*;)?\s*user-info\s*=\s*[^;]+(.*)?$/
+        );
+        const hasAdminCookie = !!document.cookie.match(
+            /^(.*;)?\s*admin-info\s*=\s*[^;]+(.*)?$/
+        );
+        if (hasUserCookie) {
+            dispatch(logout());
+        } else if (hasAdminCookie) {
+            dispatch(logoutAdmin());
+        }
+    }
+
     const userLoggedIn = () => {
-        return <Link className={styles["header-item"]} to="/sign-in-or-register">Welcome, {user.userName}</Link>
+        return <>
+            <Link className={styles["header-item"]} to="/admin/profile">Welcome, {user.userName}</Link>
+            <Link onClick={logOut} className={styles["header-item"]} to="#">Logout</Link>
+        </>
     }
 
     const userNotLoggedIn = () => {
@@ -69,7 +87,6 @@ const Header = () => {
                         </div>
                         <Link className={styles["go-to-cart"]} to='/checkout'>Go to cart <i className="fa-solid fa-arrow-right-long"> <i className="fa-solid fa-cart-arrow-down"></i></i></Link>
                     </div>
-
                 </div>
             </div>
         </div>

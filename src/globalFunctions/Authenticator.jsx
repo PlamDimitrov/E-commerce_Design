@@ -31,10 +31,10 @@ const Auth = ({ children }) => {
   };
 
   React.useEffect(() => {
-    const hasUserCookie = document.cookie.match(
+    const hasUserCookie = !!document.cookie.match(
       /^(.*;)?\s*user-info\s*=\s*[^;]+(.*)?$/
     );
-    const hasAdminCookie = document.cookie.match(
+    const hasAdminCookie = !!document.cookie.match(
       /^(.*;)?\s*admin-info\s*=\s*[^;]+(.*)?$/
     );
     if (hasUserCookie) {
