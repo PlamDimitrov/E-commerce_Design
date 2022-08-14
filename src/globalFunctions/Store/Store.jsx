@@ -17,6 +17,7 @@ export const StoreContext = React.createContext({});
 const initialState = {
   user: undefined,
   error: null,
+  isAdmin: false,
 };
 
 let hasError = false;

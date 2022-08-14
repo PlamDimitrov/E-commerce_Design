@@ -26,7 +26,7 @@ export const logoutSuccess = () => ({ type: ActionTypes.LogoutSuccess, payload: 
 
 export const loginAdmin = (user) => ({ type: ActionTypes.LoginAdmin, payload: { user } });
 export const loginFailureAdmin = (error) => ({ type: ActionTypes.LoginFailureAdmin, payload: { error } });
-export const loginSuccessAdmin = (user) => ({ type: ActionTypes.LoginSuccessAdmin, payload: { user } });
+export const loginSuccessAdmin = (user) => ({ type: ActionTypes.LoginSuccessAdmin, payload: { user, isAdmin: true } });
 
 export const logoutAdmin = () => ({ type: ActionTypes.LogoutAdmin, payload: undefined });
 export const logoutFailureAdmin = (error) => ({ type: ActionTypes.LogoutFailureAdmin, payload: { error } });

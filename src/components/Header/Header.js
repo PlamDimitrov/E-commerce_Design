@@ -29,7 +29,7 @@ const Header = () => {
 
     const userLoggedIn = () => {
         return <>
-            <Link className={styles["header-item"]} to="/admin/profile">Welcome, {user.userName}</Link>
+            <Link className={styles["header-item"]} to="/admin/control-panel">Welcome, {user.userName}</Link>
             <Link onClick={logOut} className={styles["header-item"]} to="#">Logout</Link>
         </>
     }

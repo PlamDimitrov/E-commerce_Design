@@ -12,9 +12,10 @@ import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
 
 import Home from './Pages/Home/Home';
-import NotFound from './Pages/NotFound/NotFound';
 import ProductView from './Pages/ProductView/ProductView';
 import Checkout from './Pages/Checkout/Checkout';
+import AdminPanel from './Pages/AdminPanel/AdminPanel';
+import NotFound from './Pages/NotFound/NotFound';
 
 const content = () => {
   return <Fragment>
@@ -27,6 +28,7 @@ const content = () => {
       <Route path='/checkout' element={<Checkout />} />
       <Route path='/sign-in-or-register' element={<LoginOrRegister />} />
       <Route path='/admin' element={<LoginAdmin />} />
+      <Route path='/admin/control-panel' element={<AdminPanel />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
     <Footer />

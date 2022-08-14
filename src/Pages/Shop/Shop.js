@@ -49,7 +49,7 @@ const Shop = () => {
     return <div className={`${styles["shop-page"]} ${global["content"]}`}>
         <div className={`${styles["actrion-bar"]}`}>
             <div onClick={() => changeGrid("grid")} className={`${styles["display-many"]}`}>
-                <i class="fa-solid fa-table-cells"></i>
+                <i className="fa-solid fa-table-cells"></i>
             </div>
             <div onClick={() => changeGrid("many")} className={`${styles["display-many"]}`}>
                 <i className="fa-solid fa-table-cells-large"></i>
