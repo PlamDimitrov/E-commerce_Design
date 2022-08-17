@@ -17,7 +17,7 @@ export const StoreContext = React.createContext({});
 const initialState = {
   user: undefined,
   error: null,
-  isAdmin: false,
+  role: null,
 };
 
 let hasError = false;
@@ -76,14 +76,38 @@ const asyncActionMap = {
 
 const actionMap = {
   [ActionTypes.Login]: (state) => ({ ...state, error: null }),
-  [ActionTypes.LoginSuccess]: (state, { user }) => ({ ...state, user }),
-  [ActionTypes.LogoutSuccess]: (state) => ({ ...state, user: null }),
-  [ActionTypes.LoginFailure]: (state, { error }) => ({ ...state, error }),
+  [ActionTypes.LoginSuccess]: (state, { user }) => ({
+    ...state,
+    user,
+    role: "user",
+  }),
+  [ActionTypes.LogoutSuccess]: (state) => ({
+    ...state,
+    user: null,
+    role: null,
+  }),
+  [ActionTypes.LoginFailure]: (state, { error }) => ({
+    ...state,
+    error,
+    role: null,
+  }),
 
   [ActionTypes.LoginAdmin]: (state) => ({ ...state, error: null }),
-  [ActionTypes.LoginSuccessAdmin]: (state, { user }) => ({ ...state, user }),
-  [ActionTypes.LogoutSuccessAdmin]: (state) => ({ ...state, user: null }),
-  [ActionTypes.LoginFailureAdmin]: (state, { error }) => ({ ...state, error }),
+  [ActionTypes.LoginSuccessAdmin]: (state, { user }) => ({
+    ...state,
+    user,
+    role: "admin",
+  }),
+  [ActionTypes.LogoutSuccessAdmin]: (state) => ({
+    ...state,
+    user: null,
+    role: null,
+  }),
+  [ActionTypes.LoginFailureAdmin]: (state, { error }) => ({
+    ...state,
+    error,
+    role: null,
+  }),
 };
 
 const storeReducer = (state, action) => {

@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StoreContext } from "../../globalFunctions/Store/Store";
+
 import styles from './FileUploader.module.css';
+import globalStyles from '../../index.module.css';
+
 import api from '../../api';
+
+import avatar from '../../assets/img/Avatar.jpg';
 
 
 const FileUploader = () => {
@@ -25,10 +30,14 @@ const FileUploader = () => {
       .then(res => setImg(`data:image/png;base64, ${res.image}`))
   };
 
-  return <div >
+  useEffect(() => {
+    state.user ? console.log(state) : console.log("no")
+  }, [state])
+
+  return <div className={`${styles["profile"]} ${globalStyles["content"]}`}>
     <input onChange={onChangeHandler} multiple className='input' type="file" />
     <button type='button' onClick={onClickHandler}>Submit</button>
-    <img src={img} alt="sd" />
+    {state.user ? <img src={img} alt="profile_picture" /> : <img src={avatar} alt="profile_picture" />}
   </div >
 };
 
