@@ -92,7 +92,11 @@ const actionMap = {
     role: null,
   }),
 
-  [ActionTypes.LoginAdmin]: (state) => ({ ...state, error: null }),
+  [ActionTypes.LoginAdmin]: (state) => ({
+    ...state,
+    error: null,
+    role: "admin",
+  }),
   [ActionTypes.LoginSuccessAdmin]: (state, { user }) => ({
     ...state,
     user,

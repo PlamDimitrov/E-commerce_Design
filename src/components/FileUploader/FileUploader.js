@@ -7,37 +7,58 @@ import globalStyles from '../../index.module.css';
 import api from '../../api';
 
 import avatar from '../../assets/img/Avatar.jpg';
+import cookieParser from '../../globalFunctions/cookieParser';
+import checkCurrentUser from '../../globalFunctions/checkCurrentUser';
 
 
 const FileUploader = () => {
-  const { state, dispatch } = React.useContext(StoreContext);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [img, setImg] = useState(null);
+  const [profilePicture, setProfilePicture] = useState(null);
+  const userId = useRef(null);
+
+  const setUserId = () => {
+    const userType = checkCurrentUser();
+    if (userType === "User") {
+      userId.current = cookieParser("user-info").Id;
+    } else if (userType === "Admin") {
+      userId.current = cookieParser("admin-info").Id;
+    }
+  };
+  const getUser = () => {
+    setUserId();
+    api.getCurrentAdmin(userId.current)
+      .then(res => res.json())
+      .then(res => setProfilePicture(`data:image/png;base64, ${res.image}`));
+  }
 
   const onChangeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
   };
   const onClickHandler = () => {
     const data = new FormData();
+    console.log('test');
     data.append("image", selectedFile);
     fetch("https://localhost:7044/api/Admins/uploadProfilePicture", {
       method: 'POST',
-      // headers: { 'Content-Type': 'image/jpeg' },
       credentials: 'include',
       body: data
     })
       .then(res => res.json())
-      .then(res => setImg(`data:image/png;base64, ${res.image}`))
+      .then(res => setProfilePicture(`data:image/png;base64, ${res.image}`))
+    getUser();
   };
 
   useEffect(() => {
-    state.user ? console.log(state) : console.log("no")
-  }, [state])
+    getUser();
+  }, [])
 
-  return <div className={`${styles["profile"]} ${globalStyles["content"]}`}>
+  return <div className={`${styles["profile-pucture"]} ${globalStyles["content"]}`}>
     <input onChange={onChangeHandler} multiple className='input' type="file" />
     <button type='button' onClick={onClickHandler}>Submit</button>
-    {state.user ? <img src={img} alt="profile_picture" /> : <img src={avatar} alt="profile_picture" />}
+    <div className={`${styles["input-drop"]}`}>
+      <input onDrop={onChangeHandler} onChange={onChangeHandler} multiple type="file" />
+      {!!profilePicture ? <img onDrop={onChangeHandler} src={profilePicture} alt="profile_picture" /> : <img src={avatar} alt="profile_picture" />}
+    </div>
   </div >
 };
 

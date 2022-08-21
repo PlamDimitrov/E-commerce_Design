@@ -1,7 +1,7 @@
 import './App.module.css';
 import { Routes, Route } from "react-router-dom";
 import Store, { StoreContext } from "./globalFunctions/Store/Store";
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import Auth from "./globalFunctions/Authenticator";
 
 import LoginOrRegister from './Pages/LoginOrRegister/LoginOrRegister';
@@ -17,7 +17,11 @@ import Checkout from './Pages/Checkout/Checkout';
 import AdminPanel from './Pages/AdminPanel/AdminPanel';
 import NotFound from './Pages/NotFound/NotFound';
 
-const content = () => {
+
+const content = ({ state }) => {
+  let isAdmin = state.role === "admin";
+  let isUser = state.role === "user";
+
   return <Fragment>
     <Header />
     <Navigation />
@@ -28,13 +32,12 @@ const content = () => {
       <Route path='/checkout' element={<Checkout />} />
       <Route path='/sign-in-or-register' element={<LoginOrRegister />} />
       <Route path='/admin' element={<LoginAdmin />} />
-      <Route path='/admin/control-panel' element={<AdminPanel />} />
+      <Route path='/admin/control-panel' element={isAdmin ? <AdminPanel /> : <NotFound />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
     <Footer />
   </Fragment>
 };
-
 
 function App() {
   return (

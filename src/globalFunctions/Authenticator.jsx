@@ -7,6 +7,7 @@ import {
   loginSuccess,
 } from "./Store/actions";
 import cookieParser from "./cookieParser";
+import checkCurrentUser from "./checkCurrentUser";
 
 const Auth = ({ children }) => {
   const { dispatch } = React.useContext(StoreContext);
@@ -30,28 +31,24 @@ const Auth = ({ children }) => {
       });
   };
 
-  React.useEffect(() => {
-    const hasUserCookie = !!document.cookie.match(
-      /^(.*;)?\s*user-info\s*=\s*[^;]+(.*)?$/
-    );
-    const hasAdminCookie = !!document.cookie.match(
-      /^(.*;)?\s*admin-info\s*=\s*[^;]+(.*)?$/
-    );
-    if (hasUserCookie) {
+  useEffect(() => {
+    if (checkCurrentUser() === "User") {
       const userInfo = cookieParser("user-info");
+      userInfo.password = "****";
       authenticate(
         "https://localhost:7044/api/Users/auth",
         userInfo,
-        loginSuccessAdmin,
-        loginFailureAdmin
+        loginSuccess,
+        loginFailure
       );
-    } else if (hasAdminCookie) {
+    } else if (checkCurrentUser() === "Admin") {
       const adminInfo = cookieParser("admin-info");
+      adminInfo.password = "****";
       authenticate(
         "https://localhost:7044/api/Admins/auth",
         adminInfo,
-        loginSuccess,
-        loginFailure
+        loginSuccessAdmin,
+        loginFailureAdmin
       );
     }
   }, []);

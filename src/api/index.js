@@ -36,6 +36,9 @@ const logInAdmin = (admin) => {
 const logOutAdmin = () => {
     return post(route.adminLogOut)
 }
+const getCurrentAdmin = (id) => {
+    return get(route.admin + `/${id}`)
+}
 
 // User
 const registerUser = (user) => {
@@ -103,6 +106,7 @@ const api = {
     registerAdmin,
     logInAdmin,
     logOutAdmin,
+    getCurrentAdmin,
     registerUser,
     logInUser,
     createProduct,
