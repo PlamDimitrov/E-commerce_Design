@@ -50,6 +50,9 @@ const logInUser = (user) => {
 const logOutUser = () => {
     return post(route.userLogOut)
 }
+const getCurrentUser = (id) => {
+    return get(route.user + `/${id}`)
+}
 
 // Product
 const createProduct = (product) => {
@@ -103,28 +106,34 @@ const getOneBrand = (brand) => {
 }
 
 const api = {
+    // Admin
     registerAdmin,
     logInAdmin,
     logOutAdmin,
     getCurrentAdmin,
+    //User
     registerUser,
     logInUser,
+    logOutUser,
+    getCurrentUser,
+    //Product
     createProduct,
     getAllProducts,
     getOneProduct,
+    editProduct,
+    deleteProduct,
+    //Category
     createCategory,
     getAllCategories,
     getOneCategory,
+    editCategory,
+    deleteCategory,
+    //Brand
     createBrand,
     getAllBrands,
     getOneBrand,
-    editProduct,
-    deleteProduct,
-    editCategory,
-    deleteCategory,
     editBrand,
     deleteBrand,
-    logOutUser,
 }
 
 export default api;

@@ -12,52 +12,88 @@ import checkCurrentUser from '../../globalFunctions/checkCurrentUser';
 
 
 const FileUploader = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [profilePicture, setProfilePicture] = useState(null);
+  const { state } = React.useContext(StoreContext);
+  let isAdmin = state.role === "admin";
+  let isUser = state.role === "user";
+  const [selectedFile, setSelectedFile] = useState(false);
+  const [profilePicture, setProfilePicture] = useState(false);
   const userId = useRef(null);
+  const userType = useRef("");
 
   const setUserId = () => {
-    const userType = checkCurrentUser();
-    if (userType === "User") {
+    if (userType.current === "User") {
       userId.current = cookieParser("user-info").Id;
-    } else if (userType === "Admin") {
+    } else if (userType.current === "Admin") {
       userId.current = cookieParser("admin-info").Id;
     }
   };
   const getUser = () => {
-    setUserId();
-    api.getCurrentAdmin(userId.current)
-      .then(res => res.json())
-      .then(res => setProfilePicture(`data:image/png;base64, ${res.image}`));
-  }
+    switch (userType.current) {
+      case "User":
+        setUserId();
+        api.getCurrentUser(userId.current)
+          .then(res => res.json())
+          .then(res => setProfilePicture(res.image ? `data:image/png;base64, ${res.image}` : false));
+        break;
+      case "Admin":
+        setUserId();
+        api.getCurrentAdmin(userId.current)
+          .then(res => res.json())
+          .then(res => setProfilePicture(res.image ? `data:image/png;base64, ${res.image}` : false));
+        break;
+      default:
+        break;
+    }
+
+  };
 
   const onChangeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
   };
+
   const onClickHandler = () => {
     const data = new FormData();
-    console.log('test');
     data.append("image", selectedFile);
-    fetch("https://localhost:7044/api/Admins/uploadProfilePicture", {
-      method: 'POST',
-      credentials: 'include',
-      body: data
-    })
-      .then(res => res.json())
-      .then(res => setProfilePicture(`data:image/png;base64, ${res.image}`))
+    switch (userType.current) {
+      case "User":
+        fetch("https://localhost:7044/api/Users/uploadProfilePicture", {
+          method: 'POST',
+          credentials: 'include',
+          body: data
+        })
+          .then(res => res.json())
+          .then(res => setProfilePicture(res.image ? `data:image/png;base64, ${res.image}` : false))
+        break;
+      case "Admin":
+        fetch("https://localhost:7044/api/Admins/uploadProfilePicture", {
+          method: 'POST',
+          credentials: 'include',
+          body: data
+        })
+          .then(res => res.json())
+          .then(res => setProfilePicture(res.image ? `data:image/png;base64, ${res.image}` : false))
+        break;
+      default:
+        break;
+    };
     getUser();
   };
 
   useEffect(() => {
+    userType.current = checkCurrentUser();
     getUser();
+
   }, [])
+  useEffect(() => {
+    if (selectedFile) {
+      onClickHandler()
+    }
+  }, [selectedFile])
 
   return <div className={`${styles["profile-pucture"]} ${globalStyles["content"]}`}>
-    <input onChange={onChangeHandler} multiple className='input' type="file" />
-    <button type='button' onClick={onClickHandler}>Submit</button>
     <div className={`${styles["input-drop"]}`}>
       <input onDrop={onChangeHandler} onChange={onChangeHandler} multiple type="file" />
-      {!!profilePicture ? <img onDrop={onChangeHandler} src={profilePicture} alt="profile_picture" /> : <img src={avatar} alt="profile_picture" />}
+      {profilePicture ? <img onDrop={onChangeHandler} src={profilePicture} alt="profile_picture" /> : <img src={avatar} alt="profile_picture" />}
     </div>
   </div >
 };

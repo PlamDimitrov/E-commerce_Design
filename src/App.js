@@ -15,6 +15,7 @@ import Home from './Pages/Home/Home';
 import ProductView from './Pages/ProductView/ProductView';
 import Checkout from './Pages/Checkout/Checkout';
 import AdminPanel from './Pages/AdminPanel/AdminPanel';
+import UserProfile from './Pages/UserProfile/UserProfile';
 import NotFound from './Pages/NotFound/NotFound';
 
 
@@ -32,6 +33,7 @@ const content = ({ state }) => {
       <Route path='/checkout' element={<Checkout />} />
       <Route path='/sign-in-or-register' element={<LoginOrRegister />} />
       <Route path='/admin' element={<LoginAdmin />} />
+      <Route path='/user/profile-page' element={isUser ? <UserProfile /> : <NotFound />} />
       <Route path='/admin/control-panel' element={isAdmin ? <AdminPanel /> : <NotFound />} />
       <Route path='*' element={<NotFound />} />
     </Routes>

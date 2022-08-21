@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './Header.module.css';
@@ -13,7 +13,8 @@ import checkCurrentUser from "../../globalFunctions/checkCurrentUser";
 const Header = () => {
     const { state, dispatch } = React.useContext(StoreContext);
     const [userLink, setUserLink] = useState(null);
-    const user = state.user;
+    const [user, setUser] = useState(null);
+    const userType = useRef("");
 
     const logOut = () => {
         let currentUser = checkCurrentUser();
@@ -25,8 +26,7 @@ const Header = () => {
     }
 
     const getUserLink = () => {
-        let currentUser = checkCurrentUser();
-        switch (currentUser) {
+        switch (userType.current) {
             case "User":
                 setUserLink("/user/profile-page");
                 break;
@@ -58,8 +58,10 @@ const Header = () => {
     }
 
     useEffect(() => {
+        userType.current = checkCurrentUser();
+        setUser(state.user);
         getUserLink();
-    }, [])
+    }, [state])
 
     return <div className={styles["header"]}>
         <div className={globalStyles["content"]}>
