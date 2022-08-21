@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './Header.module.css';
@@ -7,29 +7,41 @@ import globalStyles from '../../index.module.css';
 import { logout, logoutAdmin } from "../../globalFunctions/Store/actions";
 import product from '../../assets/img/product.png';
 import { StoreContext } from "../../globalFunctions/Store/Store";
+import checkCurrentUser from "../../globalFunctions/checkCurrentUser";
 
 
 const Header = () => {
     const { state, dispatch } = React.useContext(StoreContext);
+    const [userLink, setUserLink] = useState(null);
     const user = state.user;
 
     const logOut = () => {
-        const hasUserCookie = !!document.cookie.match(
-            /^(.*;)?\s*user-info\s*=\s*[^;]+(.*)?$/
-        );
-        const hasAdminCookie = !!document.cookie.match(
-            /^(.*;)?\s*admin-info\s*=\s*[^;]+(.*)?$/
-        );
-        if (hasUserCookie) {
+        let currentUser = checkCurrentUser();
+        if (currentUser === "User") {
             dispatch(logout());
-        } else if (hasAdminCookie) {
+        } else if (currentUser === "Admin") {
             dispatch(logoutAdmin());
+        }
+    }
+
+    const getUserLink = () => {
+        let currentUser = checkCurrentUser();
+        switch (currentUser) {
+            case "User":
+                setUserLink("/user/profile-page");
+                break;
+            case "Admin":
+                setUserLink("/admin/control-panel");
+                break;
+
+            default:
+                break;
         }
     }
 
     const userLoggedIn = () => {
         return <>
-            <Link className={styles["header-item"]} to="/admin/control-panel">Welcome, {user.userName}</Link>
+            <Link className={styles["header-item"]} to={`${userLink}`}>Welcome, {user.userName}</Link>
             <Link onClick={logOut} className={styles["header-item"]} to="#">Logout</Link>
         </>
     }
@@ -44,6 +56,10 @@ const Header = () => {
     const removeItem = () => {
         console.log(state);
     }
+
+    useEffect(() => {
+        getUserLink();
+    }, [])
 
     return <div className={styles["header"]}>
         <div className={globalStyles["content"]}>
