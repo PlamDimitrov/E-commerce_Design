@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StoreContext } from "../../globalFunctions/Store/Store";
 
-import styles from './FileUploader.module.css';
+import styles from './ProfilePicture.module.css';
 import globalStyles from '../../index.module.css';
 
 import api from '../../api';
@@ -11,7 +11,7 @@ import cookieParser from '../../globalFunctions/cookieParser';
 import checkCurrentUser from '../../globalFunctions/checkCurrentUser';
 
 
-const FileUploader = () => {
+const ProfilePicture = () => {
   const { state } = React.useContext(StoreContext);
   let isAdmin = state.role === "admin";
   let isUser = state.role === "user";
@@ -90,12 +90,10 @@ const FileUploader = () => {
     }
   }, [selectedFile])
 
-  return <div className={`${styles["profile-pucture"]} ${globalStyles["content"]}`}>
-    <div className={`${styles["input-drop"]}`}>
-      <input onDrop={onChangeHandler} onChange={onChangeHandler} multiple type="file" />
-      {profilePicture ? <img onDrop={onChangeHandler} src={profilePicture} alt="profile_picture" /> : <img src={avatar} alt="profile_picture" />}
-    </div>
-  </div >
+  return <div className={`${styles["profile-picture"]}`}>
+    {profilePicture ? <img onDrop={onChangeHandler} src={profilePicture} alt="profile_picture" /> : <img src={avatar} alt="profile_picture" />}
+    <input onDrop={onChangeHandler} onChange={onChangeHandler} multiple type="file" />
+  </div>
 };
 
-export default FileUploader;
+export default ProfilePicture;

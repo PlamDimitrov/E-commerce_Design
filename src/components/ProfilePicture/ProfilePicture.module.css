@@ -1,25 +1,20 @@
-.profile-pucture {
-  max-width: 200px;
-}
-.profile-pucture .input-drop {
+.profile-picture {
   position: relative;
   height: 240px;
   width: 240px;
   overflow: hidden;
 }
-.profile-pucture .input-drop img {
+.profile-picture img {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
   height: 100%;
 }
-.profile-pucture .input-drop input {
+.profile-picture input {
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
 }

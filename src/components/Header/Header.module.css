@@ -10,6 +10,11 @@
   max-height: 45px;
   height: 100%;
 }
+.header .header-item-container .profile-picture {
+  height: 40px;
+  border-radius: 20px;
+  margin: 0.2rem;
+}
 .header .header-item-container .header-item {
   display: block;
   font-size: 0.65rem;

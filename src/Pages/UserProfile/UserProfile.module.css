@@ -1,0 +1,20 @@
+.user-profile {
+  background-color: #f8f8f8;
+  padding: 2rem;
+  display: flex;
+}
+.user-profile .properties {
+  margin: 2rem;
+}
+.user-profile .properties .property {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.user-profile .properties .property .username {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #777274;
+  margin: 1rem;
+}

@@ -1,0 +1,22 @@
+@import "../../glodalStyleVariables.scss";
+
+.user-profile {
+  background-color: $subsection-color;
+  padding: 2rem;
+  display: flex;
+  .properties {
+    margin: 2rem;
+    .property {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      .username {
+        font-size: 2rem;
+        font-weight: bold;
+        color: $item-color;
+        margin: 1rem;
+      }
+    }
+  }
+}

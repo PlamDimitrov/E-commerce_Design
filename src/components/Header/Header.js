@@ -14,6 +14,7 @@ const Header = () => {
     const { state, dispatch } = React.useContext(StoreContext);
     const [userLink, setUserLink] = useState(null);
     const [user, setUser] = useState(null);
+    const [profileImage, setProfileImage] = useState(null);
     const userType = useRef("");
 
     const logOut = () => {
@@ -41,6 +42,7 @@ const Header = () => {
 
     const userLoggedIn = () => {
         return <>
+            <img className={styles["profile-picture"]} src={`data:image/png;base64, ${profileImage}`} alt='profile' />
             <Link className={styles["header-item"]} to={`${userLink}`}>Welcome, {user.userName}</Link>
             <Link onClick={logOut} className={styles["header-item"]} to="#">Logout</Link>
         </>
@@ -60,6 +62,9 @@ const Header = () => {
     useEffect(() => {
         userType.current = checkCurrentUser();
         setUser(state.user);
+        if (state.user) {
+            setProfileImage(state.user.image)
+        }
         getUserLink();
     }, [state])
 

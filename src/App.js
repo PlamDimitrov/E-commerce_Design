@@ -23,33 +23,34 @@ const content = ({ state }) => {
   let isAdmin = state.role === "admin";
   let isUser = state.role === "user";
 
-  return <Fragment>
-    <Header />
-    <Navigation />
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/product-view' element={<ProductView />} />
-      <Route path='/shop' element={<Shop />} />
-      <Route path='/checkout' element={<Checkout />} />
-      <Route path='/sign-in-or-register' element={<LoginOrRegister />} />
-      <Route path='/admin' element={<LoginAdmin />} />
-      <Route path='/user/profile-page' element={isUser ? <UserProfile /> : <NotFound />} />
-      <Route path='/admin/control-panel' element={isAdmin ? <AdminPanel /> : <NotFound />} />
-      <Route path='*' element={<NotFound />} />
-    </Routes>
-    <Footer />
-  </Fragment>
+  return <>
+    <Auth>
+      <Header />
+      <Navigation />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/product-view' element={<ProductView />} />
+        <Route path='/shop' element={<Shop />} />
+        <Route path='/checkout' element={<Checkout />} />
+        <Route path='/sign-in-or-register' element={<LoginOrRegister />} />
+        <Route path='/admin' element={<LoginAdmin />} />
+        <Route path='/user/profile-page' element={isUser ? <UserProfile /> : <NotFound />} />
+        <Route path='/admin/control-panel/*' element={isAdmin ? <AdminPanel /> : <NotFound />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </Auth>
+
+  </>
 };
 
 function App() {
   return (
     <div className="App">
       <Store>
-        <Auth>
-          <StoreContext.Consumer>
-            {content}
-          </StoreContext.Consumer>
-        </Auth>
+        <StoreContext.Consumer>
+          {content}
+        </StoreContext.Consumer>
       </Store>
     </div>
   );

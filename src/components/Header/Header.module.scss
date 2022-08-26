@@ -10,7 +10,12 @@
     justify-content: right;
     max-height: 45px;
     height: 100%;
-
+    .profile-picture {
+      // width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      margin: 0.2rem;
+    }
     .header-item {
       display: block;
       font-size: 0.65rem;
