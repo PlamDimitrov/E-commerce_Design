@@ -4,6 +4,8 @@ import { StoreContext } from "../../globalFunctions/Store/Store";
 import handleError from "../../globalFunctions/serverErrors";
 import styles from './Register.module.css';
 
+import spinner from '../../assets/spinner.gif';
+
 const Register = (props) => {
     const navigate = useNavigate();
     const { state, dispatch } = React.useContext(StoreContext);
@@ -11,7 +13,8 @@ const Register = (props) => {
     const [password, setPassword] = useState(null);
     const [passwordConformation, setPasswordConformation] = useState(null);
     const [email, setEmail] = useState(null);
-    const [error, setError] = useState(null);
+    const [registererror, setRegistererror] = useState("");
+    const [isloadingRegister, setIsLoadingRegister] = useState(false);
 
     const registerCall = props.registerCall;
     const loginCall = props.loginCall;
@@ -40,12 +43,11 @@ const Register = (props) => {
 
     const validate = (event) => {
         event.preventDefault();
-        console.log(passwordConformation === password);
         if (passwordConformation === password) {
-            setError(null);
+            setRegistererror("");
             submit();
         } else {
-            setError("Passwords don't match!");
+            setRegistererror("Passwords don't match!");
         }
     }
 
@@ -55,17 +57,19 @@ const Register = (props) => {
             password: password,
             email: email
         };
+        setIsLoadingRegister(true);
         registerCall(user)
             .then(res => {
-                console.log(user);
                 if (res.status >= 200 && res.status < 300) {
                     loginCall(user);
-                    setError(null);
+                    setRegistererror("");
                     navigate("/");
+                    setIsLoadingRegister(false);
                     return res.json();
                 } else {
                     const errorMessage = handleError(res.status);
-                    setError(errorMessage);
+                    setIsLoadingRegister(false);
+                    setRegistererror(errorMessage);
                 }
             })
             .then(res => {
@@ -74,31 +78,25 @@ const Register = (props) => {
             .catch(err => console.log(`LoginError: ${err}`));
     };
 
-
-    const redirectAfterRegister = (condition) => {
-        if (condition) {
-            navigate("/");
-        }
-    }
-
     useEffect(() => {
         userNameInput.current = document.querySelector(`.${styles["user-name"]}`);
         emailInput.current = document.querySelector(`.${styles["email"]}`);
         passwordInput.current = document.querySelector(`.${styles["password"]}`);
         passwordRepeateInput.current = document.querySelector(`.repeate`);
-        setError(state.error);
-        redirectAfterRegister(error);
     }, [state])
 
     return <div className={styles["register"]}>
-        {error ? <p>{error}</p> : ""}
+        {registererror ? <p>{registererror}</p> : ""}
         <form onSubmit={validate}>
-            <h1 className={styles["title"]}>Register</h1>
+            <h1 className={styles["title"]}>
+                Register
+                {isloadingRegister ? <img className={styles['loader']} src={spinner} alt="spinner" /> : <></>}
+            </h1>
             <div className={styles["input-container"]}>
-                <input onChange={getUserName} className={`${styles["user-name"]} ${state.error ? styles["error"] : ""}`} required placeholder="Your Username.." autoComplete="off" />
+                <input onChange={getUserName} className={`${styles["user-name"]} ${registererror ? styles["error"] : ""}`} required placeholder="Your Username.." autoComplete="off" />
             </div>
             <div className={styles["input-container"]}>
-                <input onChange={getEmail} className={`${styles["email"]} ${state.error ? styles["error"] : ""}`} type="email" required placeholder="Your Email.." autoComplete="off" />
+                <input onChange={getEmail} className={`${styles["email"]} ${registererror ? styles["error"] : ""}`} type="email" required placeholder="Your Email.." autoComplete="off" />
             </div>
             <div className={styles["input-container"]}>
                 <input onChange={getPassword} className={styles["password"]} type="password" required placeholder="Your password.." autoComplete="off" />

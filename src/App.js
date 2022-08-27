@@ -40,7 +40,6 @@ const content = ({ state }) => {
       </Routes>
       <Footer />
     </Auth>
-
   </>
 };
 

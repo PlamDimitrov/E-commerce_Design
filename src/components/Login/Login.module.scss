@@ -12,10 +12,17 @@
     align-items: flex-start;
     flex-wrap: nowrap;
     .title {
+      position: relative;
       color: $title-color;
       font-size: 1.125rem;
       margin: 1.563rem;
       font-weight: bold;
+      .loader {
+        position: absolute;
+        top: -10px;
+        left: 100px;
+        width: 50px;
+      }
     }
     .input-container {
       width: 94%;
@@ -68,6 +75,7 @@
           transition: all 700ms ease-in-out;
         }
       }
+
       .sign-in_link {
         text-transform: lowercase;
         font-family: "Roboto";

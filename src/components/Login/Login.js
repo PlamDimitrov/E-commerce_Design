@@ -4,7 +4,7 @@ import { StoreContext } from "../../globalFunctions/Store/Store";
 import handleError from "../../globalFunctions/serverErrors";
 import styles from './Login.module.css';
 
-import getDataFromForm from '../../globalFunctions/formsHanler';
+import spinner from '../../assets/spinner.gif';
 
 const Login = (props) => {
     const navigate = useNavigate();
@@ -12,6 +12,7 @@ const Login = (props) => {
     const [userName, setUserName] = useState(null);
     const [password, setPassword] = useState(null);
     const [error, setError] = useState(null);
+    const [isloading, setIsLoading] = useState(false);
 
 
     const loginCall = props.loginCall;
@@ -35,20 +36,26 @@ const Login = (props) => {
             userName: userName,
             password: password
         };
+        setIsLoading(true);
         loginCall(user)
             .then(res => {
                 if (res.status >= 200 && res.status < 300) {
+                    debugger;
                     setError(null);
                     navigate("/");
+                    setIsLoading(false);
                     return res.json();
                 } else {
                     const errorMessage = handleError(res.status);
+                    setIsLoading(false);
                     setError(errorMessage);
                     dispatch(storeCallFailure(res));
                 }
             })
             .then(res => {
-                dispatch(storeCallSuccess(res));
+                if (res) {
+                    dispatch(storeCallSuccess(res));
+                }
             })
             .catch(err => console.log(`LoginError: ${err}`))
     };
@@ -61,15 +68,20 @@ const Login = (props) => {
     return <div className={styles["sign-in"]}>
         {error ? <p>{error}</p> : ""}
         <form onSubmit={submit}>
-            <h1 className={styles['title']}>Sign in</h1>
+            <h1 className={styles['title']}>
+                Sign in
+                {isloading ? <img className={styles['loader']} src={spinner} alt="spinner" /> : <></>}
+            </h1>
             <div className={styles['input-container']}>
-                <input onChange={getUserName} className={`${styles["user-name"]} ${state.error ? styles["error"] : ""}`} required placeholder="Your Username.." autoComplete="off" />
+                <input onChange={getUserName} className={`${styles["user-name"]} ${error ? styles["error"] : ""}`} required placeholder="Your Username.." autoComplete="off" />
             </div>
             <div className={styles['input-container']}>
-                <input onChange={getPassword} className={`${styles['password']} ${state.error ? styles["error"] : ""}`} type="password" required placeholder="Your password.." autoComplete="off" />
+                <input onChange={getPassword} className={`${styles['password']} ${error ? styles["error"] : ""}`} type="password" required placeholder="Your password.." autoComplete="off" />
             </div>
             <div className={styles['action-bar']}>
-                <button className={styles['sign-in_button']}>Sign In</button>
+                <button className={styles['sign-in_button']}>
+                    Sign In
+                </button>
                 <a className={styles['sign-in_link']} href='./'> Forgot your Password <i className="fa-solid fa-right-long"></i></a>
             </div>
         </form>

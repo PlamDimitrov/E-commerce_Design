@@ -12,10 +12,17 @@
   flex-wrap: nowrap;
 }
 .sign-in form .title {
+  position: relative;
   color: #575153;
   font-size: 1.125rem;
   margin: 1.563rem;
   font-weight: bold;
+}
+.sign-in form .title .loader {
+  position: absolute;
+  top: -10px;
+  left: 100px;
+  width: 50px;
 }
 .sign-in form .input-container {
   width: 94%;
