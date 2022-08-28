@@ -1,7 +1,7 @@
 export default function handleError(error) {
-  switch (error) {
-    case 401:
-      return "Wrong username or password!";
+  switch (error.errorCode) {
+    case 400:
+      return error.errorMessage;
       break;
     case 500:
       return "Server Error!";

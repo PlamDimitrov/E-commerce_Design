@@ -42,7 +42,7 @@ const Header = () => {
 
     const userLoggedIn = () => {
         return <>
-            <img className={styles["profile-picture"]} src={`data:image/png;base64, ${profileImage}`} alt='profile' />
+            {profileImage ? <img className={styles["profile-picture"]} src={`data:image/png;base64, ${profileImage}`} alt='profile' /> : <></>}
             <Link className={styles["header-item"]} to={`${userLink}`}>Welcome, {user.userName}</Link>
             <Link onClick={logOut} className={styles["header-item"]} to="#">Logout</Link>
         </>

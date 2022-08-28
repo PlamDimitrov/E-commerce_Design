@@ -65,15 +65,17 @@ const Register = (props) => {
                     setRegistererror("");
                     navigate("/");
                     setIsLoadingRegister(false);
-                    return res.json();
-                } else {
-                    const errorMessage = handleError(res.status);
-                    setIsLoadingRegister(false);
-                    setRegistererror(errorMessage);
                 }
+                return res.json();
             })
             .then(res => {
-                dispatch(storeCallSuccess(res));
+                if (res.errorCode) {
+                    const errorMessage = handleError(res);
+                    setIsLoadingRegister(false);
+                    setRegistererror(errorMessage);
+                } else {
+                    dispatch(storeCallSuccess(res));
+                }
             })
             .catch(err => console.log(`LoginError: ${err}`));
     };

@@ -40,20 +40,19 @@ const Login = (props) => {
         loginCall(user)
             .then(res => {
                 if (res.status >= 200 && res.status < 300) {
-                    debugger;
                     setError(null);
                     navigate("/");
                     setIsLoading(false);
-                    return res.json();
-                } else {
-                    const errorMessage = handleError(res.status);
+                }
+                return res.json();
+            })
+            .then(res => {
+                if (res.errorCode) {
+                    const errorMessage = handleError(res);
                     setIsLoading(false);
                     setError(errorMessage);
                     dispatch(storeCallFailure(res));
-                }
-            })
-            .then(res => {
-                if (res) {
+                } else {
                     dispatch(storeCallSuccess(res));
                 }
             })
