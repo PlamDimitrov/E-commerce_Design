@@ -42,21 +42,24 @@ const Login = (props) => {
                 if (res.status >= 200 && res.status < 300) {
                     setError(null);
                     navigate("/");
-                    setIsLoading(false);
                 }
                 return res.json();
             })
             .then(res => {
+                setIsLoading(false);
                 if (res.errorCode) {
                     const errorMessage = handleError(res);
-                    setIsLoading(false);
                     setError(errorMessage);
                     dispatch(storeCallFailure(res));
                 } else {
                     dispatch(storeCallSuccess(res));
                 }
             })
-            .catch(err => console.log(`LoginError: ${err}`))
+            .catch(err => {
+                setIsLoading(false);
+                setError("Connection error, please try again later!")
+                console.log(`LoginError: ${err}`)
+            })
     };
 
     useEffect(() => {

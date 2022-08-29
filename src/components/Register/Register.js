@@ -14,6 +14,9 @@ const Register = (props) => {
     const [passwordConformation, setPasswordConformation] = useState(null);
     const [email, setEmail] = useState(null);
     const [registererror, setRegistererror] = useState("");
+    const [userInUse, setUserInUse] = useState(false);
+    const [emailInUse, setemailInUse] = useState(false);
+    const [passwordsDontMatch, setPasswordsDontMatch] = useState(false);
     const [isloadingRegister, setIsLoadingRegister] = useState(false);
 
     const registerCall = props.registerCall;
@@ -35,6 +38,7 @@ const Register = (props) => {
 
     const getPassword = () => {
         setPassword(passwordInput.current.value);
+
     };
 
     const getPasswordConformation = () => {
@@ -42,12 +46,19 @@ const Register = (props) => {
     };
 
     const validate = (event) => {
-        event.preventDefault();
+        if (event) {
+            event.preventDefault();
+        }
         if (passwordConformation === password) {
-            setRegistererror("");
-            submit();
+            console.log(passwordConformation === password);
+            setPasswordsDontMatch(false);
+            setRegistererror(false);
+            return true;
         } else {
+            console.log(passwordConformation === password);
+            setPasswordsDontMatch(true);
             setRegistererror("Passwords don't match!");
+            return false;
         }
     }
 
@@ -58,53 +69,69 @@ const Register = (props) => {
             email: email
         };
         setIsLoadingRegister(true);
-        registerCall(user)
-            .then(res => {
-                if (res.status >= 200 && res.status < 300) {
-                    loginCall(user);
-                    setRegistererror("");
-                    navigate("/");
+        if (validate()) {
+            registerCall(user)
+                .then(res => {
+                    if (res.status >= 200 && res.status < 300) {
+                        loginCall(user);
+                        setRegistererror("");
+                        navigate("/");
+                        setIsLoadingRegister(false);
+                    }
+                    return res.json();
+                })
+                .then(res => {
+                    if (res.errorCode) {
+                        const errorMessage = handleError(res);
+                        if (errorMessage.includes("Username")) {
+                            setUserInUse(true);
+                        }
+                        if (errorMessage.includes("Email")) {
+                            setemailInUse(true);
+                        }
+                        setIsLoadingRegister(false);
+                        setRegistererror(errorMessage);
+                    } else {
+                        dispatch(storeCallSuccess(res));
+                    }
+                })
+                .catch(err => {
                     setIsLoadingRegister(false);
-                }
-                return res.json();
-            })
-            .then(res => {
-                if (res.errorCode) {
-                    const errorMessage = handleError(res);
-                    setIsLoadingRegister(false);
-                    setRegistererror(errorMessage);
-                } else {
-                    dispatch(storeCallSuccess(res));
-                }
-            })
-            .catch(err => console.log(`LoginError: ${err}`));
+                    setRegistererror("Connection error, please try again later!")
+                    console.log(`LoginError: ${err}`)
+                })
+        }
     };
+    useEffect(() => {
+        validate();
+    }, [password, passwordConformation]);
 
     useEffect(() => {
         userNameInput.current = document.querySelector(`.${styles["user-name"]}`);
         emailInput.current = document.querySelector(`.${styles["email"]}`);
         passwordInput.current = document.querySelector(`.${styles["password"]}`);
         passwordRepeateInput.current = document.querySelector(`.repeate`);
-    }, [state])
+        validate();
+    }, [state]);
 
     return <div className={styles["register"]}>
         {registererror ? <p>{registererror}</p> : ""}
-        <form onSubmit={validate}>
+        <form onSubmit={submit}>
             <h1 className={styles["title"]}>
                 Register
                 {isloadingRegister ? <img className={styles['loader']} src={spinner} alt="spinner" /> : <></>}
             </h1>
             <div className={styles["input-container"]}>
-                <input onChange={getUserName} className={`${styles["user-name"]} ${registererror ? styles["error"] : ""}`} required placeholder="Your Username.." autoComplete="off" />
+                <input onChange={getUserName} className={`${styles["user-name"]} ${userInUse ? styles["error"] : ""}`} required placeholder="Your Username.." autoComplete="off" />
             </div>
             <div className={styles["input-container"]}>
-                <input onChange={getEmail} className={`${styles["email"]} ${registererror ? styles["error"] : ""}`} type="email" required placeholder="Your Email.." autoComplete="off" />
+                <input onChange={getEmail} className={`${styles["email"]} ${emailInUse ? styles["error"] : ""}`} type="email" required placeholder="Your Email.." autoComplete="off" />
             </div>
             <div className={styles["input-container"]}>
-                <input onChange={getPassword} className={styles["password"]} type="password" required placeholder="Your password.." autoComplete="off" />
+                <input onChange={getPassword} className={`${styles["password"]} ${passwordsDontMatch ? styles["error"] : ""}`} type="password" required placeholder="Your password.." autoComplete="off" />
             </div>
             <div className={styles["input-container"]}>
-                <input onChange={getPasswordConformation} className={`${styles["password"]} repeate`} type="password" required placeholder="Confirm password.." autoComplete="off" />
+                <input onChange={getPasswordConformation} className={`${styles["password"]} repeate ${passwordsDontMatch ? styles["error"] : ""}`} type="password" required placeholder="Confirm password.." autoComplete="off" />
             </div>
             <div>
                 <div className={styles["sign-up-offer-container"]}>
