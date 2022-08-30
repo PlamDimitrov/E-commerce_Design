@@ -46,23 +46,19 @@ const Register = (props) => {
     };
 
     const validate = (event) => {
-        if (event) {
-            event.preventDefault();
-        }
         if (passwordConformation === password) {
-            console.log(passwordConformation === password);
             setPasswordsDontMatch(false);
             setRegistererror(false);
             return true;
         } else {
-            console.log(passwordConformation === password);
             setPasswordsDontMatch(true);
             setRegistererror("Passwords don't match!");
             return false;
         }
     }
 
-    const submit = () => {
+    const submit = (event) => {
+        event.preventDefault();
         const user = {
             userName: userName,
             password: password,
@@ -75,12 +71,13 @@ const Register = (props) => {
                     if (res.status >= 200 && res.status < 300) {
                         loginCall(user);
                         setRegistererror("");
-                        navigate("/");
                         setIsLoadingRegister(false);
+                        navigate("/");
                     }
                     return res.json();
                 })
                 .then(res => {
+                    setIsLoadingRegister(false);
                     if (res.errorCode) {
                         const errorMessage = handleError(res);
                         if (errorMessage.includes("Username")) {
@@ -89,7 +86,6 @@ const Register = (props) => {
                         if (errorMessage.includes("Email")) {
                             setemailInUse(true);
                         }
-                        setIsLoadingRegister(false);
                         setRegistererror(errorMessage);
                     } else {
                         dispatch(storeCallSuccess(res));
@@ -100,6 +96,8 @@ const Register = (props) => {
                     setRegistererror("Connection error, please try again later!")
                     console.log(`LoginError: ${err}`)
                 })
+        } else {
+            return;
         }
     };
     useEffect(() => {
