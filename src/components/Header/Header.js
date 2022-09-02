@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import styles from './Header.module.css';
 import globalStyles from '../../index.module.css';
@@ -11,6 +11,7 @@ import checkCurrentUser from "../../globalFunctions/checkCurrentUser";
 
 
 const Header = () => {
+    const navigate = useNavigate();
     const { state, dispatch } = React.useContext(StoreContext);
     const [userLink, setUserLink] = useState(null);
     const [user, setUser] = useState(null);
@@ -21,8 +22,10 @@ const Header = () => {
         let currentUser = checkCurrentUser();
         if (currentUser === "User") {
             dispatch(logout());
+            navigate("/");
         } else if (currentUser === "Admin") {
             dispatch(logoutAdmin());
+            navigate("/");
         }
     }
 

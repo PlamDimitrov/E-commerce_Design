@@ -3,7 +3,209 @@ import { Link } from 'react-router-dom';
 
 import styles from './Navigation.module.css';
 
+import NavMenu from '../NavMenu/NavMenu';
+
 const Navigation = () => {
+
+    // To replace with Database call
+    const items = [
+        {
+            title: "Mans",
+            link: "/",
+            sub: [
+                {
+                    name: "Casuals",
+                    links: [
+                        {
+                            text: "Jackets",
+                            address: "/",
+                        },
+                        {
+                            text: "Hoodies & Sweatshirts",
+                            address: "",
+                        },
+                        {
+                            text: "Polo Shirts",
+                            address: "/",
+                        },
+                        {
+                            text: "Sportswear",
+                            address: "/",
+                        },
+                        {
+                            text: "Trousers & Chinos",
+                            address: "/",
+                        },
+                        {
+                            text: "Sportswear",
+                            address: "/",
+                        },
+                        {
+                            text: "T-Shirts",
+                            address: "/",
+                        },
+                    ],
+                }
+            ]
+        },
+        {
+            title: "Womens",
+            link: "/",
+            sub: [
+                {
+                    name: "Casuals womens",
+                    links: [
+                        {
+                            text: "Jackets",
+                            address: "/",
+                        },
+                        {
+                            text: "Hoodies & Sweatshirts",
+                            address: "",
+                        },
+                        {
+                            text: "Polo Shirts",
+                            address: "/",
+                        },
+                        {
+                            text: "Sportswear",
+                            address: "/",
+                        },
+                        {
+                            text: "Trousers & Chinos",
+                            address: "/",
+                        },
+                        {
+                            text: "Sportswear",
+                            address: "/",
+                        },
+                        {
+                            text: "T-Shirts",
+                            address: "/",
+                        },
+                    ]
+                },
+                {
+                    name: "Casuals",
+                    links: [
+                        {
+                            text: "Jackets",
+                            address: "/",
+                        },
+                        {
+                            text: "Hoodies & Sweatshirts",
+                            address: "",
+                        },
+                        {
+                            text: "Polo Shirts",
+                            address: "/",
+                        },
+                        {
+                            text: "Sportswear",
+                            address: "/",
+                        },
+                        {
+                            text: "Trousers & Chinos",
+                            address: "/",
+                        },
+                        {
+                            text: "Sportswear",
+                            address: "/",
+                        },
+                        {
+                            text: "T-Shirts",
+                            address: "/",
+                        },
+                    ]
+                }
+            ]
+        },
+        {
+            title: "The brand",
+            link: "/",
+            sub: []
+        },
+        {
+            title: "Locale store",
+            link: "/",
+            sub: []
+        },
+        {
+            title: "Look book",
+            link: "/",
+            sub: [
+                {
+                    name: "Casuals",
+                    links: [
+                        {
+                            text: "Jackets",
+                            address: "/",
+                        },
+                        {
+                            text: "Hoodies & Sweatshirts",
+                            address: "",
+                        },
+                        {
+                            text: "Polo Shirts",
+                            address: "/",
+                        },
+                        {
+                            text: "Sportswear",
+                            address: "/",
+                        },
+                        {
+                            text: "Trousers & Chinos",
+                            address: "/",
+                        },
+                        {
+                            text: "Sportswear",
+                            address: "/",
+                        },
+                        {
+                            text: "T-Shirts",
+                            address: "/",
+                        },
+                    ]
+                },
+                {
+                    name: "Casuals",
+                    links: [
+                        {
+                            text: "Jackets",
+                            address: "/",
+                        },
+                        {
+                            text: "Hoodies & Sweatshirts",
+                            address: "",
+                        },
+                        {
+                            text: "Polo Shirts",
+                            address: "/",
+                        },
+                        {
+                            text: "Sportswear",
+                            address: "/",
+                        },
+                        {
+                            text: "Trousers & Chinos",
+                            address: "/",
+                        },
+                        {
+                            text: "Sportswear",
+                            address: "/",
+                        },
+                        {
+                            text: "T-Shirts",
+                            address: "/",
+                        },
+                    ]
+                }
+            ]
+        },
+    ]
+
+    // /To replace with Database call
+
     return <div className={styles["navigation"]}>
         <div className={styles["brand"]}>
             <Link to="/">
@@ -11,87 +213,7 @@ const Navigation = () => {
                 <h1>Fashion</h1>
             </Link>
         </div>
-        <nav >
-            <ul className={styles["menu"]}>
-                <li className={styles["item"]}>
-                    <a href="./">Mans
-                        <i className="fa-solid fa-angle-down"></i>
-                    </a>
-                    <div className={styles["dropdown"]}>
-                        <div className={styles["dropdown-categories"]}>
-                            <h1 className={styles["dropdown-title"]}>Casuals</h1>
-                            <a href="./" className={styles["dropdown-item"]}>Jackets</a>
-                            <a href="./" className={styles["dropdown-item"]}>Hoodies & Sweatshirts</a>
-                            <a href="./" className={styles["dropdown-item"]}>Polo Shirts</a>
-                            <a href="./" className={styles["dropdown-item"]}>Sportswear</a>
-                            <a href="./" className={styles["dropdown-item"]}>Trousers & Chinos</a>
-                            <a href="./" className={styles["dropdown-item"]}>Sportswear</a>
-                            <a href="./" className={styles["dropdown-item"]}>T-Shirts</a>
-                        </div>
-                    </div>
-                </li>
-                <li className={styles["item"]}>
-                    <a href="./">Womens
-                        <i className="fa-solid fa-angle-down"></i>
-                    </a>
-                    <div className={styles["dropdown"]}>
-                        <div className={styles["dropdown-categories"]}>
-                            <h1 className={styles["dropdown-title"]}>Casuals</h1>
-                            <a href="./" className={styles["dropdown-item"]}>Jackets</a>
-                            <a href="./" className={styles["dropdown-item"]}>Hoodies & Sweatshirts</a>
-                            <a href="./" className={styles["dropdown-item"]}>Polo Shirts</a>
-                            <a href="./" className={styles["dropdown-item"]}>Sportswear</a>
-                            <a href="./" className={styles["dropdown-item"]}>Trousers & Chinos</a>
-                            <a href="./" className={styles["dropdown-item"]}>Sportswear</a>
-                            <a href="./" className={styles["dropdown-item"]}>T-Shirts</a>
-                        </div>
-                        <div className={styles["dropdown-categories"]}>
-                            <h1 className={styles["dropdown-title"]}>Casuals</h1>
-                            <a href="./" className={styles["dropdown-item"]}>Jackets</a>
-                            <a href="./" className={styles["dropdown-item"]}>Hoodies & Sweatshirts</a>
-                            <a href="./" className={styles["dropdown-item"]}>Polo Shirts</a>
-                            <a href="./" className={styles["dropdown-item"]}>Sportswear</a>
-                            <a href="./" className={styles["dropdown-item"]}>Trousers & Chinos</a>
-                            <a href="./" className={styles["dropdown-item"]}>Sportswear</a>
-                            <a href="./" className={styles["dropdown-item"]}>T-Shirts</a>
-                        </div>
-                    </div>
-                </li>
-                <li className={styles["item"]}>
-                    <a href="./">The brand</a>
-                </li>
-                <li className={styles["item"]}>
-                    <a href="./">Locale store</a>
-                </li>
-                <li className={styles["item"]}>
-                    <a href="./">Look book
-                        <i className="fa-solid fa-angle-down"></i>
-                    </a>
-                    <div className={styles["dropdown"]}>
-                        <div className={styles["dropdown-categories"]}>
-                            <h1 className={styles["dropdown-title"]}>Casuals</h1>
-                            <a href="./" className={styles["dropdown-item"]}>Jackets</a>
-                            <a href="./" className={styles["dropdown-item"]}>Hoodies & Sweatshirts</a>
-                            <a href="./" className={styles["dropdown-item"]}>Polo Shirts</a>
-                            <a href="./" className={styles["dropdown-item"]}>Sportswear</a>
-                            <a href="./" className={styles["dropdown-item"]}>Trousers & Chinos</a>
-                            <a href="./" className={styles["dropdown-item"]}>Sportswear</a>
-                            <a href="./" className={styles["dropdown-item"]}>T-Shirts</a>
-                        </div>
-                        <div className={styles["dropdown-categories"]}>
-                            <h1 className={styles["dropdown-title"]}>Casuals</h1>
-                            <a href="./" className={styles["dropdown-item"]}>Jackets</a>
-                            <a href="./" className={styles["dropdown-item"]}>Hoodies & Sweatshirts</a>
-                            <a href="./" className={styles["dropdown-item"]}>Polo Shirts</a>
-                            <a href="./" className={styles["dropdown-item"]}>Sportswear</a>
-                            <a href="./" className={styles["dropdown-item"]}>Trousers & Chinos</a>
-                            <a href="./" className={styles["dropdown-item"]}>Sportswear</a>
-                            <a href="./" className={styles["dropdown-item"]}>T-Shirts</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+        <NavMenu items={items} />
         <div className={styles["search"]}>
             <input defaultValue="Search" />
             <i className="fa-solid fa-magnifying-glass"></i>
