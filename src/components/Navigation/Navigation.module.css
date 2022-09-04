@@ -23,16 +23,8 @@
     margin-bottom: 0.9375rem;
   }
 }
-.navigation a {
-  display: flex;
-  gap: 0.2rem;
-}
-.navigation a h1:nth-child(1) {
-  font-weight: bold;
-}
-.navigation a h1 {
-  color: #222222;
-  font-size: 1rem;
+.navigation .main-menu {
+  min-width: 40%;
 }
 .navigation .search {
   display: flex;

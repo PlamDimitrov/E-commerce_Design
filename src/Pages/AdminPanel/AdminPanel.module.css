@@ -1,0 +1,6 @@
+.admin-control-panel {
+  min-height: 150px;
+}
+.admin-control-panel .navigation {
+  max-width: 80%;
+}

@@ -11,7 +11,7 @@ const Navigation = () => {
     const items = [
         {
             title: "Mans",
-            link: "/",
+            address: "/",
             sub: [
                 {
                     name: "Casuals",
@@ -50,7 +50,7 @@ const Navigation = () => {
         },
         {
             title: "Womens",
-            link: "/",
+            address: "/",
             sub: [
                 {
                     name: "Casuals womens",
@@ -122,17 +122,17 @@ const Navigation = () => {
         },
         {
             title: "The brand",
-            link: "/",
+            address: "/",
             sub: []
         },
         {
             title: "Locale store",
-            link: "/",
+            address: "/",
             sub: []
         },
         {
             title: "Look book",
-            link: "/",
+            address: "/",
             sub: [
                 {
                     name: "Casuals",
@@ -213,7 +213,9 @@ const Navigation = () => {
                 <h1>Fashion</h1>
             </Link>
         </div>
-        <NavMenu items={items} />
+        <div className={styles["main-menu"]}>
+            <NavMenu items={items} />
+        </div>
         <div className={styles["search"]}>
             <input defaultValue="Search" />
             <i className="fa-solid fa-magnifying-glass"></i>

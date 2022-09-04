@@ -1,22 +1,156 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import styles from './AdminPanel.module.css';
 import global from '../../index.module.css';
 
 import UserProfile from '../UserProfile/UserProfile';
-import ProfilePicture from '../../components/ProfilePicture/ProfilePicture';
+import NavMenu from '../../components/NavMenu/NavMenu';
 
 const AdminPanel = () => {
+    const items = [
+        {
+            title: "Menage profiles",
+            address: "/",
+            sub: [
+                {
+                    name: "Admin profiles",
+                    links: [
+                        {
+                            text: "Create admin profile",
+                            address: "/",
+                        },
+                        {
+                            text: "Delete admin profile",
+                            address: "",
+                        },
+                        {
+                            text: "Edit admin profiles",
+                            address: "/",
+                        },
+                    ]
+                },
+                {
+                    name: "User profiles",
+                    links: [
+                        {
+                            text: "Create user profile",
+                            address: "/",
+                        },
+                        {
+                            text: "Delete user profile",
+                            address: "",
+                        },
+                        {
+                            text: "Edit user profiles",
+                            address: "/",
+                        },
+                    ]
+                }
+            ]
+        },
+        {
+            title: "Main menu",
+            address: "/",
+            sub: [
+                {
+                    name: "Actions",
+                    links: [
+                        {
+                            text: "Create menu",
+                            address: "/",
+                        },
+                        {
+                            text: "Edit menu",
+                            address: "/",
+                        },
+                        {
+                            text: "Delete menu",
+                            address: "/",
+                        },
+                    ],
+                }
+            ]
+        },
+        {
+            title: "Brands",
+            address: "/",
+            sub: [
+                {
+                    name: "Actions",
+                    links: [
+                        {
+                            text: "Create brand",
+                            address: "/",
+                        },
+                        {
+                            text: "Edit brand",
+                            address: "/",
+                        },
+                        {
+                            text: "Delete brand",
+                            address: "/",
+                        },
+                    ],
+                }
+            ]
+        },
+        {
+            title: "Category",
+            address: "/",
+            sub: [
+                {
+                    name: "Actions",
+                    links: [
+                        {
+                            text: "Create category",
+                            address: "/",
+                        },
+                        {
+                            text: "Edit category",
+                            address: "/",
+                        },
+                        {
+                            text: "Delete category",
+                            address: "/",
+                        },
+                    ],
+                }
+            ]
+        },
+        {
+            title: "Product",
+            address: "/",
+            sub: [
+                {
+                    name: "Actions",
+                    links: [
+                        {
+                            text: "Create product",
+                            address: "/",
+                        },
+                        {
+                            text: "Edit product",
+                            address: "/",
+                        },
+                        {
+                            text: "Delete product",
+                            address: "/",
+                        },
+                    ],
+                }
+            ]
+        },
+        {
+            title: "My profile",
+            address: "profile",
+            sub: []
+        },
+    ]
 
     return <div className={`${styles["admin-control-panel"]} ${global["content"]}`}>
-        <ul>
-            <li><Link to={"profile"}>Pofile</Link></li>
-            <li><Link to={"admins"}>Admin's acounts</Link></li>
-            <li><Link to={"product-create"}>Create product</Link></li>
-            <li><Link to={"brand-create"}>Create Brand</Link></li>
-            <li><Link to={"menu-main"}>Main menu</Link></li>
-            <li><Link to={"menu-secpndary"}>Secondary navigation</Link></li>
-        </ul>
+        <div className={`${styles["navigation"]}`}>
+            <NavMenu items={items} />
+        </div>
         <Routes>
             <Route path='/profile' element={<UserProfile />} />
         </Routes>

@@ -20,19 +20,9 @@
       margin-bottom: 0.9375rem;
     }
   }
-  a {
-    display: flex;
-    gap: 0.2rem;
-
-    h1:nth-child(1) {
-      font-weight: bold;
-    }
-    h1 {
-      color: $dark-text;
-      font-size: 1rem;
-    }
+  .main-menu {
+    min-width: 40%;
   }
-
   .search {
     display: flex;
     flex-wrap: nowrap;
