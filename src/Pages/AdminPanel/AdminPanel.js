@@ -5,6 +5,7 @@ import global from '../../index.module.css';
 
 import UserProfile from '../UserProfile/UserProfile';
 import NavMenu from '../../components/NavMenu/NavMenu';
+import MainMenu from '../../components/forms/MainMenu/MainMenu';
 
 const AdminPanel = () => {
     const items = [
@@ -57,15 +58,15 @@ const AdminPanel = () => {
                     links: [
                         {
                             text: "Create menu",
-                            address: "/",
+                            address: "create-manu",
                         },
                         {
                             text: "Edit menu",
-                            address: "/",
+                            address: "edit-menu",
                         },
                         {
                             text: "Delete menu",
-                            address: "/",
+                            address: "delete-menu",
                         },
                     ],
                 }
@@ -119,6 +120,7 @@ const AdminPanel = () => {
         },
         {
             title: "Product",
+
             address: "/",
             sub: [
                 {
@@ -152,7 +154,9 @@ const AdminPanel = () => {
             <NavMenu items={items} />
         </div>
         <Routes>
-            <Route path='/profile' element={<UserProfile />} />
+            <Route path='profile' element={<UserProfile />} />
+            <Route path='create-manu' element={<MainMenu />} />
+
         </Routes>
     </div >
 };

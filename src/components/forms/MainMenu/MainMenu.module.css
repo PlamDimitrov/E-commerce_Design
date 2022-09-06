@@ -1,0 +1,109 @@
+.small-btn {
+  cursor: pointer;
+  padding: 0.6rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: #575153;
+  background: transparent;
+  border: 2px solid #575153;
+  margin: 0.5rem 0.5rem 0.5rem 2rem;
+  white-space: nowrap;
+}
+.small-btn:hover {
+  color: white;
+  background: #00c8c8;
+  border: 2px solid #00c8c8;
+  transition: all 700ms ease-in-out;
+}
+
+.main-menu-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+.main-menu-form .title {
+  position: relative;
+  color: #575153;
+  font-size: 1.125rem;
+  margin: 1.563rem;
+  font-weight: bold;
+}
+.main-menu-form .title .loader {
+  position: absolute;
+  top: -10px;
+  margin-left: 2rem;
+  width: 50px;
+  height: 50px;
+}
+.main-menu-form form {
+  width: 100%;
+}
+.main-menu-form form .input {
+  width: 100%;
+  margin: 0.5rem 0 0.5rem 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #e7e7e7;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+}
+.main-menu-form form .input:focus {
+  outline: none;
+}
+.main-menu-form form hr {
+  width: 100%;
+}
+.main-menu-form .input-container {
+  width: 94%;
+}
+.main-menu-form .input-container .error {
+  background-color: #fcf6f7;
+  border: 1px solid #bb5465;
+}
+.main-menu-form .category {
+  display: flex;
+  flex-direction: column;
+}
+.main-menu-form .category .check-box-title {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+.main-menu-form .category .check-box-title .input-title {
+  font-family: "Roboto";
+  font-size: 1.5rem;
+  color: #575153;
+  text-transform: none;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+.main-menu-form .category .check-box-title .check-box {
+  width: 20px;
+  height: 20px;
+}
+.main-menu-form .category .check-box-title .content {
+  padding-left: 2rem;
+}
+.main-menu-form .category .check-box-title .content .input {
+  width: 100%;
+  margin-left: 2rem;
+}
+.main-menu-form .category .check-box-title .content .links {
+  padding-left: 2rem;
+}
+.main-menu-form .category .category-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+.main-menu-form .category .category-form .content {
+  padding: 2rem;
+  border: 1px solid #e7e7e7;
+}
+.main-menu-form .category .category-form .content .category-name {
+  border: 1px solid #00c8c8;
+}
