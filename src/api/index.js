@@ -54,6 +54,19 @@ const getCurrentUser = (id) => {
     return get(route.user + `/${id}`)
 }
 
+// Menu
+const createMenu = (menu) => {
+    return post(route.creteMenu, menu)
+}
+const editMenu = (menu) => {
+    return post(route.editMenu, menu)
+}
+const deleteMenu = (id) => {
+    return post(route.deleteMenu)
+}
+
+
+
 // Product
 const createProduct = (product) => {
     return post(route.productCreate, product)
@@ -116,6 +129,10 @@ const api = {
     logInUser,
     logOutUser,
     getCurrentUser,
+    //Menu
+    createMenu,
+    editMenu,
+    deleteMenu,
     //Product
     createProduct,
     getAllProducts,

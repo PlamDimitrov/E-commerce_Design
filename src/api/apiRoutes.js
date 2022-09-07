@@ -14,6 +14,12 @@ const routes = {
     userLogIn: `${main}Users/login`,
     userLogOut: `${main}Users/logout`,
 
+    // Menu
+    menu: `${main}Menus`,
+    creteMenu: `${main}Menus/create`,
+    editMenu: `${main}Menus/edit`,
+    deleteMenu: `${main}Menus/delete`,
+
     //Product
     productCreate: `${main}Products/create`,
     productGetAll: `${main}Products/getAll`,

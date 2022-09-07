@@ -5,72 +5,145 @@ import handleError from "../../../globalFunctions/serverErrors";
 import styles from './MainMenu.module.css';
 
 import spinner from '../../../assets/spinner.gif';
+import api from '../../../api';
 
 const MainMenu = (props) => {
-    const link = <>
-        <hr />
-        <input className={`${styles["input"]} ${styles["error"]} `} placeholder="Link text.." autoComplete="off" />
-        <input className={`${styles["input"]} ${styles["error"]} `} placeholder="Link address.." autoComplete="off" />
-        <hr />
-    </>
-
-    const [isloading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(null);
     const [subCategory, setSubCategory] = useState(false);
-    // const [category, setCategory] = useState([link]);
-    const [category, setCategory] = useState([{ links: [link] }]);
+    const [category, setCategory] = useState([]);
+    const [menuTitle, setMenuTitle] = useState("");
+    const [menuAddress, setMenuAddress] = useState("");
 
 
-    const handleCheckBox = () => setSubCategory(!subCategory);
+    const handleCheckBox = () => {
+        if (!subCategory) {
+            addCategory();
+            setSubCategory(true)
+        } else {
+            setCategory([])
+            setSubCategory(false)
+        }
+    };
 
-    const addLinkInput = (index) => {
+    const addLinkInput = (categoryIndex) => {
         const arr = [...category];
-        arr[index].links.push(link);
+        const link = {
+            text: "",
+            address: ""
+        }
+        arr[categoryIndex].links.push(link);
         setCategory(arr);
-    }
-    const removeLinkInput = (index) => {
+    };
+    const removeLinkInput = (categoryIndex, linkIndex) => {
         const arr = [...category];
-        arr[index].links.pop();
+        arr[categoryIndex].links.splice(linkIndex, 1);
         setCategory(arr);
-    }
+    };
 
     const addCategory = () => {
-        setCategory(current => [...current, { links: [link] }])
-    }
-    const removeCategory = () => {
-        const arr = [...category];
-        arr.pop();
-        setCategory(arr);
-    }
+        const category = {
+            name: "",
+            links: [{
+                text: "",
+                address: ""
+            }]
+        }
+        setCategory(current => [...current, category])
 
+    };
+
+    const removeSpecificCategory = (categoryIndex) => {
+        const arr = [...category];
+        arr.splice(categoryIndex, 1);
+        console.log(categoryIndex);
+        setCategory(arr);
+    };
+
+    const getCategoryData = (categoryIndex, data) => {
+        const arr = [...category];
+        arr[categoryIndex].name = data;
+        setCategory(arr);
+    };
+
+    const getLinkData = (categoryIndex, linkIndex, data) => {
+        const arr = [...category];
+        arr[categoryIndex].links[linkIndex][data.name] = data.value;
+        setCategory(arr);
+    };
+
+    const submit = async (event) => {
+        event.preventDefault();
+        const menu = {
+            title: menuTitle,
+            address: menuAddress,
+            sub: category
+        };
+        setIsLoading(true);
+        await api.createMenu(menu)
+            .then(res => res)
+            .then(res => setIsLoading(false))
+            .then(() => {
+                setMenuTitle("");
+                setMenuAddress("");
+                setCategory([]);
+            })
+            .catch(err => console.log(err));
+    };
     const renderSubCategory = () => {
         return category.map(
-            (c, index) => {
-                return <div key={index} className={`${styles["content"]}`}>
-                    <input className={`${styles["input"]} ${styles["category-name"]} ${styles["error"]}`} placeholder="Category name.." autoComplete="off" />
+            (c, categoryIndex) => {
+                return <div key={categoryIndex} className={`${styles["content"]}`}>
+                    <div className={`${styles["remove-category-section"]}`}>
+                        <button type='button' onClick={() => removeSpecificCategory(categoryIndex)} className={`${styles["btn"]} ${styles["small"]} ${styles["red-btn"]}`}>Remove category</button>
+                    </div>
+                    <input
+                        onChange={(event) => getCategoryData(categoryIndex, event.target.value)}
+                        className={`${styles["input"]} ${styles["category-name"]} ${styles["error"]}`}
+                        value={category[categoryIndex].name}
+                        placeholder="Category name.."
+                        autoComplete="off" />
                     <div className={`${styles["links"]}`}>
-                        {c.links.map((e, index) => <div key={index} >
-                            <hr />
-                            <input className={`${styles["input"]} ${styles["error"]} `} placeholder="Link text.." autoComplete="off" />
-                            <input className={`${styles["input"]} ${styles["error"]} `} placeholder="Link address.." autoComplete="off" />
-                            <hr />
+                        {c.links.map((l, linkIndex) => <div key={linkIndex} className={`${styles["link"]}`}>
+                            <div className={`${styles["remove-link-section"]}`}>
+                                <button type='button' onClick={() => removeLinkInput(categoryIndex, linkIndex)} className={`${styles["btn"]} ${styles["small"]} ${styles["red-btn"]}`}>x</button>
+                            </div>
+                            <input
+                                onChange={(event) => getLinkData(categoryIndex, linkIndex, { name: event.target.name, value: event.target.value })}
+                                value={category[categoryIndex]["links"][linkIndex].text}
+                                className={`${styles["input"]} ${styles["error"]} `}
+                                name="text"
+                                placeholder="Link text.."
+                                autoComplete="off"
+                            />
+                            <input
+                                onChange={(event) => getLinkData(categoryIndex, linkIndex, { name: event.target.name, value: event.target.value })}
+                                value={category[categoryIndex]["links"][linkIndex].address}
+                                className={`${styles["input"]} ${styles["error"]} `}
+                                name="address"
+                                placeholder="Link address.."
+                                autoComplete="off" />
                         </div>)}
-                        <button type='button' onClick={() => removeLinkInput(index)} className={styles["small-btn"]}>Remove Link</button>
-                        <button type='button' onClick={() => addLinkInput(index)} className={styles["small-btn"]}>Add Link</button>
+                        <button type='button' onClick={() => addLinkInput(categoryIndex)} className={styles["btn"]}>Add Link</button>
                     </div>
                 </div>
             }
         )
-    }
-
+    };
 
     return <div className={styles["main-menu-form"]}>
         <h1 className={styles["title"]}>
             Create main menu
-            {isloading ? <img className={styles['loader']} src={spinner} alt="spinner" /> : <></>}
+            {isLoading ? <img className={styles['loader']} src={spinner} alt="spinner" /> : <></>}
         </h1>
         <form>
-            <input className={`${styles["input"]} ${styles["error"]} `} placeholder="Menu title.." autoComplete="off" />
-            <input className={`${styles["input"]} ${styles["error"]} `} placeholder="Menu address.." autoComplete="off" />
+            <input onChange={(event) => setMenuTitle(event.target.value)}
+                value={menuTitle}
+                className={`${styles["input"]} ${styles["error"]} `}
+                placeholder="Menu title.." autoComplete="off" />
+            <input onChange={(event) => setMenuAddress(event.target.value)}
+                value={menuAddress}
+                className={`${styles["input"]} ${styles["error"]} `}
+                placeholder="Menu address.." autoComplete="off" />
             <div className={styles["category"]}>
                 <div className={styles["check-box-title"]}>
                     <p className={styles["input-title"]}>Category..</p>
@@ -78,14 +151,14 @@ const MainMenu = (props) => {
                 </div>
                 <div className={styles["category-form"]}>
                     {subCategory ? renderSubCategory() : <></>}
-                    {subCategory
-                        ? <div className={styles["category-action"]}>
-                            <button type='button' onClick={addCategory} className={styles["small-btn"]}>Add Category</button>
-                            <button type='button' onClick={removeCategory} className={styles["small-btn"]}>Remove Category</button>
-                        </div>
-                        : <></>}
                 </div>
+                {subCategory
+                    ? <div className={styles["category-action"]}>
+                        <button type='button' onClick={addCategory} className={styles["btn"]}>Add Category</button>
+                    </div>
+                    : <></>}
             </div>
+            <button type='button' onClick={(event) => submit(event)} className={styles["btn"]}>Submit Menu</button>
         </form>
     </div>
 };

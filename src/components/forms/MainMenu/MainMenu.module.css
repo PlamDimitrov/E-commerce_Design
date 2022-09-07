@@ -1,4 +1,4 @@
-.small-btn {
+.btn {
   cursor: pointer;
   padding: 0.6rem;
   padding-left: 1rem;
@@ -8,13 +8,23 @@
   color: #575153;
   background: transparent;
   border: 2px solid #575153;
-  margin: 0.5rem 0.5rem 0.5rem 2rem;
+  margin: 0.5rem;
   white-space: nowrap;
 }
-.small-btn:hover {
+.btn:hover {
   color: white;
   background: #00c8c8;
   border: 2px solid #00c8c8;
+  transition: all 700ms ease-in-out;
+}
+
+.small {
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+}
+
+.red-btn:hover {
+  background: #bb5465;
+  border: 2px solid #bb5465;
   transition: all 700ms ease-in-out;
 }
 
@@ -43,10 +53,10 @@
 }
 .main-menu-form form .input {
   width: 100%;
-  margin: 0.5rem 0 0.5rem 0.5rem;
+  margin: 0.5rem 0 0.5rem 0;
   font-size: 1rem;
   border: 1px solid #e7e7e7;
-  padding: 0.5rem 0 0.5rem 0.5rem;
+  padding: 0.5rem 0 0.5rem 0;
 }
 .main-menu-form form .input:focus {
   outline: none;
@@ -96,14 +106,30 @@
 }
 .main-menu-form .category .category-form {
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: flex-start;
 }
 .main-menu-form .category .category-form .content {
-  padding: 2rem;
+  width: 40%;
   border: 1px solid #e7e7e7;
+  margin: 1rem;
+  padding: 0.5rem 2rem 2rem 2rem;
+}
+.main-menu-form .category .category-form .content .remove-category-section {
+  display: flex;
+  justify-content: end;
 }
 .main-menu-form .category .category-form .content .category-name {
-  border: 1px solid #00c8c8;
+  border: 1px solid #989898;
+}
+.main-menu-form .category .category-form .content .links {
+  border: 1px dashed #00c8c8;
+}
+.main-menu-form .category .category-form .content .links .link {
+  padding: 0.5rem;
+}
+.main-menu-form .category .category-form .content .links .link .remove-link-section {
+  display: flex;
+  justify-content: end;
 }
