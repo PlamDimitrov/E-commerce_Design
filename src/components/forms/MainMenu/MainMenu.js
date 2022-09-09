@@ -76,7 +76,7 @@ const MainMenu = (props) => {
         const menu = {
             title: menuTitle,
             address: menuAddress,
-            sub: category
+            subMenus: category
         };
         setIsLoading(true);
         await api.createMenu(menu)

@@ -51,6 +51,9 @@
     }
   }
   form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     width: 100%;
     .input {
       width: 100%;
@@ -123,9 +126,9 @@
           border: 1px solid $content-color;
         }
         .links {
-          border: 1px dashed $hover-color;
           .link {
-            padding: 0.5rem;
+            border: 1px dashed $hover-color;
+            padding: 0 0.5rem 0.5rem 0.5rem;
             .remove-link-section {
               display: flex;
               justify-content: end;

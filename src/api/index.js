@@ -64,6 +64,9 @@ const editMenu = (menu) => {
 const deleteMenu = (id) => {
     return post(route.deleteMenu)
 }
+const getAllMenus = () => {
+    return get(route.allMenus)
+}
 
 
 
@@ -133,6 +136,7 @@ const api = {
     createMenu,
     editMenu,
     deleteMenu,
+    getAllMenus,
     //Product
     createProduct,
     getAllProducts,

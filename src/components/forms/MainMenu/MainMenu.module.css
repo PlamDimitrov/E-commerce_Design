@@ -49,6 +49,9 @@
   height: 50px;
 }
 .main-menu-form form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   width: 100%;
 }
 .main-menu-form form .input {
@@ -123,11 +126,9 @@
 .main-menu-form .category .category-form .content .category-name {
   border: 1px solid #989898;
 }
-.main-menu-form .category .category-form .content .links {
-  border: 1px dashed #00c8c8;
-}
 .main-menu-form .category .category-form .content .links .link {
-  padding: 0.5rem;
+  border: 1px dashed #00c8c8;
+  padding: 0 0.5rem 0.5rem 0.5rem;
 }
 .main-menu-form .category .category-form .content .links .link .remove-link-section {
   display: flex;

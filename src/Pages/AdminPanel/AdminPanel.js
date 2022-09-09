@@ -12,7 +12,7 @@ const AdminPanel = () => {
         {
             title: "Menage profiles",
             address: "/",
-            sub: [
+            subMenus: [
                 {
                     name: "Admin profiles",
                     links: [
@@ -52,7 +52,7 @@ const AdminPanel = () => {
         {
             title: "Main menu",
             address: "/",
-            sub: [
+            subMenus: [
                 {
                     name: "Actions",
                     links: [
@@ -75,7 +75,7 @@ const AdminPanel = () => {
         {
             title: "Brands",
             address: "/",
-            sub: [
+            subMenus: [
                 {
                     name: "Actions",
                     links: [
@@ -98,7 +98,7 @@ const AdminPanel = () => {
         {
             title: "Category",
             address: "/",
-            sub: [
+            subMenus: [
                 {
                     name: "Actions",
                     links: [
@@ -120,9 +120,8 @@ const AdminPanel = () => {
         },
         {
             title: "Product",
-
             address: "/",
-            sub: [
+            subMenus: [
                 {
                     name: "Actions",
                     links: [
@@ -145,7 +144,7 @@ const AdminPanel = () => {
         {
             title: "My profile",
             address: "profile",
-            sub: []
+            subMenus: []
         },
     ]
 

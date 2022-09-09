@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './Navigation.module.css';
 
 import NavMenu from '../NavMenu/NavMenu';
+import api from '../../api';
 
 const Navigation = () => {
+    const [menu, setMenu] = useState([]);
 
     // To replace with Database call
     const items = [
         {
             title: "Mans",
             address: "/",
-            sub: [
+            subMenus: [
                 {
                     name: "Casuals",
                     links: [
@@ -51,7 +53,7 @@ const Navigation = () => {
         {
             title: "Womens",
             address: "/",
-            sub: [
+            subMenus: [
                 {
                     name: "Casuals womens",
                     links: [
@@ -123,17 +125,17 @@ const Navigation = () => {
         {
             title: "The brand",
             address: "/",
-            sub: []
+            subMenus: []
         },
         {
             title: "Locale store",
             address: "/",
-            sub: []
+            subMenus: []
         },
         {
             title: "Look book",
             address: "/",
-            sub: [
+            subMenus: [
                 {
                     name: "Casuals",
                     links: [
@@ -203,8 +205,17 @@ const Navigation = () => {
             ]
         },
     ]
-
     // /To replace with Database call
+
+    useEffect(() => {
+        api.getAllMenus()
+            .then(res => res.json())
+            .then(res => {
+                setMenu(res)
+                console.log(menu);
+            })
+            .catch(err => console.log(err))
+    }, [])
 
     return <div className={styles["navigation"]}>
         <div className={styles["brand"]}>
@@ -214,7 +225,7 @@ const Navigation = () => {
             </Link>
         </div>
         <div className={styles["main-menu"]}>
-            <NavMenu items={items} />
+            {menu.length > 0 ? <NavMenu items={menu} /> : <></>}
         </div>
         <div className={styles["search"]}>
             <input defaultValue="Search" />

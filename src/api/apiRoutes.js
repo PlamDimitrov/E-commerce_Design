@@ -19,6 +19,7 @@ const routes = {
     creteMenu: `${main}Menus/create`,
     editMenu: `${main}Menus/edit`,
     deleteMenu: `${main}Menus/delete`,
+    allMenus: `${main}Menus/getAll`,
 
     //Product
     productCreate: `${main}Products/create`,
