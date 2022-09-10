@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import styles from './AdminPanel.module.css';
 import global from '../../index.module.css';
+
+import api from '../../api';
 
 import UserProfile from '../UserProfile/UserProfile';
 import NavMenu from '../../components/NavMenu/NavMenu';
 import MainMenu from '../../components/forms/MainMenu/MainMenu';
 
 const AdminPanel = () => {
-    const items = [
+    const [menu, setMenu] = useState([]);
+
+    const adminMenu = [
         {
             title: "Menage profiles",
             address: "/",
@@ -148,14 +152,23 @@ const AdminPanel = () => {
         },
     ]
 
+
+    useEffect(() => {
+        api.getAllMenus()
+            .then(res => res.json())
+            .then(res => {
+                setMenu(res)
+            })
+            .catch(err => console.log(err))
+    }, [])
+
     return <div className={`${styles["admin-control-panel"]} ${global["content"]}`}>
         <div className={`${styles["navigation"]}`}>
-            <NavMenu items={items} />
+            <NavMenu items={adminMenu} />
         </div>
         <Routes>
             <Route path='profile' element={<UserProfile />} />
             <Route path='create-manu' element={<MainMenu />} />
-
         </Routes>
     </div >
 };

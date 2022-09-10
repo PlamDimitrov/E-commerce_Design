@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './NavMenu.module.css';
 
 const NavMenu = (props) => {
+    useEffect(() => {
+        console.log("from navigation", props.items);
+    }, [])
     const processMenuItem = (item, index) => {
         return <li key={index} className={styles["item"]}>
             <Link to={item.address}>{item.title}

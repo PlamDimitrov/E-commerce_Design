@@ -1,218 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './Navigation.module.css';
+import { MenuContext } from '../../globalFunctions/Store/MenuStore';
 
 import NavMenu from '../NavMenu/NavMenu';
 import api from '../../api';
 
 const Navigation = () => {
+    const { mainMenu, setMainMenu } = useContext(MenuContext);
     const [menu, setMenu] = useState([]);
 
-    // To replace with Database call
-    const items = [
-        {
-            title: "Mans",
-            address: "/",
-            subMenus: [
-                {
-                    name: "Casuals",
-                    links: [
-                        {
-                            text: "Jackets",
-                            address: "/",
-                        },
-                        {
-                            text: "Hoodies & Sweatshirts",
-                            address: "",
-                        },
-                        {
-                            text: "Polo Shirts",
-                            address: "/",
-                        },
-                        {
-                            text: "Sportswear",
-                            address: "/",
-                        },
-                        {
-                            text: "Trousers & Chinos",
-                            address: "/",
-                        },
-                        {
-                            text: "Sportswear",
-                            address: "/",
-                        },
-                        {
-                            text: "T-Shirts",
-                            address: "/",
-                        },
-                    ],
-                }
-            ]
-        },
-        {
-            title: "Womens",
-            address: "/",
-            subMenus: [
-                {
-                    name: "Casuals womens",
-                    links: [
-                        {
-                            text: "Jackets",
-                            address: "/",
-                        },
-                        {
-                            text: "Hoodies & Sweatshirts",
-                            address: "",
-                        },
-                        {
-                            text: "Polo Shirts",
-                            address: "/",
-                        },
-                        {
-                            text: "Sportswear",
-                            address: "/",
-                        },
-                        {
-                            text: "Trousers & Chinos",
-                            address: "/",
-                        },
-                        {
-                            text: "Sportswear",
-                            address: "/",
-                        },
-                        {
-                            text: "T-Shirts",
-                            address: "/",
-                        },
-                    ]
-                },
-                {
-                    name: "Casuals",
-                    links: [
-                        {
-                            text: "Jackets",
-                            address: "/",
-                        },
-                        {
-                            text: "Hoodies & Sweatshirts",
-                            address: "",
-                        },
-                        {
-                            text: "Polo Shirts",
-                            address: "/",
-                        },
-                        {
-                            text: "Sportswear",
-                            address: "/",
-                        },
-                        {
-                            text: "Trousers & Chinos",
-                            address: "/",
-                        },
-                        {
-                            text: "Sportswear",
-                            address: "/",
-                        },
-                        {
-                            text: "T-Shirts",
-                            address: "/",
-                        },
-                    ]
-                }
-            ]
-        },
-        {
-            title: "The brand",
-            address: "/",
-            subMenus: []
-        },
-        {
-            title: "Locale store",
-            address: "/",
-            subMenus: []
-        },
-        {
-            title: "Look book",
-            address: "/",
-            subMenus: [
-                {
-                    name: "Casuals",
-                    links: [
-                        {
-                            text: "Jackets",
-                            address: "/",
-                        },
-                        {
-                            text: "Hoodies & Sweatshirts",
-                            address: "",
-                        },
-                        {
-                            text: "Polo Shirts",
-                            address: "/",
-                        },
-                        {
-                            text: "Sportswear",
-                            address: "/",
-                        },
-                        {
-                            text: "Trousers & Chinos",
-                            address: "/",
-                        },
-                        {
-                            text: "Sportswear",
-                            address: "/",
-                        },
-                        {
-                            text: "T-Shirts",
-                            address: "/",
-                        },
-                    ]
-                },
-                {
-                    name: "Casuals",
-                    links: [
-                        {
-                            text: "Jackets",
-                            address: "/",
-                        },
-                        {
-                            text: "Hoodies & Sweatshirts",
-                            address: "",
-                        },
-                        {
-                            text: "Polo Shirts",
-                            address: "/",
-                        },
-                        {
-                            text: "Sportswear",
-                            address: "/",
-                        },
-                        {
-                            text: "Trousers & Chinos",
-                            address: "/",
-                        },
-                        {
-                            text: "Sportswear",
-                            address: "/",
-                        },
-                        {
-                            text: "T-Shirts",
-                            address: "/",
-                        },
-                    ]
-                }
-            ]
-        },
-    ]
-    // /To replace with Database call
+    useEffect(() => {
+        console.log("from nav", mainMenu);
+    }, [mainMenu])
 
     useEffect(() => {
         api.getAllMenus()
             .then(res => res.json())
             .then(res => {
                 setMenu(res)
-                console.log(menu);
+                // console.log("menu", menu);
+                // console.log("state", mainMenu);
             })
             .catch(err => console.log(err))
     }, [])
@@ -225,7 +34,7 @@ const Navigation = () => {
             </Link>
         </div>
         <div className={styles["main-menu"]}>
-            {menu.length > 0 ? <NavMenu items={menu} /> : <></>}
+            {menu.length > 0 ? <NavMenu items={mainMenu} /> : <></>}
         </div>
         <div className={styles["search"]}>
             <input defaultValue="Search" />

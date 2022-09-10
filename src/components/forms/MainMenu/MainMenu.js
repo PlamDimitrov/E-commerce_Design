@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StoreContext } from "../../../globalFunctions/Store/Store";
 import handleError from "../../../globalFunctions/serverErrors";
@@ -6,8 +6,10 @@ import styles from './MainMenu.module.css';
 
 import spinner from '../../../assets/spinner.gif';
 import api from '../../../api';
+import { MenuContext } from '../../../globalFunctions/Store/MenuStore';
 
-const MainMenu = (props) => {
+const MainMenu = () => {
+    const { setHasToUpdate } = useContext(MenuContext);
     const [isLoading, setIsLoading] = useState(null);
     const [subCategory, setSubCategory] = useState(false);
     const [category, setCategory] = useState([]);
@@ -34,6 +36,7 @@ const MainMenu = (props) => {
         arr[categoryIndex].links.push(link);
         setCategory(arr);
     };
+
     const removeLinkInput = (categoryIndex, linkIndex) => {
         const arr = [...category];
         arr[categoryIndex].links.splice(linkIndex, 1);
@@ -83,6 +86,7 @@ const MainMenu = (props) => {
             .then(res => res)
             .then(res => setIsLoading(false))
             .then(() => {
+                setHasToUpdate(true);
                 setMenuTitle("");
                 setMenuAddress("");
                 setCategory([]);
