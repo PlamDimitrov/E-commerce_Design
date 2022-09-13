@@ -2,7 +2,6 @@ import './App.module.css';
 import { Routes, Route } from "react-router-dom";
 import Store, { StoreContext } from "./globalFunctions/Store/Store";
 import MenuStore, { MenuContext } from "./globalFunctions/Store/MenuStore";
-import { useState, useEffect } from 'react';
 import Auth from "./globalFunctions/Authenticator";
 
 import LoginOrRegister from './Pages/LoginOrRegister/LoginOrRegister';
@@ -20,32 +19,26 @@ import UserProfile from './Pages/UserProfile/UserProfile';
 import NotFound from './Pages/NotFound/NotFound';
 
 
-const content = ({ state }) => {
+const content = ({ state }, menuState) => {
   let isAdmin = state.role === "admin";
   let isUser = state.role === "user";
 
   return <>
     <Auth>
-      <MenuStore>
-        <MenuContext.Consumer>
-          {(mainMenuState) => <>
-            <Header />
-            <Navigation />
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/product-view' element={<ProductView />} />
-              <Route path='/shop' element={<Shop />} />
-              <Route path='/checkout' element={<Checkout />} />
-              <Route path='/sign-in-or-register' element={<LoginOrRegister />} />
-              <Route path='/admin' element={<LoginAdmin />} />
-              <Route path='/user/profile-page' element={isUser ? <UserProfile /> : <NotFound />} />
-              <Route path='/admin/control-panel/*' element={isAdmin ? <AdminPanel /> : <NotFound />} />
-              <Route path='*' element={<NotFound />} />
-            </Routes>
-            <Footer />
-          </>}
-        </MenuContext.Consumer>
-      </MenuStore>
+      <Header />
+      <Navigation />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/product-view' element={<ProductView />} />
+        <Route path='/shop' element={<Shop />} />
+        <Route path='/checkout' element={<Checkout />} />
+        <Route path='/sign-in-or-register' element={<LoginOrRegister />} />
+        <Route path='/admin' element={<LoginAdmin />} />
+        <Route path='/user/profile-page' element={isUser ? <UserProfile /> : <NotFound />} />
+        <Route path='/admin/control-panel/*' element={isAdmin ? <AdminPanel /> : <NotFound />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+      <Footer />
     </Auth>
   </>
 };
@@ -55,7 +48,11 @@ function App() {
     <div className="App">
       <Store>
         <StoreContext.Consumer>
-          {content}
+          {(state) => <MenuStore>
+            <MenuContext.Consumer>
+              {(menuState) => content(state, menuState)}
+            </MenuContext.Consumer>
+          </MenuStore>}
         </StoreContext.Consumer>
       </Store>
     </div>

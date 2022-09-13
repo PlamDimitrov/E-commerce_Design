@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import styles from './AdminPanel.module.css';
 import global from '../../index.module.css';
 
-import api from '../../api';
-
 import UserProfile from '../UserProfile/UserProfile';
 import NavMenu from '../../components/NavMenu/NavMenu';
-import MainMenu from '../../components/forms/MainMenu/MainMenu';
+import CreateMainMenu from '../../components/forms/CreateMainMenu/CreateMainMenu';
+import EditMainMenu from '../../components/forms/EditMainMenu/EditMainMenu';
+import NotFound from '../../Pages/NotFound/NotFound';
 
 const AdminPanel = () => {
-    const [menu, setMenu] = useState([]);
-
     const adminMenu = [
         {
             title: "Menage profiles",
@@ -62,7 +60,7 @@ const AdminPanel = () => {
                     links: [
                         {
                             text: "Create menu",
-                            address: "create-manu",
+                            address: "create-menu",
                         },
                         {
                             text: "Edit menu",
@@ -152,23 +150,15 @@ const AdminPanel = () => {
         },
     ]
 
-
-    useEffect(() => {
-        api.getAllMenus()
-            .then(res => res.json())
-            .then(res => {
-                setMenu(res)
-            })
-            .catch(err => console.log(err))
-    }, [])
-
     return <div className={`${styles["admin-control-panel"]} ${global["content"]}`}>
         <div className={`${styles["navigation"]}`}>
             <NavMenu items={adminMenu} />
         </div>
         <Routes>
             <Route path='profile' element={<UserProfile />} />
-            <Route path='create-manu' element={<MainMenu />} />
+            <Route path='create-menu' element={<CreateMainMenu />} />
+            <Route path='edit-menu' element={<EditMainMenu />} />
+            <Route path='*' element={<NotFound />} />
         </Routes>
     </div >
 };

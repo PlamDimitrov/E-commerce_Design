@@ -1,17 +1,17 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { StoreContext } from "../../../globalFunctions/Store/Store";
-import handleError from "../../../globalFunctions/serverErrors";
-import styles from './MainMenu.module.css';
+import React, { useContext, useEffect, useState } from 'react';
 
-import spinner from '../../../assets/spinner.gif';
+import styles from './EditMainMenu.module.css';
+
+import spinner from '../../../assets/spinner_v3.gif';
 import api from '../../../api';
 import { MenuContext } from '../../../globalFunctions/Store/MenuStore';
 
-const MainMenu = () => {
-    const { setHasToUpdate } = useContext(MenuContext);
-    const [isLoading, setIsLoading] = useState(null);
+const EditMainMenu = () => {
+    const { mainMenu, setHasToUpdate } = useContext(MenuContext);
+    const [isLoading, setIsLoading] = useState(false);
     const [subCategory, setSubCategory] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
+    const [selectedMenu, setSelectedMenu] = useState(null);
     const [category, setCategory] = useState([]);
     const [menuTitle, setMenuTitle] = useState("");
     const [menuAddress, setMenuAddress] = useState("");
@@ -21,9 +21,11 @@ const MainMenu = () => {
         if (!subCategory) {
             addCategory();
             setSubCategory(true)
+            setIsChecked(true);
         } else {
             setCategory([])
             setSubCategory(false)
+            setIsChecked(false);
         }
     };
 
@@ -58,7 +60,6 @@ const MainMenu = () => {
     const removeSpecificCategory = (categoryIndex) => {
         const arr = [...category];
         arr.splice(categoryIndex, 1);
-        console.log(categoryIndex);
         setCategory(arr);
     };
 
@@ -76,23 +77,44 @@ const MainMenu = () => {
 
     const submit = async (event) => {
         event.preventDefault();
+        const id = selectedMenu.id;
         const menu = {
+            Id: selectedMenu.id,
             title: menuTitle,
             address: menuAddress,
             subMenus: category
         };
         setIsLoading(true);
-        await api.createMenu(menu)
+        await api.editMenu(id, menu)
             .then(res => res)
             .then(res => setIsLoading(false))
             .then(() => {
                 setHasToUpdate(true);
-                setMenuTitle("");
-                setMenuAddress("");
-                setCategory([]);
             })
             .catch(err => console.log(err));
     };
+
+    const handleSelectMenu = (test) => {
+        mainMenu.map(m => {
+            if (m.id === +test) {
+                setMenuTitle(m.title);
+                setMenuAddress(m.address);
+                setCategory(m.subMenus);
+                setSelectedMenu(m);
+                if (m.subMenus.length > 0) {
+                    setIsChecked(true);
+                    setSubCategory(true);
+                } else {
+                    setIsChecked(false);
+                    setSubCategory(false);
+                }
+                return m;
+            } else {
+                return null;
+            }
+        });
+    };
+
     const renderSubCategory = () => {
         return category.map(
             (c, categoryIndex) => {
@@ -135,10 +157,16 @@ const MainMenu = () => {
     };
 
     return <div className={styles["main-menu-form"]}>
+        <select className={`${styles["select-menu"]}`} onChange={(event) => handleSelectMenu(event.target.value)}>
+            <option  >---</option>
+            {mainMenu.map((element, index) => {
+                return <option key={index} value={element.id}>{element.title}</option>
+            })}
+        </select>
         <h1 className={styles["title"]}>
-            Create main menu
-            {isLoading ? <img className={styles['loader']} src={spinner} alt="spinner" /> : <></>}
+            Edit main menu
         </h1>
+
         <form>
             <input onChange={(event) => setMenuTitle(event.target.value)}
                 value={menuTitle}
@@ -150,8 +178,8 @@ const MainMenu = () => {
                 placeholder="Menu address.." autoComplete="off" />
             <div className={styles["category"]}>
                 <div className={styles["check-box-title"]}>
-                    <p className={styles["input-title"]}>Category..</p>
-                    <input onClick={handleCheckBox} type="checkbox" className={`${styles["check-box"]} ${styles["error"]} `} />
+                    <p className={styles["input-title"]}>Category...</p>
+                    <input checked={isChecked} onChange={handleCheckBox} type="checkbox" className={`${styles["check-box"]} ${styles["error"]} `} />
                 </div>
                 <div className={styles["category-form"]}>
                     {subCategory ? renderSubCategory() : <></>}
@@ -162,9 +190,12 @@ const MainMenu = () => {
                     </div>
                     : <></>}
             </div>
-            <button type='button' onClick={(event) => submit(event)} className={styles["btn"]}>Submit Menu</button>
+            <button type='button' onClick={(event) => submit(event)} className={styles["btn"]}>
+                Submit Menu
+                {isLoading ? <img className={styles['loader']} src={spinner} alt="spinner" /> : <></>}
+            </button>
         </form>
     </div>
 };
 
-export default MainMenu;
+export default EditMainMenu;

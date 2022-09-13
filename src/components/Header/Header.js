@@ -80,7 +80,6 @@ const Header = () => {
                         <i className="fa-solid fa-cart-shopping"></i>
                         <span className={styles["shoping-status"]} >1 item  <i className="fa-solid fa-chevron-down"></i></span>
                     </Link>
-
                     <div className={styles["dropdown"]}>
                         <h1 className={styles["dropdown-title"]}>Products:</h1>
                         <div className={styles["dropdown-categories"]}>

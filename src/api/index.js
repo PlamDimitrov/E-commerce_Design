@@ -58,8 +58,8 @@ const getCurrentUser = (id) => {
 const createMenu = (menu) => {
     return post(route.creteMenu, menu)
 }
-const editMenu = (menu) => {
-    return post(route.editMenu, menu)
+const editMenu = (id, data) => {
+    return put(route.editMenu + `/${id}`, data)
 }
 const deleteMenu = (id) => {
     return post(route.deleteMenu)
