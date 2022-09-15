@@ -35,3 +35,8 @@
   border: 2px solid #bb5465;
   transition: all 700ms ease-in-out;
 }
+
+.small {
+  font-size: 0.8rem;
+  padding: 0.15rem 0.3rem 0.1rem 0.3rem;
+}

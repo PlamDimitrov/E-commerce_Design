@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import styles from './EditMainMenu.module.css';
 
-import spinner from '../../../../assets/spinner_v3.gif';
 import api from '../../../../api';
 import { MenuContext } from '../../../../globalFunctions/Store/MenuStore';
 import Button from '../../../Button/Button';
+import CategorySection from '../CategorySection/CategorySection';
 
 const EditMainMenu = () => {
     const { mainMenu, setHasToUpdate } = useContext(MenuContext);
@@ -13,9 +13,9 @@ const EditMainMenu = () => {
     const [subCategory, setSubCategory] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     const [selectedMenu, setSelectedMenu] = useState(null);
-    const [category, setCategory] = useState([]);
     const [menuTitle, setMenuTitle] = useState("");
     const [menuAddress, setMenuAddress] = useState("");
+    const [categories, setCategories] = useState([]);
 
     const handleCheckBox = () => {
         if (!subCategory) {
@@ -23,26 +23,10 @@ const EditMainMenu = () => {
             setSubCategory(true)
             setIsChecked(true);
         } else {
-            setCategory([])
+            setCategories([])
             setSubCategory(false)
             setIsChecked(false);
         }
-    };
-
-    const addLinkInput = (categoryIndex) => {
-        const arr = [...category];
-        const link = {
-            text: "",
-            address: ""
-        }
-        arr[categoryIndex].links.push(link);
-        setCategory(arr);
-    };
-
-    const removeLinkInput = (categoryIndex, linkIndex) => {
-        const arr = [...category];
-        arr[categoryIndex].links.splice(linkIndex, 1);
-        setCategory(arr);
     };
 
     const addCategory = () => {
@@ -53,26 +37,8 @@ const EditMainMenu = () => {
                 address: ""
             }]
         }
-        setCategory(current => [...current, category])
+        setCategories(current => [...current, category])
 
-    };
-
-    const removeSpecificCategory = (categoryIndex) => {
-        const arr = [...category];
-        arr.splice(categoryIndex, 1);
-        setCategory(arr);
-    };
-
-    const getCategoryData = (categoryIndex, data) => {
-        const arr = [...category];
-        arr[categoryIndex].name = data;
-        setCategory(arr);
-    };
-
-    const getLinkData = (categoryIndex, linkIndex, data) => {
-        const arr = [...category];
-        arr[categoryIndex].links[linkIndex][data.name] = data.value;
-        setCategory(arr);
     };
 
     const submit = async (event) => {
@@ -82,7 +48,7 @@ const EditMainMenu = () => {
             Id: selectedMenu.id,
             title: menuTitle,
             address: menuAddress,
-            subMenus: category
+            subMenus: categories
         };
         setIsLoading(true);
         await api.editMenu(id, menu)
@@ -99,7 +65,7 @@ const EditMainMenu = () => {
             if (m.id === +test) {
                 setMenuTitle(m.title);
                 setMenuAddress(m.address);
-                setCategory(m.subMenus);
+                setCategories(m.subMenus);
                 setSelectedMenu(m);
                 if (m.subMenus.length > 0) {
                     setIsChecked(true);
@@ -116,42 +82,14 @@ const EditMainMenu = () => {
     };
 
     const renderSubCategory = () => {
-        return category.map(
-            (c, categoryIndex) => {
-                return <div key={categoryIndex} className={`${styles["content"]}`}>
-                    <div className={`${styles["remove-category-section"]}`}>
-                        <button type='button' onClick={() => removeSpecificCategory(categoryIndex)} className={`${styles["btn"]} ${styles["small"]} ${styles["red-btn"]}`}>Remove category</button>
-                    </div>
-                    <input
-                        onChange={(event) => getCategoryData(categoryIndex, event.target.value)}
-                        className={`${styles["input"]} ${styles["category-name"]} ${styles["error"]}`}
-                        value={category[categoryIndex].name}
-                        placeholder="Category name.."
-                        autoComplete="off" />
-                    <div className={`${styles["links"]}`}>
-                        {c.links.map((l, linkIndex) => <div key={linkIndex} className={`${styles["link"]}`}>
-                            <div className={`${styles["remove-link-section"]}`}>
-                                <button type='button' onClick={() => removeLinkInput(categoryIndex, linkIndex)} className={`${styles["btn"]} ${styles["small"]} ${styles["red-btn"]}`}>x</button>
-                            </div>
-                            <input
-                                onChange={(event) => getLinkData(categoryIndex, linkIndex, { name: event.target.name, value: event.target.value })}
-                                value={category[categoryIndex]["links"][linkIndex].text}
-                                className={`${styles["input"]} ${styles["error"]} `}
-                                name="text"
-                                placeholder="Link text.."
-                                autoComplete="off"
-                            />
-                            <input
-                                onChange={(event) => getLinkData(categoryIndex, linkIndex, { name: event.target.name, value: event.target.value })}
-                                value={category[categoryIndex]["links"][linkIndex].address}
-                                className={`${styles["input"]} ${styles["error"]} `}
-                                name="address"
-                                placeholder="Link address.."
-                                autoComplete="off" />
-                        </div>)}
-                        <button type='button' onClick={() => addLinkInput(categoryIndex)} className={styles["btn"]}>Add Link</button>
-                    </div>
-                </div>
+        return categories.map(
+            (category, categoryIndex) => {
+                return <CategorySection {...{
+                    category,
+                    categories,
+                    categoryIndex,
+                    setCategories
+                }} />
             }
         )
     };
@@ -166,7 +104,6 @@ const EditMainMenu = () => {
         <h1 className={styles["title"]}>
             Edit main menu
         </h1>
-
         <form>
             <input onChange={(event) => setMenuTitle(event.target.value)}
                 value={menuTitle}
@@ -186,14 +123,18 @@ const EditMainMenu = () => {
                 </div>
                 {subCategory
                     ? <div className={styles["category-action"]}>
-                        <button type='button' onClick={addCategory} className={styles["btn"]}>Add Category</button>
+                        <Button {...{
+                            handleClick: addCategory,
+                            text: "Add Category",
+                            type: "button"
+                        }} />
                     </div>
                     : <></>}
             </div>
             <Button {...{
                 isLoading,
                 handleClick: submit,
-                btnSubmit: "Submit Menu",
+                text: "Submit Menu",
                 type: "button"
             }} />
         </form>

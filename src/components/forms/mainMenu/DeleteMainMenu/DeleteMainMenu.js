@@ -10,7 +10,7 @@ const DeleteMainMenu = () => {
     const { mainMenu, setHasToUpdate } = useContext(MenuContext);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedMenu, setSelectedMenu] = useState(null);
-    const [menuTitle, setMenuTitle] = useState("");
+    const [menuTitle, setMenuTitle] = useState("---");
     const [showConfirmScreen, setShowConfirmScreen] = useState(false);
 
     const submit = async () => {
@@ -29,13 +29,15 @@ const DeleteMainMenu = () => {
         setShowConfirmScreen(true);
     }
 
-    const handleSelectMenu = (test) => {
+    const handleSelectMenu = (id) => {
         mainMenu.map(m => {
-            if (m.id === +test) {
+            if (m.id === +id) {
                 setMenuTitle(m.title);
                 setSelectedMenu(m);
                 return m;
             } else {
+                setSelectedMenu(null);
+                setMenuTitle("---");
                 return null;
             }
         });
@@ -46,7 +48,7 @@ const DeleteMainMenu = () => {
 
         <div className={styles["main-menu-form"]}>
             <select className={`${styles["select-menu"]}`} onChange={(event) => handleSelectMenu(event.target.value)}>
-                <option  >Select a menu to delete:</option>
+                <option value={"---"}>Select a menu to delete:</option>
                 {mainMenu.map((element, index) => {
                     return <option key={index} value={element.id}>{element.title}</option>
                 })}
@@ -54,9 +56,10 @@ const DeleteMainMenu = () => {
             <Button {...{
                 isLoading,
                 handleClick: renderConfirmScreen,
-                btnSubmit: "Delete Menu",
+                text: "Delete Menu",
                 type: "button",
-                colour: "red"
+                colour: "red",
+                isActive: selectedMenu
             }} />
         </div>
         {showConfirmScreen
@@ -65,7 +68,7 @@ const DeleteMainMenu = () => {
                     <Button {...{
                         isLoading,
                         handleClick: submit,
-                        btnSubmit: `Confirm deletion of "${menuTitle}"`,
+                        text: `Confirm deletion of "${menuTitle}"`,
                         type: "button",
                         colour: "red"
                     }} />

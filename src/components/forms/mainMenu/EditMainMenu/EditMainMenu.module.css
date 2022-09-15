@@ -1,41 +1,3 @@
-.btn {
-  position: relative;
-  cursor: pointer;
-  padding: 0.6rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  text-transform: uppercase;
-  font-size: 1rem;
-  color: #575153;
-  background: transparent;
-  border: 2px solid #575153;
-  margin: 0.5rem;
-  white-space: nowrap;
-}
-.btn .loader {
-  position: absolute;
-  top: -2px;
-  vertical-align: middle;
-  margin-left: 2rem;
-  height: 40px;
-}
-.btn:hover {
-  color: white;
-  background: #00c8c8;
-  border: 2px solid #00c8c8;
-  transition: all 700ms ease-in-out;
-}
-
-.small {
-  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
-}
-
-.red-btn:hover {
-  background: #bb5465;
-  border: 2px solid #bb5465;
-  transition: all 700ms ease-in-out;
-}
-
 .main-menu-form {
   display: flex;
   flex-direction: column;
@@ -104,16 +66,6 @@
 .main-menu-form .category .check-box-title .check-box {
   width: 20px;
   height: 20px;
-}
-.main-menu-form .category .check-box-title .content {
-  padding-left: 2rem;
-}
-.main-menu-form .category .check-box-title .content .input {
-  width: 100%;
-  margin-left: 2rem;
-}
-.main-menu-form .category .check-box-title .content .links {
-  padding-left: 2rem;
 }
 .main-menu-form .category .category-form {
   display: flex;

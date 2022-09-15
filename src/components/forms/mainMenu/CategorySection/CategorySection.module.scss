@@ -1,0 +1,35 @@
+@import "../../../../glodalStyleVariables.scss";
+
+.content {
+  width: 40%;
+  border: 1px solid $border-color;
+  margin: 1rem;
+  padding: 0.5rem 2rem 2rem 2rem;
+  .remove-category-section {
+    display: flex;
+    justify-content: end;
+  }
+  .input {
+    width: 100%;
+    margin: 0.5rem 0 0.5rem 0;
+    font-size: 1rem;
+    border: 1px solid $border-color;
+    padding: 0.5rem 0 0.5rem 0;
+    &:focus {
+      outline: none;
+    }
+  }
+  .category-name {
+    border: 1px solid $content-color;
+  }
+  .links {
+    .link {
+      border: 1px dashed $hover-color;
+      padding: 0 0.5rem 0.5rem 0.5rem;
+      .remove-link-section {
+        display: flex;
+        justify-content: end;
+      }
+    }
+  }
+}
