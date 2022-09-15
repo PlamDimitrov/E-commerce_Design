@@ -5,9 +5,10 @@ import global from '../../index.module.css';
 
 import UserProfile from '../UserProfile/UserProfile';
 import NavMenu from '../../components/NavMenu/NavMenu';
-import CreateMainMenu from '../../components/forms/CreateMainMenu/CreateMainMenu';
-import EditMainMenu from '../../components/forms/EditMainMenu/EditMainMenu';
+import CreateMainMenu from '../../components/forms/mainMenu/CreateMainMenu/CreateMainMenu';
+import EditMainMenu from '../../components/forms/mainMenu/EditMainMenu/EditMainMenu';
 import NotFound from '../../Pages/NotFound/NotFound';
+import DeleteMainMenu from '../../components/forms/mainMenu/DeleteMainMenu/DeleteMainMenu';
 
 const AdminPanel = () => {
     const adminMenu = [
@@ -158,6 +159,7 @@ const AdminPanel = () => {
             <Route path='profile' element={<UserProfile />} />
             <Route path='create-menu' element={<CreateMainMenu />} />
             <Route path='edit-menu' element={<EditMainMenu />} />
+            <Route path='delete-menu' element={<DeleteMainMenu />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
     </div >

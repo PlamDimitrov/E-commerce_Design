@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import styles from './EditMainMenu.module.css';
 
-import spinner from '../../../assets/spinner_v3.gif';
-import api from '../../../api';
-import { MenuContext } from '../../../globalFunctions/Store/MenuStore';
+import spinner from '../../../../assets/spinner_v3.gif';
+import api from '../../../../api';
+import { MenuContext } from '../../../../globalFunctions/Store/MenuStore';
+import Button from '../../../Button/Button';
 
 const EditMainMenu = () => {
     const { mainMenu, setHasToUpdate } = useContext(MenuContext);
@@ -15,7 +16,6 @@ const EditMainMenu = () => {
     const [category, setCategory] = useState([]);
     const [menuTitle, setMenuTitle] = useState("");
     const [menuAddress, setMenuAddress] = useState("");
-
 
     const handleCheckBox = () => {
         if (!subCategory) {
@@ -158,7 +158,7 @@ const EditMainMenu = () => {
 
     return <div className={styles["main-menu-form"]}>
         <select className={`${styles["select-menu"]}`} onChange={(event) => handleSelectMenu(event.target.value)}>
-            <option  >---</option>
+            <option  >Select a menu to edit:</option>
             {mainMenu.map((element, index) => {
                 return <option key={index} value={element.id}>{element.title}</option>
             })}
@@ -190,10 +190,12 @@ const EditMainMenu = () => {
                     </div>
                     : <></>}
             </div>
-            <button type='button' onClick={(event) => submit(event)} className={styles["btn"]}>
-                Submit Menu
-                {isLoading ? <img className={styles['loader']} src={spinner} alt="spinner" /> : <></>}
-            </button>
+            <Button {...{
+                isLoading,
+                handleClick: submit,
+                btnSubmit: "Submit Menu",
+                type: "button"
+            }} />
         </form>
     </div>
 };

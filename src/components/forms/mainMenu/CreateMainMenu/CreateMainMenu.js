@@ -2,9 +2,10 @@ import React, { useContext, useState } from 'react';
 
 import styles from './CreateMainMenu.module.css';
 
-import spinner from '../../../assets/spinner.gif';
-import api from '../../../api';
-import { MenuContext } from '../../../globalFunctions/Store/MenuStore';
+import spinner from '../../../../assets/spinner.gif';
+import api from '../../../../api';
+import { MenuContext } from '../../../../globalFunctions/Store/MenuStore';
+import Button from '../../../Button/Button';
 
 const CreateMainMenu = () => {
     const { setHasToUpdate } = useContext(MenuContext);
@@ -159,7 +160,12 @@ const CreateMainMenu = () => {
                     </div>
                     : <></>}
             </div>
-            <button type='button' onClick={(event) => submit(event)} className={styles["btn"]}>Submit Menu</button>
+            <Button {...{
+                isLoading,
+                handleClick: submit,
+                btnSubmit: "Submit Menu",
+                type: "button"
+            }} />
         </form>
     </div>
 };

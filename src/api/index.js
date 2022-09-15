@@ -61,8 +61,8 @@ const createMenu = (menu) => {
 const editMenu = (id, data) => {
     return put(route.editMenu + `/${id}`, data)
 }
-const deleteMenu = (id) => {
-    return post(route.deleteMenu)
+const deleteMenu = (data) => {
+    return _delete(route.deleteMenu, data)
 }
 const getAllMenus = () => {
     return get(route.allMenus)
