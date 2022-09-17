@@ -121,7 +121,7 @@
 }
 .main-menu-form .category .category-form .content .remove-category-section {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .main-menu-form .category .category-form .content .category-name {
   border: 1px solid #989898;
@@ -132,5 +132,5 @@
 }
 .main-menu-form .category .category-form .content .links .link .remove-link-section {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }

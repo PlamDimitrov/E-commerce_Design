@@ -83,6 +83,7 @@ const CreateMainMenu = () => {
                 placeholder="Menu title.." autoComplete="off" />
             <input onChange={(event) => setMenuAddress(event.target.value)}
                 value={menuAddress}
+                required={true}
                 className={`${styles["input"]} ${styles["error"]} `}
                 placeholder="Menu address.." autoComplete="off" />
             <div className={styles["category"]}>

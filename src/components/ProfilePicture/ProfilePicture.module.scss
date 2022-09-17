@@ -3,7 +3,7 @@
   height: 240px;
   width: 240px;
   overflow: hidden;
-  img {
+  > img {
     position: absolute;
     top: 0;
     left: 0;
@@ -16,5 +16,20 @@
     opacity: 0;
     width: 100%;
     height: 100%;
+  }
+  .loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba($color: #000000, $alpha: 0.2);
+    .spinner {
+      width: 4rem;
+    }
   }
 }

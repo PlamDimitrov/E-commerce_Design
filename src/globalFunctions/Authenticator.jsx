@@ -35,7 +35,6 @@ const Auth = ({ children }) => {
 
     if (checkCurrentUser() === "User") {
       const userFromCookie = cookieParser("user-info");
-      console.log(userFromCookie);
       authenticate(
         routes.userAuthenticate,
         userFromCookie,

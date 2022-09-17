@@ -6,7 +6,7 @@
 }
 .content .remove-category-section {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .content .input {
   width: 100%;
@@ -27,5 +27,5 @@
 }
 .content .links .link .remove-link-section {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }

@@ -14,22 +14,22 @@ const AdminPanel = () => {
     const adminMenu = [
         {
             title: "Menage profiles",
-            address: "/",
+            address: "create-admin",
             subMenus: [
                 {
                     name: "Admin profiles",
                     links: [
                         {
                             text: "Create admin profile",
-                            address: "/",
-                        },
-                        {
-                            text: "Delete admin profile",
-                            address: "",
+                            address: "create-admin",
                         },
                         {
                             text: "Edit admin profiles",
-                            address: "/",
+                            address: "edit-admin",
+                        },
+                        {
+                            text: "Delete admin profile",
+                            address: "delete-admin",
                         },
                     ]
                 },
@@ -38,15 +38,15 @@ const AdminPanel = () => {
                     links: [
                         {
                             text: "Create user profile",
-                            address: "/",
-                        },
-                        {
-                            text: "Delete user profile",
-                            address: "",
+                            address: "create-user",
                         },
                         {
                             text: "Edit user profiles",
-                            address: "/",
+                            address: "edit-user",
+                        },
+                        {
+                            text: "Delete user profile",
+                            address: "delete-user",
                         },
                     ]
                 }
@@ -54,7 +54,7 @@ const AdminPanel = () => {
         },
         {
             title: "Main menu",
-            address: "/",
+            address: "create-menu",
             subMenus: [
                 {
                     name: "Actions",
@@ -77,22 +77,22 @@ const AdminPanel = () => {
         },
         {
             title: "Brands",
-            address: "/",
+            address: "create-brand",
             subMenus: [
                 {
                     name: "Actions",
                     links: [
                         {
                             text: "Create brand",
-                            address: "/",
+                            address: "create-brand",
                         },
                         {
                             text: "Edit brand",
-                            address: "/",
+                            address: "edit-brand",
                         },
                         {
                             text: "Delete brand",
-                            address: "/",
+                            address: "delete-brand",
                         },
                     ],
                 }
@@ -100,22 +100,22 @@ const AdminPanel = () => {
         },
         {
             title: "Category",
-            address: "/",
+            address: "create-category",
             subMenus: [
                 {
                     name: "Actions",
                     links: [
                         {
                             text: "Create category",
-                            address: "/",
+                            address: "create-category",
                         },
                         {
                             text: "Edit category",
-                            address: "/",
+                            address: "edit-category",
                         },
                         {
                             text: "Delete category",
-                            address: "/",
+                            address: "delete-category",
                         },
                     ],
                 }
@@ -123,22 +123,22 @@ const AdminPanel = () => {
         },
         {
             title: "Product",
-            address: "/",
+            address: "create-product",
             subMenus: [
                 {
                     name: "Actions",
                     links: [
                         {
                             text: "Create product",
-                            address: "/",
+                            address: "create-product",
                         },
                         {
                             text: "Edit product",
-                            address: "/",
+                            address: "edit-product",
                         },
                         {
                             text: "Delete product",
-                            address: "/",
+                            address: "delete-product",
                         },
                     ],
                 }

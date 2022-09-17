@@ -51,7 +51,7 @@ const logOutUser = () => {
     return post(routes.userLogOut)
 }
 const getCurrentUser = (id) => {
-    return get(routes.user + `/${id}`)
+    return get(routes.users + `/${id}`)
 }
 
 // Menu

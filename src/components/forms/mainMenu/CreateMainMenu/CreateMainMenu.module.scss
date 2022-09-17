@@ -1,4 +1,4 @@
-@import "../../../glodalStyleVariables.scss";
+@import "../../../../glodalStyleVariables.scss";
 
 .btn {
   cursor: pointer;
@@ -120,7 +120,7 @@
         padding: 0.5rem 2rem 2rem 2rem;
         .remove-category-section {
           display: flex;
-          justify-content: end;
+          justify-content: flex-end;
         }
         .category-name {
           border: 1px solid $content-color;
@@ -131,7 +131,7 @@
             padding: 0 0.5rem 0.5rem 0.5rem;
             .remove-link-section {
               display: flex;
-              justify-content: end;
+              justify-content: flex-end;
             }
           }
         }

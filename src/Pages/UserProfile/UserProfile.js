@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 import styles from './UserProfile.module.css';
 import global from '../../index.module.css';
 
@@ -7,7 +6,7 @@ import { StoreContext } from "../../globalFunctions/Store/Store";
 import ProfilePicture from '../../components/ProfilePicture/ProfilePicture';
 
 const UserProfile = () => {
-    const { state, dispatch } = React.useContext(StoreContext);
+    const { state } = React.useContext(StoreContext);
     const [user, setUser] = useState("<Link to={user.email}>{user.email}</Link>");
 
     useEffect(() => {
