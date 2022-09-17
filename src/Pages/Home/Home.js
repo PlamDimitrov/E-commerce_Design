@@ -6,8 +6,6 @@ import backgroundImg from '../../assets/img/home-page/background-home.png';
 import Category from '../../components/Category/Category';
 import Overview from '../../components/Overview/Overview';
 
-
-
 const Home = () => {
     return <div className={`${styles["home-page"]}`}>
         <div className={styles["top-image"]}>

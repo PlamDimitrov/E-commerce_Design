@@ -1,4 +1,5 @@
 export const ActionTypes = {
+  //User Actions
   Login: Symbol("[AUTH] Login"),
   LoginSuccess: Symbol("[AUTH] Login Success"),
   LoginFailure: Symbol("[AUTH] Login Failure"),
@@ -7,6 +8,7 @@ export const ActionTypes = {
   LogoutSuccess: Symbol("[AUTH] Logout Success"),
   LogoutFailure: Symbol("[AUTH] Logout Failure"),
 
+  //Admin Actions
   LoginAdmin: Symbol("[AUTH] Login"),
   LoginSuccessAdmin: Symbol("[AUTH] Login Success"),
   LoginFailureAdmin: Symbol("[AUTH] Login Failure"),

@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { memo, useContext, useState } from 'react';
 
 import styles from './DeleteMainMenu.module.css';
 
 import api from '../../../../api';
 import { MenuContext } from '../../../../globalFunctions/Store/MenuStore';
 import Button from '../../../Button/Button';
+
+const MenoButton = memo(Button);
 
 const DeleteMainMenu = () => {
     const { mainMenu, setHasToUpdate } = useContext(MenuContext);
@@ -53,7 +55,7 @@ const DeleteMainMenu = () => {
                     return <option key={index} value={element.id}>{element.title}</option>
                 })}
             </select>
-            <Button {...{
+            <MenoButton {...{
                 isLoading,
                 handleClick: renderConfirmScreen,
                 text: "Delete Menu",
@@ -65,7 +67,7 @@ const DeleteMainMenu = () => {
         {showConfirmScreen
             ? <div onClick={() => setShowConfirmScreen(false)} className={`${styles["confirmation-background"]}`}>
                 <div className={`${styles["confirmation-screen"]}`}>
-                    <Button {...{
+                    <MenoButton {...{
                         isLoading,
                         handleClick: submit,
                         text: `Confirm deletion of "${menuTitle}"`,

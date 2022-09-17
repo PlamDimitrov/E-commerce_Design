@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import Button from '../../../Button/Button';
 
 import styles from './CategorySection.module.css';

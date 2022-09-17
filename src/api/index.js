@@ -1,4 +1,4 @@
-import route from './apiRoutes'
+import routes from './apiRoutes'
 
 const call = (route, method, data) => {
     const headers = {
@@ -28,97 +28,97 @@ const _delete = (route, data) => {
 
 // Admin
 const registerAdmin = (admin) => {
-    return post(route.adminRegister, admin)
+    return post(routes.adminRegister, admin)
 }
 const logInAdmin = (admin) => {
-    return post(route.adminLogIn, admin)
+    return post(routes.adminLogIn, admin)
 }
 const logOutAdmin = () => {
-    return post(route.adminLogOut)
+    return post(routes.adminLogOut)
 }
 const getCurrentAdmin = (id) => {
-    return get(route.admin + `/${id}`)
+    return get(routes.admins + `/${id}`)
 }
 
 // User
 const registerUser = (user) => {
-    return post(route.userRegister, user)
+    return post(routes.userRegister, user)
 }
 const logInUser = (user) => {
-    return post(route.userLogIn, user)
+    return post(routes.userLogIn, user)
 }
 const logOutUser = () => {
-    return post(route.userLogOut)
+    return post(routes.userLogOut)
 }
 const getCurrentUser = (id) => {
-    return get(route.user + `/${id}`)
+    return get(routes.user + `/${id}`)
 }
 
 // Menu
 const createMenu = (menu) => {
-    return post(route.creteMenu, menu)
+    return post(routes.creteMenu, menu)
 }
 const editMenu = (id, data) => {
-    return put(route.editMenu + `/${id}`, data)
+    return put(routes.editMenu + `/${id}`, data)
 }
 const deleteMenu = (data) => {
-    return _delete(route.deleteMenu, data)
+    return _delete(routes.deleteMenu, data)
 }
 const getAllMenus = () => {
-    return get(route.allMenus)
+    return get(routes.allMenus)
 }
 
 
 
 // Product
 const createProduct = (product) => {
-    return post(route.productCreate, product)
+    return post(routes.productCreate, product)
 }
 const editProduct = (product) => {
-    return put(route.productEditOne, product)
+    return put(routes.productEditOne, product)
 }
 const deleteProduct = (product) => {
-    return _delete(route.productDeleteOne, product)
+    return _delete(routes.productDeleteOne, product)
 }
 const getAllProducts = () => {
-    return get(route.productGetAll).then(res => res.json())
+    return get(routes.productGetAll).then(res => res.json())
 }
 const getOneProduct = (product) => {
-    return post(route.productGetOne, product).then(res => res.json())
+    return post(routes.productGetOne, product).then(res => res.json())
 }
 
 // Category
 const createCategory = (category) => {
-    return post(route.categoryCreate, category)
+    return post(routes.categoryCreate, category)
 }
 const editCategory = (category) => {
-    return put(route.categoryEditOne, category)
+    return put(routes.categoryEditOne, category)
 }
 const deleteCategory = (category) => {
-    return _delete(route.categoryDeleteOne, category)
+    return _delete(routes.categoryDeleteOne, category)
 }
 const getAllCategories = () => {
-    return get(route.categoryGetAll).then(res => res.json())
+    return get(routes.categoryGetAll).then(res => res.json())
 }
 const getOneCategory = (category) => {
-    return post(route.categoryGetOne, category).then(res => res.json())
+    return post(routes.categoryGetOne, category).then(res => res.json())
 }
 
 // Brand
 const createBrand = (brand) => {
-    return post(route.brandCreate, brand)
+    return post(routes.brandCreate, brand)
 }
 const editBrand = (brand) => {
-    return put(route.brandEditOne, brand)
+    return put(routes.brandEditOne, brand)
 }
 const deleteBrand = (brand) => {
-    return _delete(route.brandDeleteOne, brand)
+    return _delete(routes.brandDeleteOne, brand)
 }
 const getAllBrands = () => {
-    return get(route.brandGetAll).then(res => res.json())
+    return get(routes.brandGetAll).then(res => res.json())
 }
 const getOneBrand = (brand) => {
-    return post(route.brandGetOne, brand).then(res => res.json())
+    return post(routes.brandGetOne, brand).then(res => res.json())
 }
 
 const api = {

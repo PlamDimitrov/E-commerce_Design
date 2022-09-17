@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { useMemo } from "react";
-import { useContext } from "react";
 
 import api from "../../api";
-
-import handleError from "../serverErrors";
 
 export const MenuContext = React.createContext({
   mainMenu: [],
@@ -22,7 +19,7 @@ const MenuStore = ({ children }) => {
     [mainMenu]
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     api
       .getAllMenus()
       .then((res) => res.json())

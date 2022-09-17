@@ -3,16 +3,20 @@ const main = `https://localhost:7044/api/`;
 const routes = {
 
     // Admin
-    admin: `${main}Admins`,
+    admins: `${main}Admins`,
     adminRegister: `${main}Admins/register`,
     adminLogIn: `${main}Admins/login`,
     adminLogOut: `${main}Admins/logout`,
+    adminProfilePicture: `${main}Admins/uploadProfilePicture`,
+    adminAuthenticate: `${main}Admins/auth`,
 
     // User
-    user: `${main}Users`,
+    users: `${main}Users`,
     userRegister: `${main}Users/register`,
     userLogIn: `${main}Users/login`,
     userLogOut: `${main}Users/logout`,
+    userProfilePicture: `${main}Users/uploadProfilePicture`,
+    userAuthenticate: `${main}Users/auth`,
 
     // Menu
     menu: `${main}Menus`,

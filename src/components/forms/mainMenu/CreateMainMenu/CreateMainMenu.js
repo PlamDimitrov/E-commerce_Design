@@ -10,19 +10,19 @@ import CategorySection from '../CategorySection/CategorySection';
 
 const CreateMainMenu = () => {
     const { setHasToUpdate } = useContext(MenuContext);
-    const [isLoading, setIsLoading] = useState(null);
-    const [subCategory, setSubCategory] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [hasSubCategory, setHasSubCategory] = useState(false);
     const [categories, setCategories] = useState([]);
     const [menuTitle, setMenuTitle] = useState("");
     const [menuAddress, setMenuAddress] = useState("");
 
     const handleCheckBox = () => {
-        if (!subCategory) {
+        if (!hasSubCategory) {
             addCategory();
-            setSubCategory(true)
+            setHasSubCategory(true)
         } else {
             setCategories([])
-            setSubCategory(false)
+            setHasSubCategory(false)
         }
     };
 
@@ -91,9 +91,9 @@ const CreateMainMenu = () => {
                     <input onClick={handleCheckBox} type="checkbox" className={`${styles["check-box"]} ${styles["error"]} `} />
                 </div>
                 <div className={styles["category-form"]}>
-                    {subCategory ? renderSubCategory() : <></>}
+                    {hasSubCategory ? renderSubCategory() : <></>}
                 </div>
-                {subCategory
+                {hasSubCategory
                     ? <div className={styles["category-action"]}>
                         <button type='button' onClick={addCategory} className={styles["btn"]}>Add Category</button>
                     </div>

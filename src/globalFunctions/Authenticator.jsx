@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { StoreContext } from "./Store/Store";
 import {
   loginFailureAdmin,
@@ -8,12 +8,12 @@ import {
 } from "./Store/actions";
 import cookieParser from "./cookieParser";
 import checkCurrentUser from "./checkCurrentUser";
-import api from "../api";
+import routes from "../api/apiRoutes";
 
 const Auth = ({ children }) => {
-  const { state, dispatch } = React.useContext(StoreContext);
+  const { dispatch } = React.useContext(StoreContext);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const authenticate = (route, userInfo, sucsess, failure) => {
       fetch(route, {
         credentials: "include",
@@ -37,7 +37,7 @@ const Auth = ({ children }) => {
       const userFromCookie = cookieParser("user-info");
       console.log(userFromCookie);
       authenticate(
-        "https://localhost:7044/api/Users/auth",
+        routes.userAuthenticate,
         userFromCookie,
         loginSuccess,
         loginFailure
@@ -45,7 +45,7 @@ const Auth = ({ children }) => {
     } else if (checkCurrentUser() === "Admin") {
       const adminFromCookie = cookieParser("admin-info");
       authenticate(
-        "https://localhost:7044/api/Admins/auth",
+        routes.adminAuthenticate,
         adminFromCookie,
         loginSuccessAdmin,
         loginFailureAdmin

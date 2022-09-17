@@ -17,7 +17,9 @@ import Checkout from './Pages/Checkout/Checkout';
 import AdminPanel from './Pages/AdminPanel/AdminPanel';
 import UserProfile from './Pages/UserProfile/UserProfile';
 import NotFound from './Pages/NotFound/NotFound';
+import { memo } from 'react';
 
+const MemoHeader = memo(Header);
 
 const content = ({ state }, menuState) => {
   let isAdmin = state.role === "admin";
@@ -25,7 +27,7 @@ const content = ({ state }, menuState) => {
 
   return <>
     <Auth>
-      <Header />
+      <MemoHeader />
       <Navigation />
       <Routes>
         <Route path='/' element={<Home />} />

@@ -10,7 +10,7 @@ import CategorySection from '../CategorySection/CategorySection';
 const EditMainMenu = () => {
     const { mainMenu, setHasToUpdate } = useContext(MenuContext);
     const [isLoading, setIsLoading] = useState(false);
-    const [subCategory, setSubCategory] = useState(false);
+    const [hasSubCategory, setHasSubCategory] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     const [selectedMenu, setSelectedMenu] = useState(null);
     const [menuTitle, setMenuTitle] = useState("");
@@ -18,13 +18,13 @@ const EditMainMenu = () => {
     const [categories, setCategories] = useState([]);
 
     const handleCheckBox = () => {
-        if (!subCategory) {
+        if (!hasSubCategory) {
             addCategory();
-            setSubCategory(true)
+            setHasSubCategory(true)
             setIsChecked(true);
         } else {
             setCategories([])
-            setSubCategory(false)
+            setHasSubCategory(false)
             setIsChecked(false);
         }
     };
@@ -69,10 +69,10 @@ const EditMainMenu = () => {
                 setSelectedMenu(m);
                 if (m.subMenus.length > 0) {
                     setIsChecked(true);
-                    setSubCategory(true);
+                    setHasSubCategory(true);
                 } else {
                     setIsChecked(false);
-                    setSubCategory(false);
+                    setHasSubCategory(false);
                 }
                 return m;
             } else {
@@ -119,9 +119,9 @@ const EditMainMenu = () => {
                     <input checked={isChecked} onChange={handleCheckBox} type="checkbox" className={`${styles["check-box"]} ${styles["error"]} `} />
                 </div>
                 <div className={styles["category-form"]}>
-                    {subCategory ? renderSubCategory() : <></>}
+                    {hasSubCategory ? renderSubCategory() : <></>}
                 </div>
-                {subCategory
+                {hasSubCategory
                     ? <div className={styles["category-action"]}>
                         <Button {...{
                             handleClick: addCategory,
