@@ -4,7 +4,7 @@ import styles from './Input.module.css';
 
 const Input = ({
     handleChange,
-    value = null,
+    value,
     type = "input",
     error = false,
     placeholder,

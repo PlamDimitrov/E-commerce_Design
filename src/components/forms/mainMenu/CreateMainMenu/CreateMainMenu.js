@@ -61,7 +61,7 @@ const CreateMainMenu = () => {
     const renderSubCategory = () => {
         return categories.map(
             (category, categoryIndex) => {
-                return <CategorySection {...{
+                return <CategorySection key={categoryIndex} {...{
                     category,
                     categories,
                     categoryIndex,

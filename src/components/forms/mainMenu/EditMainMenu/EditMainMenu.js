@@ -39,7 +39,6 @@ const EditMainMenu = () => {
             }]
         }
         setCategories(current => [...current, category])
-
     };
 
     const submit = async (event) => {
@@ -85,7 +84,7 @@ const EditMainMenu = () => {
     const renderSubCategory = () => {
         return categories.map(
             (category, categoryIndex) => {
-                return <CategorySection {...{
+                return <CategorySection key={categoryIndex} {...{
                     category,
                     categories,
                     categoryIndex,

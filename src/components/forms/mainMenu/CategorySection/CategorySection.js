@@ -45,7 +45,7 @@ const CategorySection = ({
         setCategories(arr);
     };
 
-    return <div key={categoryIndex} className={`${styles["content"]}`}>
+    return <div className={`${styles["content"]}`}>
         <div className={`${styles["remove-category-section"]}`}>
             <Button {...{
                 type: "button",
