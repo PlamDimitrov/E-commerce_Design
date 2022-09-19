@@ -1,5 +1,6 @@
 import React from 'react';
-import Button from '../../../Button/Button';
+import Button from '../../formComponents/Button/Button';
+import Input from '../../formComponents/Input/Input';
 
 import styles from './CategorySection.module.css';
 
@@ -54,12 +55,11 @@ const CategorySection = ({
                 size: "small"
             }} />
         </div>
-        <input
-            onChange={(event) => getCategoryData(categoryIndex, event.target.value)}
-            className={`${styles["input"]} ${styles["category-name"]} ${styles["error"]}`}
-            value={categories[categoryIndex].name}
-            placeholder="Category name.."
-            autoComplete="off" />
+        <Input {...{
+            handleChange: (event) => getCategoryData(categoryIndex, event.target.value),
+            value: categories[categoryIndex].name,
+            placeholder: "Category name..",
+        }} />
         <div className={`${styles["links"]}`}>
             {category.links.map((l, linkIndex) => <div key={linkIndex} className={`${styles["link"]}`}>
                 <div className={`${styles["remove-link-section"]}`}>
@@ -71,21 +71,18 @@ const CategorySection = ({
                         size: "small"
                     }} />
                 </div>
-                <input
-                    onChange={(event) => getLinkData(categoryIndex, linkIndex, { name: event.target.name, value: event.target.value })}
-                    value={categories[categoryIndex]["links"][linkIndex].text}
-                    className={`${styles["input"]} ${styles["error"]} `}
-                    name="text"
-                    placeholder="Link text.."
-                    autoComplete="off"
-                />
-                <input
-                    onChange={(event) => getLinkData(categoryIndex, linkIndex, { name: event.target.name, value: event.target.value })}
-                    value={categories[categoryIndex]["links"][linkIndex].address}
-                    className={`${styles["input"]} ${styles["error"]} `}
-                    name="address"
-                    placeholder="Link address.."
-                    autoComplete="off" />
+                <Input {...{
+                    handleChange: (event) => getLinkData(categoryIndex, linkIndex, { name: event.target.name, value: event.target.value }),
+                    value: categories[categoryIndex]["links"][linkIndex].text,
+                    name: "text",
+                    placeholder: "Link text..",
+                }} />
+                <Input {...{
+                    handleChange: (event) => getLinkData(categoryIndex, linkIndex, { name: event.target.name, value: event.target.value }),
+                    value: categories[categoryIndex]["links"][linkIndex].address,
+                    name: "address",
+                    placeholder: "Link address..",
+                }} />
             </div>)}
             <Button {...{
                 type: "button",

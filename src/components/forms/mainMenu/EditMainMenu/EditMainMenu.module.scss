@@ -25,76 +25,30 @@
     flex-direction: column;
     flex-wrap: nowrap;
     width: 100%;
-    .input {
-      width: 100%;
-      margin: 0.5rem 0 0.5rem 0;
-      font-size: 1rem;
-      border: 1px solid $border-color;
-      padding: 0.5rem 0 0.5rem 0;
-      &:focus {
-        outline: none;
-      }
-    }
-    hr {
-      width: 100%;
-    }
-  }
-  .input-container {
-    width: 94%;
-    .error {
-      background-color: $error-background-color;
-      border: 1px solid $error-border-color;
-    }
-  }
-  .category {
-    display: flex;
-    flex-direction: column;
-    .check-box-title {
+
+    .category {
       display: flex;
-      flex-wrap: nowrap;
-      flex-direction: row;
-      justify-content: flex-start;
-      width: 100%;
-      .input-title {
-        font-family: "Roboto";
-        font-size: 1.5rem;
-        color: $title-color;
-        text-transform: none;
-        margin-left: 1.5rem;
-        margin-right: 1.5rem;
+      flex-direction: column;
+      .check-box-title {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+        .input-title {
+          font-family: "Roboto";
+          font-size: 1.5rem;
+          color: $title-color;
+          text-transform: none;
+          margin-left: 1.5rem;
+          margin-right: 1.5rem;
+        }
       }
-      .check-box {
-        width: 20px;
-        height: 20px;
-      }
-    }
-    .category-form {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      .content {
-        width: 40%;
-        border: 1px solid $border-color;
-        margin: 1rem;
-        padding: 0.5rem 2rem 2rem 2rem;
-        .remove-category-section {
-          display: flex;
-          justify-content: flex-end;
-        }
-        .category-name {
-          border: 1px solid $content-color;
-        }
-        .links {
-          .link {
-            border: 1px dashed $hover-color;
-            padding: 0 0.5rem 0.5rem 0.5rem;
-            .remove-link-section {
-              display: flex;
-              justify-content: flex-end;
-            }
-          }
-        }
+      .category-form {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
       }
     }
   }

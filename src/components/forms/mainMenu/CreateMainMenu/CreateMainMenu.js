@@ -5,7 +5,7 @@ import styles from './CreateMainMenu.module.css';
 import spinner from '../../../../assets/spinner.gif';
 import api from '../../../../api';
 import { MenuContext } from '../../../../globalFunctions/Store/MenuStore';
-import Button from '../../../Button/Button';
+import Button from '../../formComponents/Button/Button';
 import CategorySection from '../CategorySection/CategorySection';
 
 const CreateMainMenu = () => {
@@ -96,7 +96,11 @@ const CreateMainMenu = () => {
                 </div>
                 {hasSubCategory
                     ? <div className={styles["category-action"]}>
-                        <button type='button' onClick={addCategory} className={styles["btn"]}>Add Category</button>
+                        <Button {...{
+                            handleClick: addCategory,
+                            text: "Add Category",
+                            type: "button"
+                        }} />
                     </div>
                     : <></>}
             </div>

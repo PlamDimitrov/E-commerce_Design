@@ -24,38 +24,18 @@
   flex-wrap: nowrap;
   width: 100%;
 }
-.main-menu-form form .input {
-  width: 100%;
-  margin: 0.5rem 0 0.5rem 0;
-  font-size: 1rem;
-  border: 1px solid #e7e7e7;
-  padding: 0.5rem 0 0.5rem 0;
-}
-.main-menu-form form .input:focus {
-  outline: none;
-}
-.main-menu-form form hr {
-  width: 100%;
-}
-.main-menu-form .input-container {
-  width: 94%;
-}
-.main-menu-form .input-container .error {
-  background-color: #fcf6f7;
-  border: 1px solid #bb5465;
-}
-.main-menu-form .category {
+.main-menu-form form .category {
   display: flex;
   flex-direction: column;
 }
-.main-menu-form .category .check-box-title {
+.main-menu-form form .category .check-box-title {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
 }
-.main-menu-form .category .check-box-title .input-title {
+.main-menu-form form .category .check-box-title .input-title {
   font-family: "Roboto";
   font-size: 1.5rem;
   color: #575153;
@@ -63,34 +43,9 @@
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
-.main-menu-form .category .check-box-title .check-box {
-  width: 20px;
-  height: 20px;
-}
-.main-menu-form .category .category-form {
+.main-menu-form form .category .category-form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
-}
-.main-menu-form .category .category-form .content {
-  width: 40%;
-  border: 1px solid #e7e7e7;
-  margin: 1rem;
-  padding: 0.5rem 2rem 2rem 2rem;
-}
-.main-menu-form .category .category-form .content .remove-category-section {
-  display: flex;
-  justify-content: flex-end;
-}
-.main-menu-form .category .category-form .content .category-name {
-  border: 1px solid #989898;
-}
-.main-menu-form .category .category-form .content .links .link {
-  border: 1px dashed #00c8c8;
-  padding: 0 0.5rem 0.5rem 0.5rem;
-}
-.main-menu-form .category .category-form .content .links .link .remove-link-section {
-  display: flex;
-  justify-content: flex-end;
 }

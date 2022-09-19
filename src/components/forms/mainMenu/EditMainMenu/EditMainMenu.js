@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import styles from './EditMainMenu.module.css';
 
 import api from '../../../../api';
 import { MenuContext } from '../../../../globalFunctions/Store/MenuStore';
-import Button from '../../../Button/Button';
+import Button from '../../formComponents/Button/Button';
+import Input from '../../formComponents/Input/Input';
 import CategorySection from '../CategorySection/CategorySection';
 
 const EditMainMenu = () => {
@@ -105,18 +106,26 @@ const EditMainMenu = () => {
             Edit main menu
         </h1>
         <form>
-            <input onChange={(event) => setMenuTitle(event.target.value)}
-                value={menuTitle}
-                className={`${styles["input"]} ${styles["error"]} `}
-                placeholder="Menu title.." autoComplete="off" />
-            <input onChange={(event) => setMenuAddress(event.target.value)}
-                value={menuAddress}
-                className={`${styles["input"]} ${styles["error"]} `}
-                placeholder="Menu address.." autoComplete="off" />
+            <Input {...{
+                handleChange: (event) => setMenuTitle(event.target.value),
+                value: menuTitle,
+                placeholder: "Menu title..",
+                autoComplete: false
+            }} />
+            <Input {...{
+                handleChange: (event) => setMenuAddress(event.target.value),
+                value: menuAddress,
+                placeholder: "Menu address..",
+                autoComplete: false
+            }} />
             <div className={styles["category"]}>
                 <div className={styles["check-box-title"]}>
                     <p className={styles["input-title"]}>Category...</p>
-                    <input checked={isChecked} onChange={handleCheckBox} type="checkbox" className={`${styles["check-box"]} ${styles["error"]} `} />
+                    <Input {...{
+                        handleChange: handleCheckBox,
+                        type: "checkbox",
+                        isChecked
+                    }} />
                 </div>
                 <div className={styles["category-form"]}>
                     {hasSubCategory ? renderSubCategory() : <></>}

@@ -4,7 +4,7 @@ import styles from './DeleteMainMenu.module.css';
 
 import api from '../../../../api';
 import { MenuContext } from '../../../../globalFunctions/Store/MenuStore';
-import Button from '../../../Button/Button';
+import Button from '../../formComponents/Button/Button';
 
 const MenoButton = memo(Button);
 
@@ -19,12 +19,18 @@ const DeleteMainMenu = () => {
         setIsLoading(true);
         api.deleteMenu(selectedMenu)
             .then(res => res)
-            .then(res => setIsLoading(false))
-            .then(() => setHasToUpdate(true))
+            .then(res => {
+                setIsLoading(false)
+                setHasToUpdate(true)
+                setSelectedMenu(null);
+                setMenuTitle("---");
+                document.querySelector(`.${styles["select-menu"]}`).selectedIndex = 0;
+            })
             .catch(err => {
                 console.log(err);
                 setIsLoading(false);
             })
+
     }
 
     const renderConfirmScreen = () => {
@@ -32,22 +38,25 @@ const DeleteMainMenu = () => {
     }
 
     const handleSelectMenu = (id) => {
+        let hasSelectedMenu = false;
         mainMenu.map(m => {
             if (m.id === +id) {
                 setMenuTitle(m.title);
                 setSelectedMenu(m);
+                hasSelectedMenu = true
                 return m;
-            } else {
-                setSelectedMenu(null);
-                setMenuTitle("---");
-                return null;
             }
+            return null;
         });
+        if (!hasSelectedMenu) {
+            setSelectedMenu(null);
+            setMenuTitle("---");
+            return null;
+        }
     };
 
 
     return <>
-
         <div className={styles["main-menu-form"]}>
             <select className={`${styles["select-menu"]}`} onChange={(event) => handleSelectMenu(event.target.value)}>
                 <option value={"---"}>Select a menu to delete:</option>
@@ -76,7 +85,6 @@ const DeleteMainMenu = () => {
                     }} />
                 </div>
             </div>
-
             : <></>}
     </>
 };

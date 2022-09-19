@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './Button.module.css';
 
-import spinner from '../../assets/spinner_v3.gif';
+import spinner from '../../../../assets/spinner_v3.gif';
 
 const Button = ({ isLoading, handleClick, text, type, colour, size, isActive = true }) => {
 
