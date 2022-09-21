@@ -1,4 +1,10 @@
-.btn {
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.container .btn {
   position: relative;
   cursor: pointer;
   padding: 0.6rem;
@@ -12,31 +18,30 @@
   margin: 0.5rem;
   white-space: nowrap;
 }
-.btn .loader {
-  position: absolute;
-  top: -2px;
-  vertical-align: middle;
-  margin-left: 2rem;
-  height: 40px;
-}
-.btn:hover {
+.container .btn:hover {
   color: white;
   background: #00c8c8;
   border: 2px solid #00c8c8;
   transition: all 700ms ease-in-out;
 }
-
-.red {
+.container .red {
   background: #bb5465;
   border: 2px solid #bb5465;
 }
-.red:hover {
+.container .red:hover {
   background: #bb5465;
   border: 2px solid #bb5465;
   transition: all 700ms ease-in-out;
 }
-
-.small {
+.container .small {
   font-size: 0.8rem;
   padding: 0.15rem 0.3rem 0.1rem 0.3rem;
+}
+.container .loader {
+  display: none;
+  vertical-align: middle;
+  height: 40px;
+}
+.container .active {
+  display: block;
 }

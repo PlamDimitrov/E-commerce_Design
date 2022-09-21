@@ -9,6 +9,7 @@ import CreateMainMenu from '../../components/forms/mainMenu/CreateMainMenu/Creat
 import EditMainMenu from '../../components/forms/mainMenu/EditMainMenu/EditMainMenu';
 import NotFound from '../../Pages/NotFound/NotFound';
 import DeleteMainMenu from '../../components/forms/mainMenu/DeleteMainMenu/DeleteMainMenu';
+import CreateCategory from '../../components/forms/category/CreateCategory/CreateCategory';
 
 const AdminPanel = () => {
     const adminMenu = [
@@ -157,6 +158,9 @@ const AdminPanel = () => {
         </div>
         <Routes>
             <Route path='profile' element={<UserProfile />} />
+            <Route path='create-category' element={<CreateCategory />} />
+            <Route path='edit-menu' element={<EditMainMenu />} />
+            <Route path='delete-menu' element={<DeleteMainMenu />} />
             <Route path='create-menu' element={<CreateMainMenu />} />
             <Route path='edit-menu' element={<EditMainMenu />} />
             <Route path='delete-menu' element={<DeleteMainMenu />} />

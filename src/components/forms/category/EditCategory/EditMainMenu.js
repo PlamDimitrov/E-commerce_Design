@@ -109,11 +109,13 @@ const EditMainMenu = () => {
                 handleChange: (event) => setMenuTitle(event.target.value),
                 value: menuTitle,
                 placeholder: "Menu title..",
+                autoComplete: false
             }} />
             <Input {...{
                 handleChange: (event) => setMenuAddress(event.target.value),
                 value: menuAddress,
                 placeholder: "Menu address..",
+                autoComplete: false
             }} />
             <div className={styles["category"]}>
                 <div className={styles["check-box-title"]}>

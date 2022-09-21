@@ -57,18 +57,7 @@ const ProductView = () => {
           images={setupImages()}
         />
         <ProductContent
-          title={product.title}
-          oldPrice={product.oldPrice}
-          price={product.price}
-          availability={product.availability}
-          code={product.code}
-          tags={product.tags}
-          description={product.description}
-          colour={product.colour}
-          size={product.size}
-          detailedDescription={product.detailedDescription}
-          video={product.video}
-          reviews={product.reviews}
+          {...product}
         />
       </div>
       <ProductSubTabs videoUrl="https://www.youtube.com/embed/Qx0zSF6y70Y" />

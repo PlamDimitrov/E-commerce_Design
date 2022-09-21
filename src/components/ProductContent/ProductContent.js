@@ -3,9 +3,21 @@ import { Link } from 'react-router-dom';
 import Rating from '../Rating/Rating';
 import styles from './ProductContent.module.css';
 
-const ProductContent = (props) => {
-
-
+const ProductContent = ({
+    title,
+    images,
+    oldPrice,
+    price,
+    availability,
+    code,
+    tags,
+    description,
+    colour,
+    size,
+    detailedDescription,
+    video,
+    reviews
+}) => {
     return <div className={`${styles["product-content"]}`}>
         <h1 className={`${styles["title"]}`}>Ave classic sweatshirt</h1>
         <div className={`${styles["atributes"]}`}>
@@ -22,15 +34,15 @@ const ProductContent = (props) => {
             </span>
         </div>
         <div className={`${styles["priceing"]}`}>
-            <span className={`${styles["price"]} ${styles["old"]}`}>{props.oldPrice}$</span>
-            <span className={`${styles["price"]}`}>{props.price}$</span>
+            <span className={`${styles["price"]} ${styles["old"]}`}>{oldPrice}$</span>
+            <span className={`${styles["price"]}`}>{price}$</span>
         </div>
         <div className={`${styles["parameters"]}`}>
-            <span>Availability: <p>{props.availability ? "In stock" : "Not in stock"}</p></span>
-            <span>Product Code: <p>{props.code}</p></span>
-            <span>Tags: {props.tags.map(i => <Link to="/" key={i}>${i}, </Link>)}</span>
+            <span>Availability: <p>{availability ? "In stock" : "Not in stock"}</p></span>
+            <span>Product Code: <p>{code}</p></span>
+            <span>Tags: {tags.map((i, index) => (<Link to="/" key={index}>${i}, </Link>))}</span>
         </div>
-        <span className={`${styles["description"]}`}>{props.description}</span>
+        <span className={`${styles["description"]}`}>{description}</span>
         <div className={`${styles["dropdowns"]}`}>
             <div>
                 <label>Colour:</label>

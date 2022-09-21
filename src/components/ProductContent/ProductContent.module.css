@@ -30,6 +30,9 @@
   color: #00c8c8;
 }
 .product-content .atributes .share {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   color: #989898;
   font-weight: bold;
   padding: 0 0.5rem 0 0.5rem;

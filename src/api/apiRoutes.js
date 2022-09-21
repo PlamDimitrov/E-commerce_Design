@@ -38,6 +38,7 @@ const routes = {
     categoryGetOne: `${main}Categories/getOne`,
     categoryEditOne: `${main}Categories/edit`,
     categoryDeleteOne: `${main}Categories/delete`,
+    categoryPicture: `${main}Categories/uploadProfilePicture`,
 
     //Brand
     brandCreate: `${main}Brands/create`,
