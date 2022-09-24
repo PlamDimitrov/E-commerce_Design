@@ -58,11 +58,11 @@ const getCurrentUser = (id) => {
 const createMenu = (menu) => {
     return post(routes.creteMenu, menu)
 }
-const editMenu = (id, data) => {
-    return put(routes.editMenu + `/${id}`, data)
+const editMenu = (id, menu) => {
+    return put(routes.editMenu + `/${id}`, menu)
 }
-const deleteMenu = (data) => {
-    return _delete(routes.deleteMenu, data)
+const deleteMenu = (menu) => {
+    return _delete(routes.deleteMenu, menu)
 }
 const getAllMenus = () => {
     return get(routes.allMenus)
@@ -91,17 +91,17 @@ const getOneProduct = (product) => {
 const createCategory = (category) => {
     return post(routes.categoryCreate, category)
 }
-const editCategory = (category) => {
-    return put(routes.categoryEditOne, category)
+const editCategory = (id, category) => {
+    return put(routes.category + `/${id}`, category)
 }
 const deleteCategory = (category) => {
-    return _delete(routes.categoryDeleteOne, category)
+    return _delete(routes.categoryDeleteOne + `/${category.id}`, category)
 }
 const getAllCategories = () => {
     return get(routes.categoryGetAll).then(res => res.json())
 }
-const getOneCategory = (category) => {
-    return post(routes.categoryGetOne, category).then(res => res.json())
+const getOneCategory = (id) => {
+    return get(routes.categoryGetOne + `/${id}`).then(res => res.json())
 }
 
 // Brand

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styles from './CreateCategory.module.css';
 
@@ -13,9 +13,9 @@ import Input from '../../formComponents/Input/Input';
 
 const CreateCategory = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [picture, setPicture] = useState([]);
+    const [picture, setPicture] = useState(false);
     const [selectedFile, setSelectedFile] = useState(false);
-    const [category, setCategory] = useState("");
+    const [categoryName, setCategoryName] = useState("");
 
     const onChangeHandler = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -30,35 +30,51 @@ const CreateCategory = () => {
 
     const clearImage = () => {
         setSelectedFile(false);
-        setPicture([]);
+        setPicture(false);
     }
 
     const submitImage = (id) => {
-        setIsLoading(true);
-        const data = new FormData();
-        data.append("image", selectedFile);
-        fetch(routes.categoryPicture + `/${id}`, {
-            method: 'POST',
-            credentials: 'include',
-            body: data
-        })
-            .then(res => res.json())
-            .then(res => {
-                setPicture(res.image ? `data:image/png;base64, ${res.image}` : false)
-                setIsLoading(false)
+        if (selectedFile) {
+            setIsLoading(true);
+            const data = new FormData();
+            data.append("image", selectedFile);
+            fetch(routes.categoryPicture + `/${id}`, {
+                method: 'POST',
+                credentials: 'include',
+                body: data
             })
-            .catch(err => {
-                console.log(err);
-                setIsLoading(false)
-            })
+                .then(res => {
+                    if (res.status === 200) {
+                        clearImage();
+                    }
+                    setIsLoading(false);
+                    return res.json()
+                })
+                .then(res => {
+                    setPicture(res.image ? `data:image/png;base64, ${res.image}` : false);
+                })
+                .catch(err => {
+                    console.log(err);
+                    setIsLoading(false)
+                })
+        }
     };
 
     const submitCategory = async () => {
         setIsLoading(true);
-        api.createCategory(category)
-            .then(res => res.json())
+        api.createCategory({ name: categoryName })
+            .then(res => {
+                if (res.ok) {
+                    setCategoryName("");
+                }
+                setIsLoading(false);
+                return res.json();
+            })
             .then(res => submitImage(res.id))
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err);
+                setIsLoading(false);
+            })
     }
 
 
@@ -74,18 +90,18 @@ const CreateCategory = () => {
         <form>
             <Input
                 {...{
-                    handleChange: (event) => setCategory({ name: event.target.value }),
-                    value: category.name,
+                    handleChange: (event) => setCategoryName(event.target.value),
+                    value: categoryName,
                     placeholder: "Category name...",
                 }}
             />
             <div className={`${styles["picture"]}`}>
-                {selectedFile ? <img onDrop={onChangeHandler} src={picture} alt="profile_picture" /> : <img src={avatar} alt="profile_picture" />}
+                {picture ? <img onDrop={onChangeHandler} src={picture} alt="profile_picture" /> : <img src={avatar} alt="profile_picture" />}
                 {isLoading
                     ? renderLoader()
                     : <></>
                 }
-                <input onDrop={onChangeHandler} onChange={onChangeHandler} multiple type="file" />
+                <input onDrop={onChangeHandler} onChange={onChangeHandler} type="file" />
                 <Button {...{
                     isLoading,
                     handleClick: clearImage,

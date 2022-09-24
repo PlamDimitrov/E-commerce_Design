@@ -21,7 +21,6 @@ const routes = {
     // Menu
     menu: `${main}Menus`,
     creteMenu: `${main}Menus/create`,
-    editMenu: `${main}Menus/edit`,
     deleteMenu: `${main}Menus/delete`,
     allMenus: `${main}Menus/getAll`,
 
@@ -33,10 +32,10 @@ const routes = {
     productDeleteOne: `${main}Products/delete`,
 
     //Category
+    category: `${main}Categories`,
     categoryCreate: `${main}Categories/create`,
     categoryGetAll: `${main}Categories/getAll`,
     categoryGetOne: `${main}Categories/getOne`,
-    categoryEditOne: `${main}Categories/edit`,
     categoryDeleteOne: `${main}Categories/delete`,
     categoryPicture: `${main}Categories/uploadProfilePicture`,
 

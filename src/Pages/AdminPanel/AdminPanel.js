@@ -10,6 +10,8 @@ import EditMainMenu from '../../components/forms/mainMenu/EditMainMenu/EditMainM
 import NotFound from '../../Pages/NotFound/NotFound';
 import DeleteMainMenu from '../../components/forms/mainMenu/DeleteMainMenu/DeleteMainMenu';
 import CreateCategory from '../../components/forms/category/CreateCategory/CreateCategory';
+import EditCategory from '../../components/forms/category/EditCategory/EditCategory';
+import DeleteCategory from '../../components/forms/category/DeleteCategory/DeleteCategory';
 
 const AdminPanel = () => {
     const adminMenu = [
@@ -159,6 +161,8 @@ const AdminPanel = () => {
         <Routes>
             <Route path='profile' element={<UserProfile />} />
             <Route path='create-category' element={<CreateCategory />} />
+            <Route path='edit-category' element={<EditCategory />} />
+            <Route path='delete-category' element={<DeleteCategory />} />
             <Route path='edit-menu' element={<EditMainMenu />} />
             <Route path='delete-menu' element={<DeleteMainMenu />} />
             <Route path='create-menu' element={<CreateMainMenu />} />

@@ -1,17 +1,17 @@
-.main-menu-form {
+.category-form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: nowrap;
 }
-.main-menu-form .select-menu {
+.category-form .select-category {
   width: 100%;
   margin: 0.5rem 0 0.5rem 0;
   font-size: 1rem;
   border: 1px solid #e7e7e7;
   padding: 0.5rem 0 0.5rem 0;
 }
-.main-menu-form .title {
+.category-form .title {
   position: relative;
   color: #575153;
   font-size: 1.125rem;

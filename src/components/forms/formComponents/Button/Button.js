@@ -12,7 +12,7 @@ const Button = ({ isLoading, handleClick, text, type = "button", colour, size, i
             onClick={(event) => handleClick(event)}
             disabled={!isActive}
             className={`${styles["btn"]} ${styles[colour]} ${styles[size]}`}>
-            {isActive ? text : "---"}
+            {text}
         </button>
         <img className={`${styles['loader']} ${isLoading ? styles["active"] : ""}`} src={spinner} alt="spinner" />
     </div>
