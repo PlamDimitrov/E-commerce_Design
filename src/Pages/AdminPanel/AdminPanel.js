@@ -5,13 +5,21 @@ import global from '../../index.module.css';
 
 import UserProfile from '../UserProfile/UserProfile';
 import NavMenu from '../../components/NavMenu/NavMenu';
-import CreateMainMenu from '../../components/forms/mainMenu/CreateMainMenu/CreateMainMenu';
-import EditMainMenu from '../../components/forms/mainMenu/EditMainMenu/EditMainMenu';
-import NotFound from '../../Pages/NotFound/NotFound';
-import DeleteMainMenu from '../../components/forms/mainMenu/DeleteMainMenu/DeleteMainMenu';
+
+import CreateBrand from '../../components/forms/brand/CreateBrand/CreateBrand';
+import EditBrand from '../../components/forms/brand/EditBrand/EditBrand';
+import DeleteBrand from '../../components/forms/brand/DeleteBrand/DeleteBrand';
+
 import CreateCategory from '../../components/forms/category/CreateCategory/CreateCategory';
 import EditCategory from '../../components/forms/category/EditCategory/EditCategory';
 import DeleteCategory from '../../components/forms/category/DeleteCategory/DeleteCategory';
+
+import CreateMainMenu from '../../components/forms/mainMenu/CreateMainMenu/CreateMainMenu';
+import EditMainMenu from '../../components/forms/mainMenu/EditMainMenu/EditMainMenu';
+import DeleteMainMenu from '../../components/forms/mainMenu/DeleteMainMenu/DeleteMainMenu';
+
+
+import NotFound from '../../Pages/NotFound/NotFound';
 
 const AdminPanel = () => {
     const adminMenu = [
@@ -163,11 +171,17 @@ const AdminPanel = () => {
             <Route path='create-category' element={<CreateCategory />} />
             <Route path='edit-category' element={<EditCategory />} />
             <Route path='delete-category' element={<DeleteCategory />} />
+
+            <Route path='create-brand' element={<CreateBrand />} />
+            <Route path='edit-brand' element={<EditBrand />} />
+            <Route path='delete-brand' element={<DeleteBrand />} />
+
             <Route path='edit-menu' element={<EditMainMenu />} />
             <Route path='delete-menu' element={<DeleteMainMenu />} />
             <Route path='create-menu' element={<CreateMainMenu />} />
             <Route path='edit-menu' element={<EditMainMenu />} />
             <Route path='delete-menu' element={<DeleteMainMenu />} />
+
             <Route path='*' element={<NotFound />} />
         </Routes>
     </div >

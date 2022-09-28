@@ -1,0 +1,52 @@
+@import "../../../../glodalStyleVariables.scss";
+
+.brand-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  .title {
+    position: relative;
+    color: $title-color;
+    font-size: 1.125rem;
+    margin: 1.563rem;
+    font-weight: bold;
+  }
+  form {
+    .picture {
+      position: relative;
+      height: 240px;
+      width: 240px;
+      overflow: hidden;
+      > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+      }
+      input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba($color: #000000, $alpha: 0.2);
+        .spinner {
+          width: 4rem;
+        }
+      }
+    }
+  }
+}

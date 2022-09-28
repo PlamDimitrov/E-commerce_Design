@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react';
 
-import styles from './EditCategory.module.css';
+import styles from './EditBrand.module.css';
 
 import api from '../../../../api';
 import routes from '../../../../api/apiRoutes';
@@ -11,29 +11,29 @@ import avatar from '../../../../assets/img/Avatar.jpg';
 import Button from '../../formComponents/Button/Button';
 import Input from '../../formComponents/Input/Input';
 
-const EditCategory = () => {
-    const [categories, setCategories] = useState([]);
+const EditBrand = () => {
+    const [brands, setBrands] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [picture, setPicture] = useState(false);
     const [selectedFile, setSelectedFile] = useState(false);
-    const [selectedCategory, setSelectedCategory] = useState("");
-    const [categoryName, setCategoryName] = useState("");
+    const [selectedBrand, setSelectedBrand] = useState("");
+    const [brandName, setBrandName] = useState("");
 
-    const handleSelectCategory = (categoryId) => {
-        let hasSelectedCategory = false;
-        categories.forEach(c => {
-            if (c.id === +categoryId) {
-                setCategoryName(c.name);
+    const handleSelectBrand = (brandId) => {
+        let hasSelectedBrand = false;
+        brands.forEach(c => {
+            if (c.id === +brandId) {
+                setBrandName(c.name);
                 setPicture(c.image ? `data:image/png;base64, ${c.image}` : false);
-                setSelectedCategory(c);
-                hasSelectedCategory = true
+                setSelectedBrand(c);
+                hasSelectedBrand = true
                 return c;
             }
         });
-        if (!hasSelectedCategory) {
+        if (!hasSelectedBrand) {
             setPicture(false)
-            setSelectedCategory("");
-            setCategoryName("");
+            setSelectedBrand("");
+            setBrandName("");
             setSelectedFile(false);
             return null;
         }
@@ -64,7 +64,7 @@ const EditCategory = () => {
             } else {
                 data.append("image", selectedFile);
             }
-            fetch(routes.categoryPicture + `/${id}`, {
+            fetch(routes.brandPicture + `/${id}`, {
                 method: 'POST',
                 credentials: 'include',
                 body: data
@@ -78,8 +78,8 @@ const EditCategory = () => {
                 })
                 .then(res => {
                     setPicture(res.image ? `data:image/png;base64, ${res.image}` : false);
-                    api.getAllCategories()
-                        .then(res => setCategories(res))
+                    api.getAllBrands()
+                        .then(res => setBrands(res))
                 })
                 .catch(err => {
                     console.log(err);
@@ -89,12 +89,12 @@ const EditCategory = () => {
         return;
     };
 
-    const submitCategory = async () => {
+    const submitBrand = async () => {
         setIsLoading(true);
-        api.editCategory(selectedCategory.id, { name: categoryName })
+        api.editBrand(selectedBrand.id, { name: brandName })
             .then(res => {
                 if (res.ok) {
-                    categories.find(({ id }) => id === +selectedCategory.id).name = categoryName;
+                    brands.find(({ id }) => id === +selectedBrand.id).name = brandName;
                 }
                 setIsLoading(false);
                 return res.json();
@@ -113,31 +113,31 @@ const EditCategory = () => {
 
     const submit = (event) => {
         event.preventDefault();
-        submitCategory();
+        submitBrand();
     };
 
     useLayoutEffect(() => {
-        api.getAllCategories()
-            .then(res => setCategories(res))
+        api.getAllBrands()
+            .then(res => setBrands(res))
     }, [])
 
     return <>
-        <select className={`${styles["select-category"]}`} onChange={(event) => handleSelectCategory(event.target.value)}>
-            <option value={""} >Select a category to edit:</option>
-            {categories.map((element, index) => {
+        <select className={`${styles["select-brand"]}`} onChange={(event) => handleSelectBrand(event.target.value)}>
+            <option value={""} >Select a brand to edit:</option>
+            {brands.map((element, index) => {
                 return <option key={index} value={element.id}>{element.name}</option>
             })}
         </select>
-        <div className={styles["category-form"]}>
+        <div className={styles["brand-form"]}>
             <h1 className={styles["title"]}>
-                Edit Category
+                Edit Brand
             </h1>
             <form>
                 <Input
                     {...{
-                        handleChange: (event) => setCategoryName(event.target.value),
-                        value: categoryName,
-                        placeholder: "Category name...",
+                        handleChange: (event) => setBrandName(event.target.value),
+                        value: brandName,
+                        placeholder: "Brand name...",
                     }}
                 />
                 <div className={`${styles["picture"]}`}>
@@ -159,13 +159,13 @@ const EditCategory = () => {
                 <Button {...{
                     isLoading,
                     handleClick: submit,
-                    text: "Submit Category",
+                    text: "Submit Brand",
                     type: "button",
-                    isActive: selectedCategory
+                    isActive: selectedBrand
                 }} />
             </form>
         </div>
     </>
 };
 
-export default EditCategory;
+export default EditBrand;

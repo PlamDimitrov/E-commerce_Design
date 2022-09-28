@@ -1,0 +1,48 @@
+.brand-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+.brand-form .title {
+  position: relative;
+  color: #575153;
+  font-size: 1.125rem;
+  margin: 1.563rem;
+  font-weight: bold;
+}
+.brand-form form .picture {
+  position: relative;
+  height: 240px;
+  width: 240px;
+  overflow: hidden;
+}
+.brand-form form .picture > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.brand-form form .picture input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+.brand-form form .picture .loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.brand-form form .picture .loader .spinner {
+  width: 4rem;
+}

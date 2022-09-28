@@ -40,11 +40,12 @@ const routes = {
     categoryPicture: `${main}Categories/uploadProfilePicture`,
 
     //Brand
+    brand: `${main}Brands`,
     brandCreate: `${main}Brands/create`,
     brandGetAll: `${main}Brands/getAll`,
     brandGetOne: `${main}Brands/getOne`,
-    brandEditOne: `${main}Brands/edit`,
     brandDeleteOne: `${main}Brands/delete`,
+    brandPicture: `${main}Brands/uploadProfilePicture`,
 }
 
 

@@ -108,17 +108,17 @@ const getOneCategory = (id) => {
 const createBrand = (brand) => {
     return post(routes.brandCreate, brand)
 }
-const editBrand = (brand) => {
-    return put(routes.brandEditOne, brand)
+const editBrand = (id, brand) => {
+    return put(routes.brand + `/${id}`, brand)
 }
 const deleteBrand = (brand) => {
-    return _delete(routes.brandDeleteOne, brand)
+    return _delete(routes.brandDeleteOne + `/${brand.id}`, brand)
 }
 const getAllBrands = () => {
     return get(routes.brandGetAll).then(res => res.json())
 }
-const getOneBrand = (brand) => {
-    return post(routes.brandGetOne, brand).then(res => res.json())
+const getOneBrand = (id) => {
+    return post(routes.brandGetOne + `/${id}`).then(res => res.json())
 }
 
 const api = {

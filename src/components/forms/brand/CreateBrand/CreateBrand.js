@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import styles from './CreateCategory.module.css';
+import styles from './CreateBrand.module.css';
 
 import api from '../../../../api';
 import routes from '../../../../api/apiRoutes';
@@ -11,11 +11,11 @@ import avatar from '../../../../assets/img/Avatar.jpg';
 import Button from '../../formComponents/Button/Button';
 import Input from '../../formComponents/Input/Input';
 
-const CreateCategory = () => {
+const CreateBrand = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [picture, setPicture] = useState(false);
     const [selectedFile, setSelectedFile] = useState(false);
-    const [categoryName, setCategoryName] = useState("");
+    const [brandName, setBrandName] = useState("");
 
     const onChangeHandler = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -38,7 +38,7 @@ const CreateCategory = () => {
             setIsLoading(true);
             const data = new FormData();
             data.append("image", selectedFile);
-            fetch(routes.categoryPicture + `/${id}`, {
+            fetch(routes.brandPicture + `/${id}`, {
                 method: 'POST',
                 credentials: 'include',
                 body: data
@@ -60,12 +60,12 @@ const CreateCategory = () => {
         }
     };
 
-    const submitCategory = async () => {
+    const submitBrand = async () => {
         setIsLoading(true);
-        api.createCategory({ name: categoryName })
+        api.createBrand({ name: brandName })
             .then(res => {
                 if (res.ok) {
-                    setCategoryName("");
+                    setBrandName("");
                 }
                 setIsLoading(false);
                 return res.json();
@@ -80,19 +80,19 @@ const CreateCategory = () => {
 
     const submit = (event) => {
         event.preventDefault();
-        submitCategory();
+        submitBrand();
     };
 
-    return <div className={styles["category-form"]}>
+    return <div className={styles["brand-form"]}>
         <h1 className={styles["title"]}>
-            Create Category
+            Create Brand
         </h1>
         <form>
             <Input
                 {...{
-                    handleChange: (event) => setCategoryName(event.target.value),
-                    value: categoryName,
-                    placeholder: "Category name...",
+                    handleChange: (event) => setBrandName(event.target.value),
+                    value: brandName,
+                    placeholder: "Brand name...",
                 }}
             />
             <div className={`${styles["picture"]}`}>
@@ -114,11 +114,11 @@ const CreateCategory = () => {
             <Button {...{
                 isLoading,
                 handleClick: submit,
-                text: "Submit Category",
+                text: "Submit Brand",
                 type: "button"
             }} />
         </form>
     </div>
 };
 
-export default CreateCategory;
+export default CreateBrand;
