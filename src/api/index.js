@@ -81,10 +81,10 @@ const deleteProduct = (product) => {
     return _delete(routes.productDeleteOne, product)
 }
 const getAllProducts = () => {
-    return get(routes.productGetAll).then(res => res.json())
+    return get(routes.productGetAll)
 }
 const getOneProduct = (product) => {
-    return post(routes.productGetOne, product).then(res => res.json())
+    return post(routes.productGetOne, product)
 }
 
 // Category
@@ -98,10 +98,10 @@ const deleteCategory = (category) => {
     return _delete(routes.categoryDeleteOne + `/${category.id}`, category)
 }
 const getAllCategories = () => {
-    return get(routes.categoryGetAll).then(res => res.json())
+    return get(routes.categoryGetAll)
 }
 const getOneCategory = (id) => {
-    return get(routes.categoryGetOne + `/${id}`).then(res => res.json())
+    return get(routes.categoryGetOne + `/${id}`)
 }
 
 // Brand
@@ -115,10 +115,10 @@ const deleteBrand = (brand) => {
     return _delete(routes.brandDeleteOne + `/${brand.id}`, brand)
 }
 const getAllBrands = () => {
-    return get(routes.brandGetAll).then(res => res.json())
+    return get(routes.brandGetAll)
 }
 const getOneBrand = (id) => {
-    return post(routes.brandGetOne + `/${id}`).then(res => res.json())
+    return post(routes.brandGetOne + `/${id}`)
 }
 
 const api = {

@@ -33,8 +33,8 @@ const Login = (props) => {
     const submit = (event) => {
         event.preventDefault();
         const user = {
-            userName: userName,
-            password: password
+            UserName: userName,
+            Password: password
         };
         setIsLoading(true);
         loginCall(user)

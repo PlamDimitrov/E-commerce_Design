@@ -78,7 +78,7 @@ const ProfilePicture = () => {
     data.append("image", selectedFile);
     switch (userType.current) {
       case "User":
-        fetch(routes.userProfilePicture, {
+        fetch(routes.userProfilePicture + `/${userId.current}`, {
           method: 'POST',
           credentials: 'include',
           body: data
@@ -95,7 +95,7 @@ const ProfilePicture = () => {
           })
         break;
       case "Admin":
-        fetch(routes.adminProfilePicture, {
+        fetch(routes.adminProfilePicture + `/${userId.current}`, {
           method: 'POST',
           credentials: 'include',
           body: data

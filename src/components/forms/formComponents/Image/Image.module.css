@@ -1,0 +1,35 @@
+.picture {
+  position: relative;
+  height: 240px;
+  width: 240px;
+  overflow: hidden;
+}
+.picture > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.picture input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+.picture .loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.picture .loader .spinner {
+  width: 4rem;
+}
