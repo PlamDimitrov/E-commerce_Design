@@ -4,6 +4,7 @@ import styles from './EditCategory.module.css';
 
 import api from '../../../../api';
 import routes from '../../../../api/apiRoutes';
+import { imageProcesses } from '../../../../globalFunctions/imageProcesses';
 
 import Button from '../../formComponents/Button/Button';
 import Input from '../../formComponents/Input/Input';
@@ -97,21 +98,11 @@ const EditCategory = () => {
             })
     };
 
-    const processImages = (categories) => {
-        categories.forEach(c => {
-            if (c.image != null) {
-                c.image = `data:image/png;base64, ${c.image}`
-            }
-        })
-        console.log(categories);
-        return categories;
-    }
-
     useEffect(() => {
         api.getAllCategories()
             .then(res => res.json())
             .then(res => {
-                setCategories(processImages(res));
+                setCategories(imageProcesses.convertToBase64(res));
             })
     }, [])
 

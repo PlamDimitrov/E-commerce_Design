@@ -4,34 +4,33 @@ import styles from './EditBrand.module.css';
 
 import api from '../../../../api';
 import routes from '../../../../api/apiRoutes';
-
-import spinner from '../../../../assets/spinner_v3.gif';
-import avatar from '../../../../assets/img/Avatar.jpg';
+import { imageProcesses } from '../../../../globalFunctions/imageProcesses';
 
 import Button from '../../formComponents/Button/Button';
 import Input from '../../formComponents/Input/Input';
+import Image from '../../formComponents/Image/Image';
 
 const EditBrand = () => {
     const [brands, setBrands] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [picture, setPicture] = useState(false);
+    const [image, setImage] = useState(false);
     const [selectedFile, setSelectedFile] = useState(false);
     const [selectedBrand, setSelectedBrand] = useState("");
     const [brandName, setBrandName] = useState("");
 
     const handleSelectBrand = (brandId) => {
         let hasSelectedBrand = false;
-        brands.forEach(c => {
-            if (c.id === +brandId) {
-                setBrandName(c.name);
-                setPicture(c.image ? `data:image/png;base64, ${c.image}` : false);
-                setSelectedBrand(c);
+        brands.forEach(b => {
+            if (b.id === +brandId) {
+                setBrandName(b.name);
+                setImage(b.image ? b.image : false);
+                setSelectedBrand(b);
                 hasSelectedBrand = true
-                return c;
+                return b;
             }
         });
         if (!hasSelectedBrand) {
-            setPicture(false)
+            setImage(false)
             setSelectedBrand("");
             setBrandName("");
             setSelectedFile(false);
@@ -39,96 +38,59 @@ const EditBrand = () => {
         }
     };
 
-    const onChangeHandler = (event) => {
-        setSelectedFile(event.target.files[0]);
-        setPicture(URL.createObjectURL(event.target.files[0]));
-    };
-
-    const renderLoader = () => {
-        return <div className={`${styles["loader"]}`}>
-            <img className={styles['spinner']} src={spinner} alt="spinner" />
-        </div>
-    }
-
-    const clearImage = () => {
-        setSelectedFile(null);
-        setPicture(null);
-    }
-
-    const removeImage = () => {
+    const submitImage = async (id) => {
         setIsLoading(true);
         const data = new FormData();
-        data.append("image", false);
-        fetch(routes.brandPicture + `/${+selectedBrand.id}`, {
-            method: 'POST',
-            credentials: 'include',
-            body: data
-        })
-            .then(res => {
-                setIsLoading(false);
-                clearImage();
-            })
-            .catch(err => {
-                console.log(err);
-                setIsLoading(false)
-            })
-    }
-
-    const submitImage = (id) => {
-        if (selectedFile) {
-            setIsLoading(true);
-            const data = new FormData();
-            if (selectedFile === null) {
-                data.append("image", null);
-            } else {
-                data.append("image", selectedFile);
-            }
-            fetch(routes.brandPicture + `/${id}`, {
+        if (selectedFile === null) {
+            data.append("image", null);
+        } else {
+            data.append("image", selectedFile);
+        }
+        try {
+            const brandImageResponse = await fetch(routes.brandPicture + `/${id}`, {
                 method: 'POST',
                 credentials: 'include',
                 body: data
             })
-                .then(res => {
-                    if (res.status === 200) {
-                        clearImage();
-                    }
-                    setIsLoading(false);
-                    return res.json()
-                })
-                .then(res => {
-                    setPicture(res.image ? `data:image/png;base64, ${res.image}` : false);
-                    api.getAllBrands()
-                        .then(res => setBrands(res))
-                })
-                .catch(err => {
-                    console.log(err);
-                    setIsLoading(false)
-                })
+            if (brandImageResponse.ok) {
+                setIsLoading(false);
+                getAllBrands();
+            }
+            const brandFromDb = await brandImageResponse.json();
+            setImage(brandFromDb.image ? `data:image/png;base64, ${brandFromDb.image}` : false);
+        } catch (error) {
+            console.log(error);
+            setIsLoading(false);
         }
-        return;
     };
 
     const submitBrand = async () => {
         setIsLoading(true);
-        api.editBrand(selectedBrand.id, { name: brandName })
-            .then(res => {
-                if (res.ok) {
-                    brands.find(({ id }) => id === +selectedBrand.id).name = brandName;
-                }
-                setIsLoading(false);
-                return res.json();
-            })
-            .then(res => {
+        try {
+            const res = await api.editBrand(selectedBrand.id, { name: brandName })
+            if (res.ok) {
+                brands.find(({ id }) => id === +selectedBrand.id).name = brandName;
+            }
+            setIsLoading(false);
+            const responseContent = await res.json();
+            if (selectedFile) {
+                await submitImage(responseContent.id);
+            }
+        } catch (error) {
+            console.log(error);
+            setIsLoading(false);
 
-                submitImage(res.id);
-
-            })
-            .catch(err => {
-                console.log(err);
-                setIsLoading(false);
-            })
+        }
     }
-
+    const getAllBrands = async () => {
+        try {
+            const brandsResponse = await api.getAllBrands()
+            const brandsFromDb = await brandsResponse.json();
+            setBrands(imageProcesses.convertToBase64(brandsFromDb));
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const submit = (event) => {
         event.preventDefault();
@@ -136,8 +98,7 @@ const EditBrand = () => {
     };
 
     useLayoutEffect(() => {
-        api.getAllBrands()
-            .then(res => setBrands(res))
+        getAllBrands();
     }, [])
 
     return <>
@@ -159,22 +120,11 @@ const EditBrand = () => {
                         placeholder: "Brand name...",
                     }}
                 />
-                <div className={`${styles["picture"]}`}>
-                    {picture ? <img onDrop={onChangeHandler} src={picture} alt="profile_picture" /> : <img src={avatar} alt="profile_picture" />}
-                    {isLoading
-                        ? renderLoader()
-                        : <></>
-                    }
-                    <input onDrop={onChangeHandler} onChange={onChangeHandler} multiple type="file" />
-                    <Button {...{
-                        isLoading,
-                        handleClick: removeImage,
-                        text: "X",
-                        type: "button",
-                        colour: "red",
-                        size: "small"
-                    }} />
-                </div>
+                <Image {...{
+                    image,
+                    isLoading,
+                    setSelectedFile
+                }} />
                 <Button {...{
                     isLoading,
                     handleClick: submit,
