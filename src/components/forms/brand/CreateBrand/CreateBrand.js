@@ -5,9 +5,6 @@ import styles from './CreateBrand.module.css';
 import api from '../../../../api';
 import routes from '../../../../api/apiRoutes';
 
-import spinner from '../../../../assets/spinner_v3.gif';
-import avatar from '../../../../assets/img/Avatar.jpg';
-
 import Button from '../../formComponents/Button/Button';
 import Input from '../../formComponents/Input/Input';
 import Image from '../../formComponents/Image/Image';
@@ -18,51 +15,47 @@ const CreateBrand = () => {
     const [selectedFile, setSelectedFile] = useState(false);
     const [brandName, setBrandName] = useState("");
 
-    const submitImage = (id) => {
+    const submitImage = async (id) => {
         setIsLoading(true);
         const data = new FormData();
-        data.append("image", selectedFile);
-        fetch(routes.brandPicture + `/${id}`, {
-            method: 'POST',
-            credentials: 'include',
-            body: data
-        })
-            .then(res => {
-                if (res.status === 200) {
-                    setSelectedFile(null);
-                    setImage(null);
-                }
+        if (selectedFile === null) {
+            data.append("image", null);
+        } else {
+            data.append("image", selectedFile);
+        }
+        try {
+            const brandImageResponse = await fetch(routes.brandPicture + `/${id}`, {
+                method: 'POST',
+                credentials: 'include',
+                body: data
+            })
+            if (brandImageResponse.ok) {
                 setIsLoading(false);
-                return res.json()
-            })
-            .then(res => {
-                setImage(res.image ? `data:image/png;base64, ${res.image}` : false);
-            })
-            .catch(err => {
-                console.log(err);
-                setIsLoading(false)
-            })
+                setSelectedFile(null);
+                setImage(null);
+            }
+        } catch (error) {
+            console.log(error);
+            setIsLoading(false);
+        }
     };
 
     const submitBrand = async () => {
         setIsLoading(true);
-        api.createBrand({ name: brandName })
-            .then(res => {
-                if (res.ok) {
-                    setBrandName("");
-                }
+        try {
+            const brandFromDb = await api.createBrand({ name: brandName });
+            if (brandFromDb.ok) {
+                setBrandName("");
                 setIsLoading(false);
-                return res.json();
-            })
-            .then(res => {
-                if (selectedFile) {
-                    submitImage(res.id)
-                }
-            })
-            .catch(err => {
-                console.log(err);
-                setIsLoading(false);
-            })
+            }
+            const brandsFromDb = await brandFromDb.json();
+            if (selectedFile) {
+                submitImage(brandsFromDb.id)
+            }
+        } catch (error) {
+            console.log(error);
+            setIsLoading(false);
+        }
     }
 
 

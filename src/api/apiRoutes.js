@@ -30,6 +30,7 @@ const routes = {
     productGetOne: `${main}Products/getOne`,
     productEditOne: `${main}Products/edit`,
     productDeleteOne: `${main}Products/delete`,
+    productPicture: `${main}Categories/uploadProfilePicture`,
 
     //Category
     category: `${main}Categories`,

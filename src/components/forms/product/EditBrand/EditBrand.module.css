@@ -1,4 +1,4 @@
-.select-category {
+.select-brand {
   width: 100%;
   margin: 0.5rem 0 0.5rem 0;
   font-size: 1rem;
@@ -6,32 +6,32 @@
   padding: 0.5rem 0 0.5rem 0;
 }
 
-.category-form {
+.brand-form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: nowrap;
 }
-.category-form .title {
+.brand-form .title {
   position: relative;
   color: #575153;
   font-size: 1.125rem;
   margin: 1.563rem;
   font-weight: bold;
 }
-.category-form form .picture {
+.brand-form form .picture {
   position: relative;
   height: 240px;
   width: 240px;
   overflow: hidden;
 }
-.category-form form .picture > img {
+.brand-form form .picture > img {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
 }
-.category-form form .picture input {
+.brand-form form .picture input {
   position: absolute;
   top: 0;
   left: 0;
@@ -39,7 +39,7 @@
   width: 100%;
   height: 100%;
 }
-.category-form form .picture .loader {
+.brand-form form .picture .loader {
   position: absolute;
   top: 0;
   left: 0;
@@ -51,6 +51,6 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.2);
 }
-.category-form form .picture .loader .spinner {
+.brand-form form .picture .loader .spinner {
   width: 4rem;
 }

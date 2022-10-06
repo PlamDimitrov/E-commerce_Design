@@ -10,7 +10,7 @@ const Input = ({
     placeholder,
     autoComplete = false,
     name,
-    isChecked
+    isChecked,
 }) => {
 
     return <input

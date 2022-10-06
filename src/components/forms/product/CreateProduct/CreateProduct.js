@@ -1,124 +1,247 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 
-import styles from './CreateCategory.module.css';
+import styles from './CreateProduct.module.css';
 
 import api from '../../../../api';
 import routes from '../../../../api/apiRoutes';
 
-import spinner from '../../../../assets/spinner_v3.gif';
-import avatar from '../../../../assets/img/Avatar.jpg';
-
 import Button from '../../formComponents/Button/Button';
 import Input from '../../formComponents/Input/Input';
+import Image from '../../formComponents/Image/Image';
+import { Link } from 'react-router-dom';
 
-const CreateCategory = () => {
+const initialProduct = {
+    title: "",
+    webId: "",
+    price: "",
+    description: "",
+    condition: "",
+    availability: "",
+    featuredItem: "",
+    recommended: "",
+}
+
+const CreateProduct = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [picture, setPicture] = useState(false);
+    const [image, setImage] = useState(false);
     const [selectedFile, setSelectedFile] = useState(false);
-    const [categoryName, setCategoryName] = useState("");
+    const [product, setProduct] = useState(initialProduct);
+    const [brands, setBrands] = useState(null);
+    const [categories, setCategories] = useState(null);
 
-    const onChangeHandler = (event) => {
-        setSelectedFile(event.target.files[0]);
-        setPicture(URL.createObjectURL(event.target.files[0]));
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        if (name === "categories") {
+            if (e.target.checked) {
+                if (product[name] === undefined) {
+                    setProduct(current => {
+                        current[name] = [];
+                        current[name].push(+value);
+                        return current;
+                    });
+                } else {
+                    const newCategoryArray = product[name];
+                    newCategoryArray.push(+value);
+                    setProduct(current => ({ ...current, [name]: newCategoryArray }));
+                }
+            } else {
+                const newCategoryArray = product[name];
+                const index = newCategoryArray.indexOf(+value);
+                if (index > -1) {
+                    newCategoryArray.splice(index, 1);
+                }
+                setProduct(current => ({ ...current, [name]: newCategoryArray }));
+            }
+        } else {
+            setProduct(current => ({ ...current, [name]: value }));
+        }
     };
 
-    const renderLoader = () => {
-        return <div className={`${styles["loader"]}`}>
-            <img className={styles['spinner']} src={spinner} alt="spinner" />
-        </div>
-    }
-
-    const clearImage = () => {
-        setSelectedFile(false);
-        setPicture(false);
-    }
-
-    const submitImage = (id) => {
-        if (selectedFile) {
-            setIsLoading(true);
-            const data = new FormData();
+    const submitImage = async (id) => {
+        setIsLoading(true);
+        const data = new FormData();
+        if (selectedFile === null) {
+            data.append("image", null);
+        } else {
             data.append("image", selectedFile);
-            fetch(routes.categoryPicture + `/${id}`, {
+        }
+        try {
+            const productImageResponse = await fetch(routes.productPicture + `/${id}`, {
                 method: 'POST',
                 credentials: 'include',
                 body: data
             })
-                .then(res => {
-                    if (res.status === 200) {
-                        clearImage();
-                    }
-                    setIsLoading(false);
-                    return res.json()
-                })
-                .then(res => {
-                    setPicture(res.image ? `data:image/png;base64, ${res.image}` : false);
-                })
-                .catch(err => {
-                    console.log(err);
-                    setIsLoading(false)
-                })
+            if (productImageResponse.ok) {
+                setIsLoading(false);
+                setSelectedFile(null);
+                setImage(null);
+            }
+        } catch (error) {
+            console.log(error);
+            setIsLoading(false);
         }
     };
 
-    const submitCategory = async () => {
+    const submitProduct = async () => {
         setIsLoading(true);
-        api.createCategory({ name: categoryName })
-            .then(res => {
-                if (res.ok) {
-                    setCategoryName("");
-                }
+        try {
+            const productFromDb = await api.createProduct(product);
+            if (productFromDb.ok) {
+                setProduct(initialProduct)
                 setIsLoading(false);
-                return res.json();
-            })
-            .then(res => submitImage(res.id))
-            .catch(err => {
-                console.log(err);
-                setIsLoading(false);
-            })
+            }
+            const productsFromDb = await productFromDb.json();
+            if (selectedFile) {
+                submitImage(productsFromDb.id)
+            }
+        } catch (error) {
+            console.log(error);
+            setIsLoading(false);
+        }
     }
 
 
     const submit = (event) => {
         event.preventDefault();
-        submitCategory();
+        // submitProduct();
+        console.log(product);
     };
+    const getBrands = async () => {
+        const resBrnds = await api.getAllBrands();
+        const resCategories = await api.getAllCategories();
+        if (resBrnds.ok) {
+            const brandsFromDb = await resBrnds.json();
+            setBrands(brandsFromDb);
+        }
+        if (resCategories.ok) {
+            const categoriesFromDb = await resCategories.json();
+            setCategories(categoriesFromDb);
+        }
+    }
 
-    return <div className={styles["category-form"]}>
+    useLayoutEffect(() => {
+        getBrands();
+    }, [])
+
+    return <div className={styles["brand-form"]}>
         <h1 className={styles["title"]}>
-            Create Category
+            Create Product
         </h1>
         <form>
-            <Input
-                {...{
-                    handleChange: (event) => setCategoryName(event.target.value),
-                    value: categoryName,
-                    placeholder: "Category name...",
-                }}
+            <Input {...{
+                handleChange: (event) => handleInputChange(event),
+                value: product.title,
+                placeholder: "Name...",
+                name: "title"
+            }}
             />
-            <div className={`${styles["picture"]}`}>
-                {picture ? <img onDrop={onChangeHandler} src={picture} alt="profile_picture" /> : <img src={avatar} alt="profile_picture" />}
-                {isLoading
-                    ? renderLoader()
-                    : <></>
-                }
-                <input onDrop={onChangeHandler} onChange={onChangeHandler} type="file" />
-                <Button {...{
-                    isLoading,
-                    handleClick: clearImage,
-                    text: "X",
-                    type: "button",
-                    colour: "red",
-                    size: "small"
-                }} />
-            </div>
+            <Input {...{
+                handleChange: (event) => handleInputChange(event),
+                value: product.webId,
+                placeholder: "WebId...",
+                name: "webId"
+            }}
+            />
+            <Input {...{
+                handleChange: (event) => handleInputChange(event),
+                value: product.price,
+                placeholder: "Price...",
+                name: "price"
+            }}
+            />
+            <Input {...{
+                handleChange: (event) => handleInputChange(event),
+                value: product.description,
+                placeholder: "Description...",
+                name: "description"
+            }}
+            />
+            <Input {...{
+                handleChange: (event) => handleInputChange(event),
+                value: product.condition,
+                placeholder: "Condition...",
+                name: "condition"
+            }}
+            />
+            <h1>Availability:</h1>
+            <Input {...{
+                handleChange: (event) => handleInputChange(event),
+                value: product.availability,
+                placeholder: "Availability...",
+                name: "availability",
+                type: "checkbox"
+            }}
+            />
+            <h1>FeaturedItem:</h1>
+            <Input {...{
+                handleChange: (event) => handleInputChange(event),
+                value: product.featuredItem,
+                placeholder: "FeaturedItem...",
+                name: "featuredItem",
+                type: "checkbox"
+            }}
+            />
+            {brands
+                ? <fieldset>
+                    <h2>Select a Brand:</h2>
+                    {brands.map((brand, index) => {
+                        return <div key={index}>
+                            <Input  {...{
+                                handleChange: (event) => handleInputChange(event),
+                                value: brand.id,
+                                name: "brand",
+                                type: "radio",
+                            }}
+                            />
+                            <span>{brand.name}</span>
+                        </div>
+                    })}
+
+                </fieldset>
+                : <Link target="_blank" to={'/admin/control-panel/create-brand'}>Create a Brand</Link>
+            }
+            {categories
+                ? <fieldset>
+                    <h2>Select a Categories:</h2>
+                    {categories.map((category, index) => {
+                        return <div key={index}>
+                            <Input  {...{
+                                handleChange: (event) => handleInputChange(event),
+                                value: category.id,
+                                placeholder: "FeaturedItem...",
+                                name: "categories",
+                                type: "checkbox",
+                            }}
+                            />
+                            <span>{category.name}</span>
+                        </div>
+                    })}
+
+                </fieldset>
+                : <Link target="_blank" to={'/admin/control-panel/create-category'}>Create a Category</Link>
+            }
+            <h1>Recommended:</h1>
+            <Input {...{
+                handleChange: (event) => handleInputChange(event),
+                value: product.recommended,
+                placeholder: "Recommended...",
+                name: "recommended",
+                type: "checkbox"
+            }}
+            />
+            <Image {...{
+                image,
+                isLoading,
+                setSelectedFile
+            }} />
             <Button {...{
                 isLoading,
                 handleClick: submit,
-                text: "Submit Category",
+                text: "Submit Brand",
                 type: "button"
             }} />
         </form>
     </div>
 };
 
-export default CreateCategory;
+export default CreateProduct;

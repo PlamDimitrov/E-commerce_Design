@@ -20,6 +20,7 @@ import DeleteMainMenu from '../../components/forms/mainMenu/DeleteMainMenu/Delet
 
 
 import NotFound from '../../Pages/NotFound/NotFound';
+import CreateProduct from '../../components/forms/product/CreateProduct/CreateProduct';
 
 const AdminPanel = () => {
     const adminMenu = [
@@ -168,6 +169,7 @@ const AdminPanel = () => {
         </div>
         <Routes>
             <Route path='profile' element={<UserProfile />} />
+
             <Route path='create-category' element={<CreateCategory />} />
             <Route path='edit-category' element={<EditCategory />} />
             <Route path='delete-category' element={<DeleteCategory />} />
@@ -176,11 +178,11 @@ const AdminPanel = () => {
             <Route path='edit-brand' element={<EditBrand />} />
             <Route path='delete-brand' element={<DeleteBrand />} />
 
-            <Route path='edit-menu' element={<EditMainMenu />} />
-            <Route path='delete-menu' element={<DeleteMainMenu />} />
             <Route path='create-menu' element={<CreateMainMenu />} />
             <Route path='edit-menu' element={<EditMainMenu />} />
             <Route path='delete-menu' element={<DeleteMainMenu />} />
+
+            <Route path='create-product' element={<CreateProduct />} />
 
             <Route path='*' element={<NotFound />} />
         </Routes>
