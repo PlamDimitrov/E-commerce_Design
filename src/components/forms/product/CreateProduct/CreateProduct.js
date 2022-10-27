@@ -16,9 +16,9 @@ const initialProduct = {
     price: "",
     description: "",
     condition: "",
-    availability: "",
-    featuredItem: "",
-    recommended: "",
+    availability: false,
+    featuredItem: false,
+    recommended: false,
 }
 
 const CreateProduct = () => {
@@ -26,8 +26,8 @@ const CreateProduct = () => {
     const [image, setImage] = useState(false);
     const [selectedFile, setSelectedFile] = useState(false);
     const [product, setProduct] = useState(initialProduct);
-    const [brands, setBrands] = useState(null);
-    const [categories, setCategories] = useState(null);
+    const [brands, setBrands] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -36,12 +36,12 @@ const CreateProduct = () => {
                 if (product[name] === undefined) {
                     setProduct(current => {
                         current[name] = [];
-                        current[name].push(+value);
+                        current[name].push({ "CategoryId": +value });
                         return current;
                     });
                 } else {
                     const newCategoryArray = product[name];
-                    newCategoryArray.push(+value);
+                    newCategoryArray.push({ "CategoryId": +value });
                     setProduct(current => ({ ...current, [name]: newCategoryArray }));
                 }
             } else {
@@ -52,6 +52,10 @@ const CreateProduct = () => {
                 }
                 setProduct(current => ({ ...current, [name]: newCategoryArray }));
             }
+        } else if (e.target.type === "checkbox") {
+            setProduct(current => ({ ...current, [name]: e.target.checked }));
+        } else if (e.target.type === "radio") {
+            setProduct(current => ({ ...current, "BrandId": +e.target.value }));
         } else {
             setProduct(current => ({ ...current, [name]: value }));
         }
@@ -100,11 +104,9 @@ const CreateProduct = () => {
         }
     }
 
-
     const submit = (event) => {
         event.preventDefault();
-        // submitProduct();
-        console.log(product);
+        submitProduct();
     };
     const getBrands = async () => {
         const resBrnds = await api.getAllBrands();
@@ -139,23 +141,24 @@ const CreateProduct = () => {
                 handleChange: (event) => handleInputChange(event),
                 value: product.webId,
                 placeholder: "WebId...",
-                name: "webId"
+                name: "webId",
             }}
             />
             <Input {...{
                 handleChange: (event) => handleInputChange(event),
                 value: product.price,
                 placeholder: "Price...",
-                name: "price"
+                name: "price",
             }}
             />
-            <Input {...{
-                handleChange: (event) => handleInputChange(event),
-                value: product.description,
-                placeholder: "Description...",
-                name: "description"
-            }}
-            />
+            <textarea
+                onChange={(event) => handleInputChange(event)}
+                value={product.description}
+                placeholder="Description..."
+                name="description"
+            >
+
+            </textarea>
             <Input {...{
                 handleChange: (event) => handleInputChange(event),
                 value: product.condition,
@@ -181,7 +184,16 @@ const CreateProduct = () => {
                 type: "checkbox"
             }}
             />
-            {brands
+            <h1>Recommended:</h1>
+            <Input {...{
+                handleChange: (event) => handleInputChange(event),
+                value: product.recommended,
+                placeholder: "Recommended...",
+                name: "recommended",
+                type: "checkbox"
+            }}
+            />
+            {brands.length > 0
                 ? <fieldset>
                     <h2>Select a Brand:</h2>
                     {brands.map((brand, index) => {
@@ -200,7 +212,7 @@ const CreateProduct = () => {
                 </fieldset>
                 : <Link target="_blank" to={'/admin/control-panel/create-brand'}>Create a Brand</Link>
             }
-            {categories
+            {categories.length > 0
                 ? <fieldset>
                     <h2>Select a Categories:</h2>
                     {categories.map((category, index) => {
@@ -216,19 +228,9 @@ const CreateProduct = () => {
                             <span>{category.name}</span>
                         </div>
                     })}
-
                 </fieldset>
                 : <Link target="_blank" to={'/admin/control-panel/create-category'}>Create a Category</Link>
             }
-            <h1>Recommended:</h1>
-            <Input {...{
-                handleChange: (event) => handleInputChange(event),
-                value: product.recommended,
-                placeholder: "Recommended...",
-                name: "recommended",
-                type: "checkbox"
-            }}
-            />
             <Image {...{
                 image,
                 isLoading,
