@@ -46,7 +46,13 @@ const CreateProduct = () => {
                 }
             } else {
                 const newCategoryArray = product[name];
-                const index = newCategoryArray.indexOf(+value);
+                let index = -1;
+                newCategoryArray
+                    .forEach((c, i) => {
+                        if (c["CategoryId"] === +value) {
+                            index = i;
+                        }
+                    });
                 if (index > -1) {
                     newCategoryArray.splice(index, 1);
                 }
@@ -102,7 +108,7 @@ const CreateProduct = () => {
             console.log(error);
             setIsLoading(false);
         }
-    }
+    };
 
     const submit = (event) => {
         event.preventDefault();
@@ -119,7 +125,7 @@ const CreateProduct = () => {
             const categoriesFromDb = await resCategories.json();
             setCategories(categoriesFromDb);
         }
-    }
+    };
 
     useLayoutEffect(() => {
         getBrands();

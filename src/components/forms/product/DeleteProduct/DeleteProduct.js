@@ -1,33 +1,33 @@
 import React, { memo, useLayoutEffect, useState } from 'react';
 
-import styles from './DeleteBrand.module.css';
+import styles from './DeleteProduct.module.css';
 
 import api from '../../../../api';
 import Button from '../../formComponents/Button/Button';
 
 const MenoButton = memo(Button);
 
-const DeleteBrand = () => {
-    const [brands, setBrands] = useState([]);
+const DeleteProduct = () => {
+    const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [selectedBrand, setSelectedBrand] = useState(null);
-    const [brandName, setBrandName] = useState("---");
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [productName, setProductName] = useState("---");
     const [showConfirmScreen, setShowConfirmScreen] = useState(false);
 
     const submit = async () => {
         setIsLoading(true);
         try {
-            const brandsResponse = await api.deleteBrand(selectedBrand);
-            if (brandsResponse.ok) {
-                brands.forEach((c, index) => {
-                    if (c.id === selectedBrand.id) {
-                        brands.splice(index, 1)
+            const productsResponse = await api.deleteProduct(selectedProduct);
+            if (productsResponse.ok) {
+                products.forEach((c, index) => {
+                    if (c.id === selectedProduct.id) {
+                        products.splice(index, 1)
                     }
                 })
                 setIsLoading(false)
-                setSelectedBrand(null);
-                setBrandName("---");
-                document.querySelector(`.${styles["select-brand"]}`).selectedIndex = 0;
+                setSelectedProduct(null);
+                setProductName("---");
+                document.querySelector(`.${styles["select-product"]}`).selectedIndex = 0;
             }
         } catch (error) {
             console.log(error);
@@ -41,52 +41,52 @@ const DeleteBrand = () => {
 
     const handleSelectMenu = (id) => {
         let hasSelectedMenu = false;
-        brands.forEach(m => {
+        products.forEach(m => {
             if (m.id === +id) {
-                setBrandName(m.name);
-                setSelectedBrand(m);
+                setProductName(m.title);
+                setSelectedProduct(m);
                 hasSelectedMenu = true
                 return m;
             }
         });
         if (!hasSelectedMenu) {
-            setSelectedBrand(null);
-            setBrandName("---");
+            setSelectedProduct(null);
+            setProductName("---");
             return null;
         }
     };
 
-    const getAllBrands = async () => {
+    const getAllProducts = async () => {
         try {
-            const response = await api.getAllBrands();
-            const brandsFromDb = await response.json();
-            setBrands(brandsFromDb);
+            const response = await api.getAllProducts();
+            const productsFromDb = await response.json();
+            setProducts(productsFromDb);
         } catch (error) {
             console.log(error);
         }
     }
 
     useLayoutEffect(() => {
-        getAllBrands();
+        getAllProducts();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
     return <>
-        <div className={styles["brand-form"]}>
-            <select className={`${styles["select-brand"]}`} onChange={(event) => handleSelectMenu(event.target.value)}>
-                <option value={"---"}>Select a Brand to delete:</option>
-                {brands.map((element, index) => {
-                    return <option key={index} value={element.id}>{element.name}</option>
+        <div className={styles["product-form"]}>
+            <select className={`${styles["select-product"]}`} onChange={(event) => handleSelectMenu(event.target.value)}>
+                <option value={"---"}>Select a Product to delete:</option>
+                {products.map((element, index) => {
+                    return <option key={index} value={element.id}>{element.title}</option>
                 })}
             </select>
             <MenoButton {...{
                 isLoading,
                 handleClick: renderConfirmScreen,
-                text: "Delete Brand",
+                text: "Delete Product",
                 type: "button",
                 colour: "red",
-                isActive: selectedBrand
+                isActive: selectedProduct
             }} />
         </div>
         {showConfirmScreen
@@ -95,7 +95,7 @@ const DeleteBrand = () => {
                     <MenoButton {...{
                         isLoading,
                         handleClick: submit,
-                        text: `Confirm deletion of "${brandName}"`,
+                        text: `Confirm deletion of "${productName}"`,
                         type: "button",
                         colour: "red"
                     }} />
@@ -105,4 +105,4 @@ const DeleteBrand = () => {
     </>
 };
 
-export default DeleteBrand;
+export default DeleteProduct;

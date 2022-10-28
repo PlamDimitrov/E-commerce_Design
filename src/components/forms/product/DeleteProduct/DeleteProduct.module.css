@@ -1,17 +1,17 @@
-.brand-form {
+.product-form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: nowrap;
 }
-.brand-form .select-brand {
+.product-form .select-product {
   width: 100%;
   margin: 0.5rem 0 0.5rem 0;
   font-size: 1rem;
   border: 1px solid #e7e7e7;
   padding: 0.5rem 0 0.5rem 0;
 }
-.brand-form .title {
+.product-form .title {
   position: relative;
   color: #575153;
   font-size: 1.125rem;

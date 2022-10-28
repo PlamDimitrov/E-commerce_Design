@@ -78,7 +78,7 @@ const editProduct = (product) => {
     return put(routes.productEditOne, product)
 }
 const deleteProduct = (product) => {
-    return _delete(routes.productDeleteOne, product)
+    return _delete(routes.productDeleteOne + `/${product.id}`, product)
 }
 const getAllProducts = () => {
     return get(routes.productGetAll)
