@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './Slider.module.css';
+import defaultImage from '../../assets/img/Product_default.png';
 
-const Slider = (props) => {
-    const [images, setImages] = useState(props.images);
+
+const Slider = ({ imagesArray = [defaultImage] }) => {
+    const [images, setImages] = useState(imagesArray);
     const amountOfImages = images.length;
 
     const slider = useRef(null)
@@ -89,17 +91,21 @@ const Slider = (props) => {
 
 
     useEffect(() => {
-        setImages(props.images);
+        setImages(imagesArray);
         slider.current = document.querySelector(`.${styles["viewport"]}`);
         image.current = document.querySelector(`.${styles["image"]}`);
         slider.current.style.width = `${getSpecificImage(1).offsetWidth}px`;
         slider.current.style.height = `${getSpecificImage(1).offsetHeight}px`;
-    }, [props]);
+    }, [imagesArray]);
 
     return <div className={`${styles["slider"]}`}>
         <div className={`${styles["viewport"]}`}>
             <div className={`${styles["image"]}`}>
-                {images.map(i => <img onClick={moveCarouselRight} src={i.image} key={i.id} alt={i.alt} />)}
+                {
+                    amountOfImages > 1
+                        ? images.map((image, index) => <img onClick={moveCarouselRight} src={image} key={index} alt="product" />)
+                        : <img onClick={moveCarouselRight} src={images[0]} alt="product" />
+                }
             </div>
             <button className={`${styles["slide"]} ${styles["left"]}`} onClick={moveCarouselLeft} ><i className="fa-solid fa-chevron-left"></i></button>
             <button className={`${styles["slide"]} ${styles["right"]}`} onClick={moveCarouselRight}><i className="fa-solid fa-chevron-right"></i></button>

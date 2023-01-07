@@ -160,8 +160,3 @@
   background: linear-gradient(90deg, rgb(0, 138, 138) 0%, rgb(0, 200, 200) 70%, rgb(0, 212, 255) 100%);
   transition: transform 700ms ease-out;
 }
-@media screen and (max-width: 1150px) {
-  .dropdown {
-    right: 35%;
-  }
-}

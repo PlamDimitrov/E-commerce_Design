@@ -82,7 +82,6 @@ const Footer = () => {
         <div className={styles["footer-copyright-section"]}>
             <div className={`${globalStyles["content"]} ${styles["footer-content-body"]}`}>
                 <a href="./">© 2022 PlamDimitrov</a>
-                <a href="RobbyDesign.com">Design by RobbyDesign.com</a>
                 <a href="./">Dev by PlamDimitrov</a>
             </div>
         </div>
